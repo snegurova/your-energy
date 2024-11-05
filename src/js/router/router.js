@@ -1,8 +1,12 @@
 import { getContentElement, getFilters } from '../pages/home';
 import { updateQuote } from '../quote/quote';
+import { getFavoritesHTML } from "../favorites/favorites-api";
+
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
+
+export const route = event => {
   event.preventDefault();
   const {
     target: { href },

@@ -1,0 +1,81 @@
+.remove-from-favorites,
+.exercises-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.remove-from-favorites {
+  height: 18px;
+  width: 18px;
+  padding: 2px;
+}
+
+.remove-from-favorites:hover,
+.remove-from-favorites:focus {
+  color: #0c10ee;
+}
+
+.favorites-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: #ffffff;
+}
+
+.favorite-header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.start {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.workout {
+  margin-right: 9px;
+}
+
+.favorites-section {
+  display: flex;
+  gap: 15px;
+  flex-wrap: no-wrap;
+  column-gap: 15px;
+}
+
+.card-description {
+  display: flex;
+}
+
+.list-item {
+  width: 335px;
+  background-color: #eae1e1;
+  height: 141px;
+  border-radius: 4%;
+  padding: 16px;
+}
+
+.card-set {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 15px;
+}
+
+.set-item {
+  width: calc((100% - var(15px) * (var(1) - 1)) / var(1));
+}
+
+@media screen and (min-width: 768px) {
+  .set-item {
+    width: calc((100% - var(15px) * (var(2) - 1)) / var(2));
+  }
+}
+
+.name {
+  padding-left: 10px;
+}
