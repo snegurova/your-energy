@@ -1,14 +1,11 @@
 // import api function
 
 function getQuoteExpireTime() {
-  let tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0);
-  return tomorrow.getTime();
+  return new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
 }
 
 function isNeedToUpdate(time) {
-  return time - Date.now() < 0 ? true : false;
+  return time > Date.now();
 }
 
 function fetchQuote() {
