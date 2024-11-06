@@ -15,3 +15,6 @@
 @import url('./header.css');
 @import url('./footer.css');
 @import url('./hero.css');
+
+/* Components */
+@import url('./categories.css');
