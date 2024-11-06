@@ -6,3 +6,5 @@ links.forEach(link => link.addEventListener('click', route));
 
 handleLocation();
 updateQuote();
+
+import './js/burger-menu';
