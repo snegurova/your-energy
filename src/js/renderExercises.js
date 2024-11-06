@@ -14,22 +14,38 @@ const createExerciseCard = ({
   _id,
 }) => {
   return `
-     <li>
-      <div class="">
-        <div class="">
-            <span>${equipment}</span>
-            <span>${rating}</span>
+     <li class="exercises-card">
+      <div class="exercises-top">
+        <div class="exercises-top-group">
+            <span class="exercises-equipment">${equipment}</span>
+            <span class="exercises-rating-group">
+              <span class="exercises-rating">${rating.toFixed(1)}</span>
+              <button class="exercises-favorite-btn" type="button">
+                <svg>
+                  <use href="./images/sprite.svg#icon-star"></use>
+                </svg>
+              </button>
+            </span>
         </div>
-        <button type="button">Start</button>
+        <button type="button" class="exercises-btn start-btn" data-id="${_id}">
+          Start
+          <svg width="13" height="13">
+            <use href="./images/sprite.svg#icon-arrow"></use>
+          </svg>
+        </button>
       </div>
-      <div class="">
-        <span>icon</span>
-        <h3>${name}</h3>
+      <div class="exercises-content">
+        <span class="exercises-icon">
+          <svg width="14" height="16">
+            <use href="./images/sprite.svg#icon-man"></use>
+          </svg>
+        </span>
+        <h3 class="exercises-name">${name}</h3>
       </div>
-      <ul class="">
-        <li>Burned calories: <span>${burnedCalories}</span></li>
-        <li>Body part: <span>${bodyPart}</span></li>
-        <li>Target: <span>${target}</span></li>
+      <ul class="exercises-attributes">
+        <li><p><span class="exercises-attributes-label">Burned calories:</span><span class="exercises-attributes-value">${burnedCalories} / ${time} min</></p></li>
+        <li><p><span class="exercises-attributes-label">Body part:</span><span class="exercises-attributes-value">${bodyPart}</></p></li>
+        <li><p><span class="exercises-attributes-label">Target:</span><span class="exercises-attributes-value">${target}</></p></li>
       </ul>
     </li>
     `;

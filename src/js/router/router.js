@@ -10,6 +10,8 @@ const routes = {
   '/exercises': '/pages/exercises.html',
 };
 
+const event = new Event('routeUpdated');
+
 export const handleLocation = async () => {
   const { pathname: path, search } = window.location;
   const urlParams = new URLSearchParams(search);
@@ -19,6 +21,8 @@ export const handleLocation = async () => {
   const html = await fetch(route).then(data => data.text());
 
   document.getElementById('main-page').innerHTML = html;
+
+  document.dispatchEvent(event);
 };
 
 window.onpopstate = handleLocation;

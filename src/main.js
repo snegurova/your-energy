@@ -8,5 +8,8 @@ links.forEach(link => link.addEventListener('click', route));
 
 handleLocation();
 
-renderExercises({ page: 1, limit: 10 });
 updateQuote();
+
+document.addEventListener('routeUpdated', () => {
+  renderExercises({ page: 1, limit: 10 });
+});
