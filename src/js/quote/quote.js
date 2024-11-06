@@ -1,8 +1,7 @@
 // import api function
 
 function getQuoteExpireTime() {
-  const tomorrow = new Date();
-  tomorrow.setHours(24, 0, 0, 0);
+  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
   return tomorrow.getTime();
 }
 

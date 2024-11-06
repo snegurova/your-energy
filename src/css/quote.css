@@ -1,0 +1,105 @@
+.quote-container {
+}
+.quote-list {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.quote-item {
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+  width: calc((100% - 20px) / 3);
+  box-sizing: border-box;
+}
+.quote-item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+.quote-text-item {
+  padding: 20px;
+  padding-left: 70px;
+  position: relative;
+}
+.quote-list li:first-child {
+  background-color: var(--color-black);
+}
+.quote-icon-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(244, 244, 244, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.icon-wrap-dark {
+  background-color: var(--color-black);
+}
+
+.quote-item-icon {
+  fill: var(--color-white);
+}
+.quote-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.quote-main-info {
+  position: relative;
+}
+
+.quote-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--color-white);
+}
+.quote-title.js-qofd {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-descriptions);
+}
+.quote-author {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-white);
+}
+.news-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--color-black);
+  margin-bottom: 2px;
+  text-align: left;
+}
+.news-description {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(36, 36, 36, 0.6);
+  margin-bottom: 16px;
+}
+
+.news-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(----color-black);
+}
+
+.multiline-truncated {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 5;
+  overflow: hidden;
+}
