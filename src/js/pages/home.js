@@ -9,9 +9,7 @@ export const getContentElement = () => {
 };
 
 export const getFilters = async (params) => {
-  api.filters.page = 2;
-  api.filters.filter = 'Muscle';
-  filters = await api.filters.getFilters();
+  filters = await api.filters.getFilters(params);
   console.log(filters);
   const markup = filters.results.reduce((acc, { filter, name, imgURL }) => {
     return `${acc}<li><div>${filter}</div><div>${name}</div>`;
