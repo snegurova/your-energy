@@ -63,7 +63,16 @@ export default async function renderExerciseById(exerciseId) {
     }</p>
   </div>
   <button type="button" class="add-btn" data-id="${_id}">
-    ${buttonLabel}
+    Add to favorites
+    <svg width="20" height="20">
+  <use href="./images/sprite.svg#heart"></use>
+</svg>
+  </button>
+  <button type="button" class="remove-btn" data-id="${_id}">
+    Remove from favorites
+    <svg width="20" height="20">
+  <use href="./images/sprite.svg#trash"></use>
+</svg>
   </button>
   <button type="button" class="rate-btn">
     Give a rating
@@ -98,3 +107,4 @@ function toggleFavorite(exerciseId, button) {
 
   storageService.save('favorites', favorites);
 }
+
