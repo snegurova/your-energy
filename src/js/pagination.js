@@ -13,7 +13,7 @@ async function setupPagination(callback) {
   const lastBtn = document.getElementById("last-btn");
   const pageInfo = document.getElementById("page-info");
 
-  function renderPagination() {
+  function renderPagination() { 
     let pages = [];
   
     if (totalPages <= 3) {
