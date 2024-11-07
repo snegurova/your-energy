@@ -89,7 +89,7 @@ export default class ExercisesService {
           this.#filter && this.#name ? `${this.#filter}=${this.#name}&` : ''
         }&page=${this.#page}&limit=10`
       );
-      console.log('ExercisesService getExercises data:', data);
+      // console.log('ExercisesService getExercises data:', data);
       return data;
     } catch (error) {
       throw error;
@@ -105,7 +105,7 @@ export default class ExercisesService {
   async getExercisesById(id) {
     try {
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
-      console.log('ExercisesService getExercisesById data:', data);
+      // console.log('ExercisesService getExercisesById data:', data);
       return data;
     } catch (error) {
       throw error;
@@ -129,7 +129,7 @@ export default class ExercisesService {
         `${this.#basePath}/${id}/rating`,
         body
       );
-      console.log('ExercisesService addExerciseRatingById data:', data);
+      // console.log('ExercisesService addExerciseRatingById data:', data);
       return data;
     } catch (error) {
       throw error;
@@ -152,7 +152,7 @@ export default class ExercisesService {
       const { data } = await this.#axios.get(
         `${this.#basePath}?${this.#filter}=${this.#name}&keyword=${value}`
       );
-      console.log('ExercisesService search data:', data);
+      // console.log('ExercisesService search data:', data);
       return data;
     } catch (error) {
       throw error;
