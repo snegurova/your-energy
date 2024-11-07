@@ -7,6 +7,7 @@ export default class ExercisesService {
   #page = 1;
   #filter = '';
   #name = '';
+ 
 
   /**
    * Creates an instance of ExercisesService.
