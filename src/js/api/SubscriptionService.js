@@ -23,7 +23,7 @@ export default class SubscriptionService {
     try {
       this.#validateEmail(email);
       const { data } = await this.#axios.post(this.#basePath, { email });
-      console.log('SubscriptionService subscribe data:', data);
+      // console.log('SubscriptionService subscribe data:', data);
       return data;
     } catch (error) {
       throw error;
