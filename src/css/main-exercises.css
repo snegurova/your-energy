@@ -1,6 +1,6 @@
 .quote-exercises-container {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
 }
