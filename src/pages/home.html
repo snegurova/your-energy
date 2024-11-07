@@ -1,6 +1,19 @@
-<div class="container">
-  <h1>Home</h1>
-  <div class="content"></div>
-  <a href="/exercises?bodyPart=waist" class="router-link">Exercises</a>
-  <load src="../partials/hero.html" />
-</div>
+<section class="home-container">
+  <div class="container">
+    <h1 class="visually-hidden">Home</h1>
+    <load src="../partials/hero.html" />
+    <div class="main-exercises-nav">
+      <h1 class="main-exercises-title">Exercises</h1>
+      <div calss="main-exercises-links">
+        <a href="/">Muscles</a>
+        <a href="/">Body parts</a>
+        <a href="/">Equipment</a>
+      </div>
+    </div>
+    <div class="quote-exercises-container">
+      <div class="content"></div>
+      <a href="/exercises?bodyPart=waist" class="router-link">Exercises</a>
+      <load src="../partials/quote.html" />
+    </div>
+  </div>
+</section>

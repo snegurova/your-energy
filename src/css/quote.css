@@ -1,0 +1,159 @@
+.quote-container {
+  max-width: 335px;
+}
+@media screen and (min-width: 768px) {
+  .quote-container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quote-container {
+    max-width: 444x;
+  }
+}
+
+.quote-list {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.quote-item {
+  border-radius: 20px;
+  background-color: white;
+  overflow: hidden;
+  width: 100%;
+}
+.quote-item img {
+  height: auto;
+  object-fit: cover;
+}
+.quote-text-item {
+  padding: 20px;
+  padding-left: 70px;
+  position: relative;
+}
+.quote-list li:first-child {
+  background-color: var(--color-black);
+}
+.quote-icon-wrapper {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 32px;
+  height: 32px;
+  background-color: rgba(244, 244, 244, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+.icon-wrap-dark {
+  background-color: var(--color-black);
+}
+
+.quote-item-icon {
+  fill: var(--color-white);
+}
+.quote-icon {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.quote-main-info {
+  position: relative;
+}
+
+.quote-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--color-white);
+  margin-bottom: 6px;
+}
+.quote-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-descriptions);
+  margin-bottom: 18px;
+  word-wrap: break-word;
+}
+.quote-author {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--color-white);
+}
+.news-title {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 100%;
+  color: var(--color-black);
+  margin-bottom: 2px;
+  text-align: left;
+}
+.news-description {
+  text-transform: capitalize;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: rgba(36, 36, 36, 0.6);
+  margin-bottom: 16px;
+}
+
+.news-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(----color-black);
+}
+
+@media screen and (min-width: 768px) {
+  .quote-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+  }
+  .quote-item {
+    width: calc((100% - 24px) / 2);
+  }
+  .quote-item.quote-img-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quote-item img {
+    object-fit: contain;
+    max-width: none;
+  }
+  .quote-text-item {
+    padding: 40px;
+    padding-left: 90px;
+  }
+  .quote-icon-wrapper {
+    top: 40px;
+    left: 40px;
+  }
+  .quote-info {
+    min-height: 157px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quote-list {
+    flex-direction: column;
+  }
+  .quote-item img {
+    max-width: 100%;
+  }
+}
+
+.multiline-truncated {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  line-clamp: 5;
+  overflow: hidden;
+}
