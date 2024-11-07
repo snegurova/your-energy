@@ -1,14 +1,12 @@
 // import api function
 
 function getQuoteExpireTime() {
-  let tomorrow = new Date();
-  tomorrow.setDate(tomorrow.getDate() + 1);
-  tomorrow.setHours(0, 0, 0);
+  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
   return tomorrow.getTime();
 }
 
 function isNeedToUpdate(time) {
-  return time - Date.now() < 0 ? true : false;
+  return time < Date.now();
 }
 
 export function fetchQuote() {
@@ -45,6 +43,7 @@ function updateQuote() {
   const quoteAuthor = document.querySelector('.quote-author');
   const quote = getQuoteInfo();
   if (!(quoteText && quoteAuthor)) {
+    console.error('Missing quotes html element');
     return;
   }
   if (!quote) {
