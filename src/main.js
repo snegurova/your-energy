@@ -12,8 +12,6 @@ links.forEach((link) => {
 
 handleLocation();
 
-updateQuote();
-
 document.addEventListener('DOMContentLoaded', async () => {
   if (window.location.pathname === '/') {
     renderCards();
@@ -21,5 +19,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 document.addEventListener('routeUpdated', () => {
+  updateQuote(); // need to call it for all routes, content load in page dynamic
   renderExercises({ page: 1, limit: 10 });
 });

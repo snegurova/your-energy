@@ -43,5 +43,5 @@ getExercisesById('64f389465ae26083f39b17af');
 search('body');
 
 getFilters();
-getQuote();
+// getQuote();
 // subscribe('test2222222222aa@gmail.com'); // Need change email
