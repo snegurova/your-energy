@@ -14,6 +14,7 @@ export async function fetchQuote() {
 
   try {
     const apiResult = await api.quotes.getQuote();
+    apiResult.expire = getQuoteExpireTime();
     localStorage.setItem('quote', JSON.stringify(apiResult));
     // console.log('api resut', apiResult);
     return apiResult;
