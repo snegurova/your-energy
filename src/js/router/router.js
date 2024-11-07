@@ -17,17 +17,17 @@ export const route = (event) => {
 
 const routes = {
   '/': {
-    route: `${basePath}/pages/home.html`,
+    route: `${basePath}/home.html`,
     domCallBack: getContentElement,
     apiCallBack: getFilters,
   },
   '/favorites': {
-    route: `${basePath}/pages/favorites.html`,
+    route: `${basePath}/favorites.html`,
     domCallBack: () => console.log('your element'),
     apiCallBack: (params) => console.log(`your data and ${params}`),
   },
   '/exercises': {
-    route: `${basePath}/pages/exercises.html`,
+    route: `${basePath}/exercises.html`,
     domCallBack: () => console.log('your element'),
     apiCallBack: (params) => console.log(`your data and ${params}`),
   },
