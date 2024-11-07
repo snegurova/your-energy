@@ -7,4 +7,7 @@ export const refs = {
   // header
 
   // footer
+  subscribeForm: document.querySelector('.subscribe-form'),
+  emailInput: document.querySelector('.subscribe-form input[type="email"]'),
+  submitButton: document.querySelector('.subscribe-form button[type="submit"]'),
 };
