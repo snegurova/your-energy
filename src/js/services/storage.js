@@ -1,26 +1,31 @@
 const save = (key, value) => {
   try {
-    const favoriteState = JSON.stringify(value);
-    localStorage.setItem(key, favoriteState);
+    let favorites = load(key) || [];
+    if (!favorites.some((favorite) => favorite._id === value._id)) {
+      favorites.push(value);
+      localStorage.setItem(key, JSON.stringify(favorites));
+    }
   } catch (err) {
-    console.log('State error: ', err.message);
+    console.error('State error: ', err.message);
   }
 };
 
-const load = key => {
+const remove = (key, id) => {
+  try {
+    let favorites = load(key) || [];
+    favorites = favorites.filter((exercise) => exercise._id !== id);
+    localStorage.setItem(key, JSON.stringify(favorites));
+  } catch (err) {
+    console.error('State error: ', err.message);
+  }
+};
+
+const load = (key) => {
   try {
     const favoriteState = localStorage.getItem(key);
-    return favoriteState === null ? undefined : JSON.parse(favoriteState);
+    return favoriteState === null ? [] : JSON.parse(favoriteState);
   } catch (err) {
-    console.log('State error: ', err.message);
-  }
-};
-
-const remove = key => {
-  try {
-    localStorage.removeItem(key);
-  } catch (err) {
-    console.log('State error: ', err.message);
+    console.error('State error: ', err.message);
   }
 };
 
@@ -29,4 +34,3 @@ export default {
   load,
   remove,
 };
-
