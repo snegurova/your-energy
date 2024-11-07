@@ -11,7 +11,7 @@ function isNeedToUpdate(time) {
   return time - Date.now() < 0 ? true : false;
 }
 
-function fetchQuote() {
+export function fetchQuote() {
   // fetch api function
   const apiResult = {
     text: 'Text',
