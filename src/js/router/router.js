@@ -1,4 +1,5 @@
 import { getContentElement, getFilters } from '../pages/home';
+import { getMainExercises, getExercises } from '../pages/exercises';
 
 export const route = (event) => {
   event.preventDefault();
@@ -19,12 +20,10 @@ const routes = {
   },
   '/exercises': {
     route: '/pages/exercises.html',
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: getMainExercises,
+    apiCallBack: getExercises,
   },
 };
-
-const event = new Event('routeUpdated');
 
 export const handleLocation = async () => {
   const { pathname: path, search } = window.location;
@@ -41,7 +40,6 @@ export const handleLocation = async () => {
 
   document.getElementById('main-page').innerHTML = html;
 
-  document.dispatchEvent(event);
   domCallBack();
   apiCallBack(urlParams);
 };
