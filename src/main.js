@@ -10,7 +10,7 @@ links.forEach((link) => link.addEventListener('click', route));
 handleLocation();
 
 updateQuote();
-import './js/test';
+import './js/pagination';
 
 document.addEventListener('routeUpdated', () => {
   renderExercises({ page: 1, limit: 10 });
