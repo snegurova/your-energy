@@ -1,4 +1,249 @@
 .header {
-  padding: 20px 0;
-  font-weight: 600;
+    padding: 20px 0;
+    font-weight: 600;
+    background-color: #fff;
+    position: relative;
+}
+
+.header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-logo {
+    width: 132px;
+    height: 24px;
+    flex-shrink: 0;
+    fill: #242424;
+}
+
+.icon {
+    fill: currentColor;
+}
+
+.icon-burger,
+.icon-close {
+    stroke: currentColor;
+}
+
+.nav {
+    display: none;
+}
+
+.navbar-list {
+    display: flex;
+    align-items: center;
+    background: #242424;
+    border-radius: 60px;
+    padding: 4px;
+    height: 52px;
+}
+
+.navbar-item {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.social-list {
+    display: none;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.social-link {
+    display: flex;
+    padding: 8px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(36, 36, 36, 0.1);
+    transition: all 0.3s ease;
+}
+
+.social-link .icon {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    opacity: 0.8;
+    fill: #242424;
+    transition: fill 0.3s ease;
+}
+
+.social-link:hover {
+    border: 1px solid rgba(36, 36, 36, 0.1);
+    background: rgba(36, 36, 36, 0.8);
+}
+
+.social-link:hover .icon {
+    fill: #F4F4F4;
+}
+
+.burger-menu {
+    display: flex;
+    padding: 0;
+    border: none;
+    background: none;
+    color: #242424;
+}
+
+.burger-menu-content {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #242424;
+    padding: 20px 16px;
+    z-index: 100;
+}
+
+.burger-menu-content.open {
+    display: flex;
+    flex-direction: column;
+}
+
+.close-menu {
+    align-self: flex-end;
+    padding: 8px;
+    border: none;
+    background: none;
+    color: #F4F4F4;
+}
+
+.burger-nav {
+    margin: auto;
+    text-align: center;
+}
+
+.burger-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.burger-nav ul li a {
+    color: #F4F4F4;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    transition: color 0.3s ease;
+}
+
+.burger-nav ul li a:hover {
+    color: rgba(244, 244, 244, 0.8);
+}
+
+.burger-menu-content .social-list {
+    display: flex;
+    justify-content: center;
+    margin-top: auto;
+    padding-bottom: 20px;
+}
+
+.burger-menu-content .social-link {
+    border-color: rgba(244, 244, 244, 0.1);
+}
+
+.burger-menu-content .social-link .icon {
+    fill: #F4F4F4;
+}
+
+.burger-menu-content .social-link:hover {
+    border: 1px solid rgba(244, 244, 244, 0.1);
+    background: #F4F4F4;
+}
+
+.burger-menu-content .social-link:hover .icon {
+    fill: #242424;
+}
+
+@media only screen and (max-width: 767px) {
+    .header {
+        padding: 16px 0;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .social-list {
+        display: none;
+    }
+
+    .burger-menu {
+        display: flex;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1199px) {
+    .header {
+        padding: 24px 0;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .navbar-list {
+        width: 233px;
+        height: 52px;
+        flex-shrink: 0;
+        justify-content: space-between;
+        padding: 4px;
+        margin: 0;
+    }
+
+    .social-list {
+        display: inline-flex;
+    }
+
+    .header .container {
+        gap: 16px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header {
+        padding: 28px 0;
+    }
+
+    .burger-menu {
+        display: none;
+    }
+
+    .nav {
+        display: block;
+    }
+
+    .header .container {
+        gap: 30px;
+    }
+
+    .navbar-list {
+        width: 265px;
+        height: 52px;
+        flex-shrink: 0;
+        justify-content: space-between;
+        padding: 4px;
+        margin: 0;
+    }
+
+    .social-list {
+        display: inline-flex;
+    }
 }
