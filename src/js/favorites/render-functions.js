@@ -1,36 +1,38 @@
-u
 export const createCard = ({
   bodyPart,
   target,
+  equipment,
   burnedCalories,
-  name
+  name,
+  time
 }) => `
-    <li class="set-item list-item">
-    <div class="favorite-header">
-    <p class="workout">Workout</p>
-    <svg class="favorites-icon" width="64" height="64">
-      <use href="./images/favorites.svg#icon-icon"></use>
-    </svg>
-    <div class="start">
-      <p class="workout">Start</p>
-      <svg class="favorites-icon" width="32" height="32">
-        <use href="./images/favorites.svg#icon-arrow"></use>
-      </svg>
-    </div>
-    </div>
-
-    <div class="start">
-      <svg class="favorites-icon" width="32" height="32">
-        <use href="./images/favorites.svg#icon-group"></use>
-      </svg>
-      <p class="name">${name}</p>
-    </div>
-
-    <div class="card-description">
-      <p ><span>Body part:</span> ${bodyPart}</p>
-      <p ><span>Target:</span> ${target}</p>
-      <p ><span>Burned calories: </span> ${burnedCalories}</p>
-    </div>
-    </div>
-</li>
-  `;
+ <li class="exercises-card">
+      <div class="exercises-top">
+        <div class="exercises-top-group">
+            <span class="exercises-equipment">${equipment}</span>
+        <button class="remove-from-favorites" type="button">
+            <svg><use href="./images/sprite.svg#icon-trash"></use></svg>
+        </button>
+        </div>
+        <button type="button" class="exercises-btn start-btn">
+          Start
+          <svg width="13" height="13">
+            <use href="./images/sprite.svg#icon-arrow"></use>
+          </svg>
+        </button>
+      </div>
+      <div class="exercises-content">
+        <span class="exercises-icon">
+          <svg width="14" height="16">
+            <use href="./images/sprite.svg#icon-man"></use>
+          </svg>
+        </span>
+        <h3 class="exercises-name">${name}</h3>
+      </div>
+      <ul class="exercises-attributes">
+        <li><p><span class="exercises-attributes-label">Burned calories:</span><span class="exercises-attributes-value">${burnedCalories} / ${time} min</></p></li>
+        <li><p><span class="exercises-attributes-label">Body part:</span><span class="exercises-attributes-value">${bodyPart}</></p></li>
+        <li><p><span class="exercises-attributes-label">Target:</span><span class="exercises-attributes-value">${target}</></p></li>
+      </ul>
+    </li>
+    `;

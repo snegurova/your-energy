@@ -26,5 +26,13 @@ export const getFavoritesFromStorage = () => {
   return favorites ? JSON.parse(favorites) : [];
 }
 
+
+const button = document.getElementById('removeButton');
+
+button.addEventListener('click', function() {
+  removeFromFavorites();
+});
+
+
 addToFavorites('64f389465ae26083f39b17a4')
 addToFavorites('64f389465ae26083f39b1b04')

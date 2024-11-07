@@ -78,4 +78,9 @@
 
 .name {
   padding-left: 10px;
+
+.remove-from-favorites svg {
+  fill: #e167b4;
+  height: 16px;
+  width: 16px;
 }

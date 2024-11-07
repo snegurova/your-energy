@@ -23,4 +23,4 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('routeUpdated', () => {
   renderExercises({ page: 1, limit: 10 });
 });
-getFavorites();
+//getFavorites();
