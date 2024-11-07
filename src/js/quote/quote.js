@@ -6,6 +6,9 @@ function getQuoteExpireTime() {
 }
 
 function isNeedToUpdate(time) {
+  if (!time) {
+    return true;
+  }
   return time < Date.now();
 }
 
