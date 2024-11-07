@@ -63,3 +63,5 @@ export const renderExercises = async (options) => {
   const container = document.querySelector('.main-exercises');
   container.innerHTML = cards;
 };
+
+
