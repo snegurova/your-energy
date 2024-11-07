@@ -16,4 +16,9 @@
 @import url('./footer.css');
 @import url('./modal.css');
 @import url('./hero.css');
+
+/* Components */
+@import url('./categories.css');
+@import url('./main-exercises.css');
+@import url('./quote.css');
 @import url('./exercises.css');
