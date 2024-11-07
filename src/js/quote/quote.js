@@ -43,6 +43,7 @@ function updateQuote() {
   const quoteAuthor = document.querySelector('.quote-author');
   const quote = getQuoteInfo();
   if (!(quoteText && quoteAuthor)) {
+    console.error('Missing quotes html element');
     return;
   }
   if (!quote) {

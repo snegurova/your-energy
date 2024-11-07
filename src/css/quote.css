@@ -1,21 +1,32 @@
 .quote-container {
+  max-width: 335px;
 }
+@media screen and (min-width: 768px) {
+  .quote-container {
+    max-width: 768px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quote-container {
+    max-width: 444x;
+  }
+}
+
 .quote-list {
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   gap: 20px;
 }
+
 .quote-item {
   border-radius: 20px;
   background-color: white;
   overflow: hidden;
-  width: calc((100% - 20px) / 3);
-  box-sizing: border-box;
+  width: 100%;
 }
 .quote-item img {
-  width: 100%;
   height: auto;
   object-fit: cover;
 }
@@ -60,12 +71,15 @@
   font-size: 20px;
   line-height: 100%;
   color: var(--color-white);
+  margin-bottom: 6px;
 }
-.quote-title.js-qofd {
+.quote-text {
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
   color: var(--color-descriptions);
+  margin-bottom: 18px;
+  word-wrap: break-word;
 }
 .quote-author {
   font-weight: 400;
@@ -95,6 +109,46 @@
   font-size: 14px;
   line-height: 129%;
   color: var(----color-black);
+}
+
+@media screen and (min-width: 768px) {
+  .quote-list {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: left;
+  }
+  .quote-item {
+    width: calc((100% - 24px) / 2);
+  }
+  .quote-item.quote-img-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .quote-item img {
+    object-fit: contain;
+    max-width: none;
+  }
+  .quote-text-item {
+    padding: 40px;
+    padding-left: 90px;
+  }
+  .quote-icon-wrapper {
+    top: 40px;
+    left: 40px;
+  }
+  .quote-info {
+    min-height: 157px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .quote-list {
+    flex-direction: column;
+  }
+  .quote-item img {
+    max-width: 100%;
+  }
 }
 
 .multiline-truncated {

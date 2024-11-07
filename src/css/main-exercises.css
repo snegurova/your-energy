@@ -1,0 +1,23 @@
+.quote-exercises-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.main-exercises-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin-bottom: 32px;
+}
+
+@media screen and (min-width: 1200px) {
+  .quote-exercises-container {
+    flex-direction: row-reverse;
+  }
+  .main-exercises-nav {
+    flex-direction: row;
+  }
+}
