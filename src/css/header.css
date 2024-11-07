@@ -1,8 +1,6 @@
-@import url('./font.css');
-
 .header {
     padding: 20px 0;
-    font-family: "DM Sans", sans-serif;
+    font-weight: 600;
     background-color: #fff;
     position: relative;
 }
@@ -27,7 +25,6 @@
     fill: #242424;
 }
 
-
 .icon {
     fill: currentColor;
 }
@@ -36,7 +33,6 @@
 .icon-close {
     stroke: currentColor;
 }
-
 
 .nav {
     display: none;
@@ -56,30 +52,6 @@
     display: flex;
     justify-content: center;
 }
-
-.router-link {
-    display: inline-flex;
-    padding: 6px 16px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 30px;
-    color: #F4F4F4;
-    font-family: "DM Sans", sans-serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: center;
-    min-width: 86px;
-    transition: all 0.3s ease;
-}
-
-.router-link.active {
-    background: #F4F4F4;
-    color: #242424;
-}
-
 
 .social-list {
     display: none;
@@ -114,7 +86,6 @@
 .social-link:hover .icon {
     fill: #F4F4F4;
 }
-
 
 .burger-menu {
     display: flex;
@@ -197,7 +168,6 @@
     fill: #242424;
 }
 
-/* Mobile styles */
 @media only screen and (max-width: 767px) {
     .header {
         padding: 16px 0;
@@ -238,12 +208,6 @@
         margin: 0;
     }
 
-    .router-link {
-        padding: 6px 16px;
-        min-width: 74px;
-        font-size: 14px;
-    }
-
     .social-list {
         display: inline-flex;
     }
@@ -277,12 +241,6 @@
         justify-content: space-between;
         padding: 4px;
         margin: 0;
-    }
-
-    .router-link {
-        font-size: 16px;
-        min-width: 86px;
-        padding: 6px 16px;
     }
 
     .social-list {
