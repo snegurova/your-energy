@@ -9,7 +9,7 @@ function isNeedToUpdate(time) {
   return time < Date.now();
 }
 
-function fetchQuote() {
+export function fetchQuote() {
   // fetch api function
   const apiResult = {
     text: 'Text',
