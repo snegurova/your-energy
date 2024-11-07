@@ -1,10 +1,10 @@
-import storageService from '../services/storage';
+// import storageService from '../services/storage';
 import { refs } from '../refs';
 import renderExerciseById from './render-exercise';
 
 refs.startModal.addEventListener('click', handleOpenModal);
 
-function handleOpenModal(event) {
+async function handleOpenModal(event) {
   if (!event.target.closest('.start-btn')) return;
   const exerciseId = event.target.closest('.start-btn').getAttribute('data-id');
 
@@ -13,7 +13,7 @@ function handleOpenModal(event) {
   refs.closeModalBtn.addEventListener('click', handleCloseModal);
   window.addEventListener('keydown', handleEscKey);
 
-  renderExerciseById(exerciseId);
+  await renderExerciseById(exerciseId);
 }
 
 function handleCloseModal() {
