@@ -23,7 +23,7 @@ export const getFavorites = () => {
         console.error('Error during one of the requests:', error);
       });
   } else {
-    favoritesHTML.innerHTML = `<p>It appears that you haven't added any exercises to your favorites yet. 
+    favoritesHTML.innerHTML = `<p>It appears that you haven't added any exercises to your favorites yet.
     To get started, you can add exercises that you like to your favorites for easier access in the future.
     </p>`
   }

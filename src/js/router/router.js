@@ -1,12 +1,17 @@
 import { getContentElement, getFilters } from '../pages/home';
+<<<<<<< HEAD
 import { updateQuote } from '../quote/quote';
 import { getFavoritesHTML } from "../favorites/favorites-api";
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
+=======
+import { getFavoritesHTML, getFavorites } from "../favorites/favorites-api";
 
-export const route = event => {
+>>>>>>> 6066171 (Extended router.js)
+
+export const route = (event) => {
   event.preventDefault();
   const {
     target: { href },
@@ -27,8 +32,8 @@ const routes = {
   },
   '/favorites': {
     route: `${basePath}/favorites.html`,
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: getFavoritesHTML,
+    apiCallBack: getFavorites,
   },
   '/exercises': {
     route: `${basePath}/exercises.html`,
