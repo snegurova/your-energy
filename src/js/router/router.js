@@ -24,6 +24,8 @@ const routes = {
   },
 };
 
+const event = new Event('routeUpdated');
+
 export const handleLocation = async () => {
   const { pathname: path, search } = window.location;
   const urlParams = new URLSearchParams(search);
@@ -39,6 +41,7 @@ export const handleLocation = async () => {
 
   document.getElementById('main-page').innerHTML = html;
 
+  document.dispatchEvent(event);
   domCallBack();
   apiCallBack(urlParams);
 };
