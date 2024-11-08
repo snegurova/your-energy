@@ -1,36 +1,40 @@
 document.addEventListener("DOMContentLoaded", async () => {
-  setupPagination((event) => {
-    console.log("Clicked Page:", event.target.value);
-  });
+  setupPagination(fetchAndRenderExercises);
 });
 
 import api from "./api";
 
+async function fetchAndRenderExercises(page) {
+  const data = await getExercises(page);
+  console.log("Current Page Data:", data.results);
+
+}
+
+let firstBtn;
+let prevBtn;
+let nextBtn;
+let lastBtn;
+let pageInfo;
+
+export const getContentPagination = () => {
+  firstBtn = document.getElementById("first-btn");
+  prevBtn = document.getElementById("prev-btn");
+  nextBtn = document.getElementById("next-btn");
+  lastBtn = document.getElementById("last-btn");
+  pageInfo = document.getElementById("page-info");
+};
+
 async function setupPagination(callback) {
+  getContentPagination();
+
+
   const initialData = await getExercises(1);
   const totalPages = initialData.totalPages;
   let currentPage = 1;
 
-  // Select pagination elements and verify their existence
-  const firstBtn = document.getElementById("first-btn");
-  const prevBtn = document.getElementById("prev-btn");
-  const nextBtn = document.getElementById("next-btn");
-  const lastBtn = document.getElementById("last-btn");
-  const pageInfo = document.getElementById("page-info");
-
-  if (!firstBtn || !prevBtn || !nextBtn || !lastBtn || !pageInfo) {
-    console.error("Pagination buttons or container not found in the DOM.");
-    if (!firstBtn) console.error("Missing element: first-btn");
-    if (!prevBtn) console.error("Missing element: prev-btn");
-    if (!nextBtn) console.error("Missing element: next-btn");
-    if (!lastBtn) console.error("Missing element: last-btn");
-    if (!pageInfo) console.error("Missing element: page-info");
-    return; // Exit if any element is missing
-  }
-
   function renderPagination() { 
     let pages = [];
-  
+
     if (totalPages <= 3) {
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
@@ -69,42 +73,34 @@ async function setupPagination(callback) {
       })
       .join(" ");
     
-    // Add event listeners to each page button
+ 
     document.querySelectorAll(".page-number").forEach(button => {
-      button.addEventListener("click", callback);
+      button.addEventListener("click", (event) => {
+        goToPage(Number(event.target.value), callback);
+      });
     });
   }
   
-  async function goToPage(page) {
-    if (page >= 1 && page <= totalPages) {
+  async function goToPage(page, callback) {
+    if (page >= 1 && page <= totalPages && page !== currentPage) {
       currentPage = page;
-      await fetchAndRenderExercises(currentPage);
-      renderPagination();
+      await callback(page);  
+      renderPagination();    
     }
   }
 
-  async function fetchAndRenderExercises(page) {
-    const data = await getExercises(page);
-    console.log("Current Page Data:", data.results);
-  }
 
-  // Attach event listeners to navigation buttons
-  firstBtn.addEventListener("click", () => goToPage(1));
-  prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
-  nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
-  lastBtn.addEventListener("click", () => goToPage(totalPages));
+  firstBtn.addEventListener("click", () => goToPage(1, callback));
+  prevBtn.addEventListener("click", () => goToPage(currentPage - 1, callback));
+  nextBtn.addEventListener("click", () => goToPage(currentPage + 1, callback));
+  lastBtn.addEventListener("click", () => goToPage(totalPages, callback));
 
-  // Initial fetch and render
-  await fetchAndRenderExercises(currentPage);
+ 
+  await callback(currentPage); 
   renderPagination();
 }
 
-// Example callback for setupPagination
-setupPagination((event) => {
-  console.log("Clicked Page:", event.target.value);
-});
 
-// Fetch function
 async function getExercises(page = 1) {
   api.exercises.page = page;
   const data = await api.exercises.getExercises();
