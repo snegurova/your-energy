@@ -1,5 +1,4 @@
 
-
 let firstBtn;
 let prevBtn;
 let nextBtn;
@@ -14,14 +13,6 @@ export const getContentPagination = () => {
   nextBtn = document.getElementById("next-btn");
   lastBtn = document.getElementById("last-btn");
   pageInfo = document.getElementById("page-info");
-
-  console.log("Pagination elements initialized:", {
-    firstBtn,
-    prevBtn,
-    nextBtn,
-    lastBtn,
-    pageInfo,
-  });
 };
 
 export async function initPagination(callback) {
@@ -34,12 +25,10 @@ export async function initPagination(callback) {
 
   renderPagination(callback);
 
-  firstBtn.addEventListener("click", () => goToPage(1, callback));
-  prevBtn.addEventListener("click", () => goToPage(currentPage - 1, callback));
-  nextBtn.addEventListener("click", () => goToPage(currentPage + 1, callback));
-  lastBtn.addEventListener("click", () => goToPage(totalPages, callback));
-
-
+  firstBtn.addEventListener('click', () => goToPage(1, callback));
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1, callback));
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1, callback));
+  lastBtn.addEventListener('click', () => goToPage(totalPages, callback));
 }
 
 function renderPagination(callback) {
@@ -58,7 +47,7 @@ function renderPagination(callback) {
   } else {
     if (currentPage > 2) {
       pages.push(1);
-      pages.push("...");
+      pages.push('...');
     }
 
     let startPage = Math.max(1, currentPage - 1);
@@ -75,22 +64,24 @@ function renderPagination(callback) {
     }
 
     if (currentPage < totalPages - 1) {
-      pages.push("...");
+      pages.push('...');
       pages.push(totalPages);
     }
   }
 
   pageInfo.innerHTML = pages
-    .map(page => {
-      if (page === "...") {
+    .map((page) => {
+      if (page === '...') {
         return `<span class="dots">${page}</span>`;
       }
-      return `<button class="page-number ${page === currentPage ? 'active' : ''}" data-page="${page}" value="${page}">${page}</button>`;
+      return `<button class="page-number ${
+        page === currentPage ? 'active' : ''
+      }" data-page="${page}" value="${page}">${page}</button>`;
     })
-    .join(" ");
+    .join(' ');
 
-  document.querySelectorAll(".page-number").forEach(button => {
-    button.addEventListener("click", (event) => {
+  document.querySelectorAll('.page-number').forEach((button) => {
+    button.addEventListener('click', (event) => {
       goToPage(Number(event.target.value), callback);
     });
   });
@@ -106,5 +97,4 @@ async function goToPage(page, callback) {
     renderPagination(callback);
   }
 }
-
 

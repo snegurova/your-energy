@@ -1,5 +1,6 @@
 import api from '../api';
 import { renderExercises } from '../renderExercises';
+import exercisesTemplate from '../../exercises.html?raw';
 
 let contentElement;
 let exercises;
@@ -14,3 +15,6 @@ export const getExercises = async (params) => {
 
   contentElement.innerHTML = `<ul class="main-exercises">${markup}</ul>`;
 };
+
+export const exercisesElement = document.createElement('div');
+exercisesElement.innerHTML = exercisesTemplate;
