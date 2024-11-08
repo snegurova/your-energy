@@ -1,11 +1,17 @@
-const scrollToTopButton = document.getElementById('scroll-to-top');
+export function setupScrollToTop() {
+  const scrollToTopButton = document.getElementById('scroll-to-top');
 
-scrollToTopButton.addEventListener('click', function (event) {
-  event.preventDefault();
+  if (!scrollToTopButton) {
+    return;
+  }
 
-  window.scrollTo({
-    top: 0,
-    left: 0,
-    behavior: 'smooth',
+  scrollToTopButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    });
   });
-});
+}
