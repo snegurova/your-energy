@@ -19,6 +19,7 @@
 @import url('./pagination.css');
 
 /* Components */
+@import url('./filters.css');
 @import url('./categories.css');
 @import url('./main-exercises.css');
 @import url('./quote.css');
