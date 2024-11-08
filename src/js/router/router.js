@@ -1,4 +1,6 @@
 import { getContentElement, getFilters } from '../pages/home';
+import { getMainExercises, getExercises } from '../pages/exercises';
+
 import { updateQuote } from '../quote/quote';
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
@@ -28,12 +30,10 @@ const routes = {
   },
   '/exercises': {
     route: `${basePath}/exercises.html`,
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: getMainExercises,
+    apiCallBack: getExercises,
   },
 };
-
-const event = new Event('routeUpdated');
 
 export const handleLocation = async () => {
   const { pathname, search } = window.location;
@@ -51,7 +51,6 @@ export const handleLocation = async () => {
 
   document.getElementById('main-page').innerHTML = html;
 
-  document.dispatchEvent(event);
   domCallBack();
   apiCallBack(urlParams);
   updateQuote();
