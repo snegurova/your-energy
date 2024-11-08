@@ -7,6 +7,7 @@ export default class ExercisesService {
   #page = 1;
   #filter = '';
   #name = '';
+ 
 
   constructor(axios) {
     this.#axios = axios;

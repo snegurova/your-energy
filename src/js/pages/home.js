@@ -1,11 +1,15 @@
 import api from '../api';
+import { getContentPagination } from '../pagination';
 
 let contentElement;
 let filters;
 
 export const getContentElement = () => {
-  // contentElement = document.querySelector('.content');
-  // console.log(contentElement);
+
+  contentElement = document.querySelector('.content');
+  getContentPagination();
+  console.log(contentElement);
+
 };
 
 export const getFilters = async (params) => {
