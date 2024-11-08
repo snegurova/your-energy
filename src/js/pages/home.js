@@ -5,7 +5,7 @@ let filters;
 
 export const getContentElement = () => {
   contentElement = document.querySelector('.content');
-  // console.log(contentElement);
+  console.log(contentElement);
 };
 
 export const getFilters = async (params) => {

@@ -51,6 +51,7 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
+      console.log('getExercises is triggered!');
       const { data } = await this.#axios.get(
         `${this.#basePath}?${params.toString()}`
       );

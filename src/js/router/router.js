@@ -29,7 +29,7 @@ const routes = {
     apiCallBack: (params) => console.log(`your data and ${params}`),
   },
   '/exercises': {
-    route: '/pages/exercises.html',
+    route: `${basePath}/exercises.html`,
     domCallBack: getMainExercises,
     apiCallBack: getExercises,
   },
