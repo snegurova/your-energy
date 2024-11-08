@@ -12,7 +12,7 @@
 }
 
 /* Styles for Desktop devices */
-@media only screen and (min-width: 1230px) {
+@media only screen and (min-width: 1200px) {
   .categories-container {
     max-width: 900px;
   }

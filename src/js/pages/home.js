@@ -1,19 +1,20 @@
 import api from '../api';
+import { renderCards } from '../categories/categories-api';
+import { getContentPagination } from '../pagination';
 
 let contentElement;
 let filters;
 
 export const getContentElement = () => {
   contentElement = document.querySelector('.content');
-  // console.log(contentElement);
+  getContentPagination();
+  console.log(contentElement);
 };
 
+let categoriesContainer;
 export const getFilters = async (params) => {
   filters = await api.filters.getFilters(params);
-  // console.log(filters);
-  const markup = filters.results.reduce((acc, { filter, name, imgURL }) => {
-    return `${acc}<li><div>${filter}</div><div>${name}</div>`;
-  }, '');
-
-  contentElement.innerHTML = `<ul>${markup}</ul>`;
+  const markup = await renderCards(filters);
+  categoriesContainer = document.querySelector('.categories');
+  categoriesContainer.innerHTML = `<ul class="category-list">${markup}</ul>`;
 };
