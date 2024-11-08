@@ -1,9 +1,11 @@
-.backdrop.is-hidden {
+.backdrop.is-hidden,
+.rate-backdrop.is-hidden {
   opacity: 0;
   pointer-events: none;
 }
 
-.backdrop {
+.backdrop,
+.rate-backdrop {
   position: fixed;
   z-index: 100;
   top: 0;
@@ -16,7 +18,8 @@
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.modal-close-btn {
+.modal-close-btn,
+.rate-modal-close-btn {
   background-color: #242424;
   display: flex;
   border: none;
@@ -25,9 +28,9 @@
   top: 14px;
   right: 14px;
 }
-.modal-close-btn svg {
+.modal-close-btn svg,
+.rate-modal-close-btn svg {
   stroke: rgba(244, 244, 244, 1);
-  /* fill: rgba(244, 244, 244, 1); */
 }
 
 .modal {
