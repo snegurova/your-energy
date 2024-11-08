@@ -13,12 +13,6 @@ links.forEach((link) => {
 
 handleLocation();
 
-document.addEventListener('DOMContentLoaded', async () => {
-  if (window.location.pathname === '/') {
-    renderCards();
-  }
-});
-
 document.addEventListener('routeUpdated', () => {
   renderExercises({ page: 1, limit: 10 });
 });
