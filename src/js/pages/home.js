@@ -32,7 +32,7 @@ export const getContentElement = () => {
 
 export const apiCallbackFilters = async (params) => {
 // initPagination gets callback and one argument page number {param: {page}}
-   initPagination(getFilters)
+   //initPagination(callback)
 
 
   // filters = await api.filters.getFilters(params);
