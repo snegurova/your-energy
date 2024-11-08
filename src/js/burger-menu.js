@@ -24,17 +24,18 @@ document.addEventListener('DOMContentLoaded', () => {
   setActiveLink();
 
   navLinks.forEach((link) => {
-    link.addEventListener('click', (e) => {
-      route(e);
+    link.addEventListener('click', route);
+  });
+
+  navLinks.forEach((link) => {
+    link.addEventListener('click', () => {
       navLinks.forEach((l) => l.classList.remove('active'));
-      e.target.classList.add('active');
+      link.classList.add('active');
     });
   });
 
-  logoLink.addEventListener('click', (e) => {
-    route(e);
-    setActiveLink();
-  });
+  logoLink.addEventListener('click', route);
+  logoLink.addEventListener('click', setActiveLink);
 
   burgerMenuButton.addEventListener('click', () => {
     burgerMenuContent.classList.add('open');
