@@ -1,17 +1,15 @@
 import api from '../api';
-import { initPagination } from '../pagination';
-
-
+import { renderCards } from '../categories/categories-api';
+//import { initPagination  } from '../pagination';
 
 let contentElement;
+let categoriesContainer;
 
 
 export const getContentElement = () => {
-
   contentElement = document.querySelector('.content');
   
   console.log(contentElement);
-
 };
 
 //example for function for pagination
@@ -41,4 +39,10 @@ export const apiCallbackFilters = async (params) => {
   //   return `${acc}<li><div>${filter}</div><div>${name}</div>`;
   // }, '');
   // contentElement.innerHTML = `<ul>${markup}</ul>`;
+
+  filters = await api.filters.getFilters(params);
+  const markup = await renderCards(filters);
+  categoriesContainer = document.querySelector('.categories');
+  categoriesContainer.innerHTML = `<ul class="category-list">${markup}</ul>`;
+  
 };
