@@ -1,8 +1,10 @@
 .header {
-    padding: 20px 0;
-    font-weight: 600;
+    font-weight: 400;
+    font-family: "DM Sans", sans-serif;
     background-color: #fff;
     position: relative;
+    line-height: 24px;
+    font-size: 16px;
 }
 
 .header .container {
@@ -53,6 +55,29 @@
     justify-content: center;
 }
 
+.pill {
+    display: inline-flex;
+    padding: 6px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 30px;
+    color: #F4F4F4;
+    font-family: "DM Sans", sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: center;
+    min-width: 86px;
+    transition: all 0.3s ease;
+}
+
+.pill.active {
+    background: #F4F4F4;
+    color: #242424;
+}
+
 .social-list {
     display: none;
     align-items: flex-start;
@@ -96,25 +121,29 @@
 }
 
 .burger-menu-content {
-    display: none;
+    display: flex;
+    flex-direction: column;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100vh;
     background-color: #242424;
-    padding: 20px 16px;
     z-index: 100;
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .burger-menu-content.open {
-    display: flex;
-    flex-direction: column;
+    transform: translateY(0);
+    opacity: 1;
 }
 
 .close-menu {
     align-self: flex-end;
-    padding: 8px;
+    padding-top: 20px;
+    padding-right: 20px;
     border: none;
     background: none;
     color: #F4F4F4;
@@ -134,9 +163,10 @@
 .burger-nav ul li a {
     color: #F4F4F4;
     font-family: "DM Sans", sans-serif;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 18px;
+    font-style: normal;
     transition: color 0.3s ease;
 }
 
@@ -170,7 +200,9 @@
 
 @media only screen and (max-width: 767px) {
     .header {
-        padding: 16px 0;
+        padding-top: 20px;
+        padding-bottom: 80px;
+
     }
 
     .nav {
@@ -187,9 +219,6 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1199px) {
-    .header {
-        padding: 24px 0;
-    }
 
     .burger-menu {
         display: none;
@@ -208,6 +237,12 @@
         margin: 0;
     }
 
+    .router-link {
+        padding: 6px 16px;
+        min-width: 74px;
+        font-size: 14px;
+    }
+
     .social-list {
         display: inline-flex;
     }
@@ -218,9 +253,6 @@
 }
 
 @media only screen and (min-width: 1200px) {
-    .header {
-        padding: 28px 0;
-    }
 
     .burger-menu {
         display: none;
