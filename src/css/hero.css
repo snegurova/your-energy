@@ -33,8 +33,13 @@
     width: 38px;
     height: 38px;
     margin-right: 15px;
+    transition: transform 0.3s ease-in-out;
 }
 
+
+.fitness-hero-title:hover::before {
+    transform: rotate(360deg);
+}
 
 .hero-background-img {
     background-image: url('../images/women-sportswear-working-out-outdoors-mob@1x.jpg');
@@ -164,7 +169,7 @@ only screen and (min-resolution: 2dppx) {
         gap: 8px;
         justify-content: right;
         flex-wrap: wrap;
-       
+
     }
 
     .fitness-hero-section .hero-tags-desktop .hero-tag-desktop {
@@ -184,10 +189,10 @@ only screen and (min-resolution: 2dppx) {
 
     .hero-desktop-container {
         display: flex;
-  flex-direction: column; 
-  align-items: flex-end;  
-  text-align: right; 
-  width:197px; 
+        flex-direction: column;
+        align-items: flex-end;
+        text-align: right;
+        width: 197px;
     }
 
     .hero-mob-container {
