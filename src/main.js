@@ -7,7 +7,7 @@ import { renderExercises } from './js/renderExercises';
  import './js/pagination';
 import { updateQuote } from './js/quote/quote';
 
-import { renderCards } from './js/categories/categories-api';
+// import { renderCards } from './js/categories/categories-api';
 import './api-example';
 import './js/burger-menu';
 import './js/modal/modal';
@@ -20,11 +20,11 @@ links.forEach((link) => {
 
 handleLocation();
 
-document.addEventListener('DOMContentLoaded', async () => {
-  if (window.location.pathname === '/') {
-    renderCards();
-  }
-});
+// document.addEventListener('DOMContentLoaded', async () => {
+//   if (window.location.pathname === '/') {
+//     renderCards();
+//   }
+// });
 
 
 

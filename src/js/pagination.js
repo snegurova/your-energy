@@ -1,22 +1,4 @@
-import api from "./api";
 
-
-async function getExercises(page = 1) {
-  api.exercises.page = page;
-  const data = await api.exercises.getExercises();
-  console.log("Fetched Data for Page", page, ":", data);
-  return data;
-} 
-
-async function fetchAndRenderExercises(page) {
-  const data = await getExercises(page);
-  console.log("Current Page Data:", data.results);
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  getContentPagination();
-  setupPagination(fetchAndRenderExercises);
-});
 
 let firstBtn;
 let prevBtn;
@@ -42,13 +24,14 @@ export const getContentPagination = () => {
   });
 };
 
-async function setupPagination(callback) {
-  const initialData = await getExercises(1);
+export async function initPagination(callback) {
+  getContentPagination();
+  const initialData = await callback(1);
+  console.log("initialData", initialData)
   totalPages = initialData.totalPages;
   currentPage = 1;
 
-  console.log("Total pages from API:", totalPages);
-  
+
   renderPagination(callback);
 
   firstBtn.addEventListener("click", () => goToPage(1, callback));
@@ -56,7 +39,7 @@ async function setupPagination(callback) {
   nextBtn.addEventListener("click", () => goToPage(currentPage + 1, callback));
   lastBtn.addEventListener("click", () => goToPage(totalPages, callback));
 
-  await callback(currentPage); 
+
 }
 
 function renderPagination(callback) {
@@ -66,7 +49,7 @@ function renderPagination(callback) {
   }
 
   let pages = [];
-  console.log("Rendering pagination. Current page:", currentPage, "Total pages:", totalPages);
+  console.log("Rendering pagination. Current page:", currentPage,);
 
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
@@ -117,7 +100,9 @@ async function goToPage(page, callback) {
   console.log("Navigating to page:", page);
   if (page >= 1 && page <= totalPages && page !== currentPage) {
     currentPage = page;
-    await callback(page);
+    const data = await callback(page);
+    totalPages = data.totalPages;
+    console.log("Total pages", totalPages)
     renderPagination(callback);
   }
 }
