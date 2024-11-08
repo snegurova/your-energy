@@ -22,7 +22,6 @@
 .fitness-hero-section .fitness-hero-title em {
     font-style: italic;
 }
-
 .fitness-hero-title::before {
     content: "";
     display: inline-block;
@@ -33,7 +32,13 @@
     width: 38px;
     height: 38px;
     margin-right: 15px;
-}
+    transition: transform 0.3s ease-in-out; 
+  }
+  
+
+  .fitness-hero-title:hover::before {
+    transform: rotate(360deg); 
+  }
 
 
 .hero-background-img {
