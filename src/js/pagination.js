@@ -1,12 +1,20 @@
 import api from "./api";
 
+
+async function getExercises(page = 1) {
+  api.exercises.page = page;
+  const data = await api.exercises.getExercises();
+  console.log("Fetched Data for Page", page, ":", data);
+  return data;
+} 
+
 async function fetchAndRenderExercises(page) {
   const data = await getExercises(page);
   console.log("Current Page Data:", data.results);
-
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
+  getContentPagination();
   setupPagination(fetchAndRenderExercises);
 });
 
@@ -24,15 +32,23 @@ export const getContentPagination = () => {
   nextBtn = document.getElementById("next-btn");
   lastBtn = document.getElementById("last-btn");
   pageInfo = document.getElementById("page-info");
+
+  console.log("Pagination elements initialized:", {
+    firstBtn,
+    prevBtn,
+    nextBtn,
+    lastBtn,
+    pageInfo,
+  });
 };
 
 async function setupPagination(callback) {
-
-
   const initialData = await getExercises(1);
   totalPages = initialData.totalPages;
   currentPage = 1;
 
+  console.log("Total pages from API:", totalPages);
+  
   renderPagination(callback);
 
   firstBtn.addEventListener("click", () => goToPage(1, callback));
@@ -40,12 +56,17 @@ async function setupPagination(callback) {
   nextBtn.addEventListener("click", () => goToPage(currentPage + 1, callback));
   lastBtn.addEventListener("click", () => goToPage(totalPages, callback));
 
-
+  await callback(currentPage); 
 }
 
-
 function renderPagination(callback) {
+  if (!pageInfo) {
+    console.error("pageInfo element not found.");
+    return;
+  }
+
   let pages = [];
+  console.log("Rendering pagination. Current page:", currentPage, "Total pages:", totalPages);
 
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
@@ -92,8 +113,8 @@ function renderPagination(callback) {
   });
 }
 
-// Function to navigate to a specific page
 async function goToPage(page, callback) {
+  console.log("Navigating to page:", page);
   if (page >= 1 && page <= totalPages && page !== currentPage) {
     currentPage = page;
     await callback(page);
@@ -101,10 +122,4 @@ async function goToPage(page, callback) {
   }
 }
 
-// Fetch function for exercises (example)
-async function getExercises(page = 1) {
-  api.exercises.page = page;
-  const data = await api.exercises.getExercises();
-  console.log(data, "Fetched Data for Page", page);
-  return data;
-}
+

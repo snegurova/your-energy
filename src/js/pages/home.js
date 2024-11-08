@@ -1,5 +1,5 @@
 import api from '../api';
-import { getContentPagination } from '../pagination';
+//import { getContentPagination } from '../pagination';
 
 let contentElement;
 let filters;
@@ -7,7 +7,7 @@ let filters;
 export const getContentElement = () => {
 
   contentElement = document.querySelector('.content');
-  getContentPagination();
+  // getContentPagination();
   console.log(contentElement);
 
 };
