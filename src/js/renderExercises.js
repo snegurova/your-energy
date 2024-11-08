@@ -1,32 +1,41 @@
-import { fetchExercises } from './api/fetchExercises';
-
-const createExerciseCard = ({
-  bodyPart,
-  equipment,
-  gifUrl,
-  name,
-  target,
-  description,
-  rating,
-  burnedCalories,
-  time,
-  popularity,
-  _id,
-}) => {
-  return `
-     <li class="exercises-card">
+export const createExerciseCard = (
+  {
+    bodyPart,
+    equipment,
+    gifUrl,
+    name,
+    target,
+    description,
+    rating,
+    burnedCalories,
+    time,
+    popularity,
+    _id,
+  },
+  isFavourite = false
+) => {
+  return (
+    `
+     <li class="exercises-card" data-id="${_id}">
       <div class="exercises-top">
         <div class="exercises-top-group">
-            <span class="exercises-equipment">${equipment}</span>
-            <span class="exercises-rating-group">
-              <span class="exercises-rating">${rating.toFixed(1)}</span>
-              <button class="exercises-favorite-btn" type="button">
-                <svg>
-                  <use href="./images/sprite.svg#icon-star"></use>
-                </svg>
-              </button>
-            </span>
-        </div>
+            <span class="exercises-equipment">${equipment}</span>` +
+    (isFavourite
+      ? `<button class="exercises-delete-btn" data-id="${_id}" type="button">
+            <svg>
+              <use href="./images/sprite.svg#icon-trash"></use>
+            </svg>
+          </button>
+          `
+      : `<span class="exercises-rating-group">
+          <span class="exercises-rating">${rating.toFixed(1)}</span>
+          <button class="exercises-rating-btn" type="button">
+            <svg>
+              <use href="./images/sprite.svg#icon-star"></use>
+            </svg>
+          </button>
+        </span>`) +
+    `</div>
         <button type="button" class="exercises-btn start-btn" data-id="${_id}">
           Start
           <svg width="13" height="13">
@@ -48,20 +57,12 @@ const createExerciseCard = ({
         <li><p><span class="exercises-attributes-label">Target:</span><span class="exercises-attributes-value">${target}</></p></li>
       </ul>
     </li>
-    `;
+    `
+  );
 };
 
-export const renderExercises = async (options) => {
-  const res = await fetchExercises(options);
-  const exercises = res.results;
-  // console.log(exercises);
-
-  const cards = exercises.reduce((acc, exercise) => {
+export const renderExercises = async (exercises) => {
+  return exercises.results.reduce((acc, exercise) => {
     return acc + createExerciseCard(exercise);
   }, '');
-
-  const container = document.querySelector('.main-exercises');
-  container.innerHTML = cards;
 };
-
-

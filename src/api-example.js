@@ -33,15 +33,15 @@ async function subscribe(email) {
   api.subscription.subscribe(email);
 }
 
-getExercises();
-getExercisesById('64f389465ae26083f39b17af');
+// getExercises();
+// getExercisesById('64f389465ae26083f39b17af');
 // addExerciseRatingById('64f389465ae26083f39b17af', {
 //   email: 'test22222@gmail.com', // Need change email
 //   rate: 5,
 //   review: 'Thanks for your exercise!',
 // });
-search('body');
+// search('body');
 
-getFilters();
+// getFilters();
 // getQuote();
 // subscribe('test2222222222aa@gmail.com'); // Need change email
