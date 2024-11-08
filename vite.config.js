@@ -2,7 +2,10 @@ import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
+import htmlTemplatePlugin from 'vite-plugin-html-template';
 import SortCss from 'postcss-sort-media-queries';
+
+const htmlTemplate = htmlTemplatePlugin.default;
 
 export default defineConfig(({ command }) => {
   return {
@@ -13,20 +16,20 @@ export default defineConfig(({ command }) => {
     build: {
       sourcemap: true,
       rollupOptions: {
-        input: glob.sync('./src/*.html'),
+        input: glob.sync('./src/index.html'),
         output: {
           manualChunks(id) {
             if (id.includes('node_modules')) {
               return 'vendor';
             }
           },
-          entryFileNames: chunkInfo => {
+          entryFileNames: (chunkInfo) => {
             if (chunkInfo.name === 'commonHelpers') {
               return 'commonHelpers.js';
             }
             return '[name].js';
           },
-          assetFileNames: assetInfo => {
+          assetFileNames: (assetInfo) => {
             if (assetInfo.name && assetInfo.name.endsWith('.html')) {
               return '[name].[ext]';
             }
@@ -38,6 +41,7 @@ export default defineConfig(({ command }) => {
       emptyOutDir: true,
     },
     plugins: [
+      htmlTemplate(),
       injectHTML(),
       FullReload(['./src/**/**.html']),
       SortCss({
