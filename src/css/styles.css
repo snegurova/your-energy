@@ -16,6 +16,7 @@
 @import url('./footer.css');
 @import url('./modal.css');
 @import url('./hero.css');
+@import url('./pagination.css');
 
 /* Components */
 @import url('./categories.css');
