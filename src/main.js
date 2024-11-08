@@ -1,5 +1,8 @@
 import { route, handleLocation } from './js/router/router';
+
 import { renderExercises } from './js/renderExercises';
+
+import './js/pagination';
 
 import './api-example';
 import './js/burger-menu';
