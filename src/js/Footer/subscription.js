@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { refs } from './refs'; 
+import { refs } from '../refs'; 
 
 
 const emailPattern = /^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
