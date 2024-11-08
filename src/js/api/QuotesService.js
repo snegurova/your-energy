@@ -21,7 +21,7 @@ export default class QuotesService {
   async getQuote() {
     try {
       const { data } = await this.#axios.get(this.#basePath);
-      console.log('QuotesService getQuote data:', data);
+      // console.log('QuotesService getQuote data:', data);
       return data;
     } catch (error) {
       throw error;

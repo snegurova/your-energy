@@ -51,10 +51,10 @@ const createExerciseCard = ({
     `;
 };
 
-export const renderExercises = async options => {
+export const renderExercises = async (options) => {
   const res = await fetchExercises(options);
   const exercises = res.results;
-  console.log(exercises);
+  // console.log(exercises);
 
   const cards = exercises.reduce((acc, exercise) => {
     return acc + createExerciseCard(exercise);
@@ -63,3 +63,5 @@ export const renderExercises = async options => {
   const container = document.querySelector('.main-exercises');
   container.innerHTML = cards;
 };
+
+

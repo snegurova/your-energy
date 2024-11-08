@@ -5,12 +5,12 @@ let filters;
 
 export const getContentElement = () => {
   contentElement = document.querySelector('.content');
-  console.log(contentElement);
+  // console.log(contentElement);
 };
 
 export const getFilters = async (params) => {
   filters = await api.filters.getFilters(params);
-  console.log(filters);
+  // console.log(filters);
   const markup = filters.results.reduce((acc, { filter, name, imgURL }) => {
     return `${acc}<li><div>${filter}</div><div>${name}</div>`;
   }, '');
