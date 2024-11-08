@@ -1,7 +1,13 @@
-import { getContentElement, getFilters } from '../pages/home';
-import { getMainExercises, getExercises } from '../pages/exercises';
+import { getContentElement, getFilters, homeElement } from '../pages/home';
+import { favoritesElement } from '../pages/favorites';
+import {
+  getMainExercises,
+  getExercises,
+  exercisesElement,
+} from '../pages/exercises';
 
 import { updateQuote } from '../quote/quote';
+
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
@@ -11,7 +17,6 @@ export const route = (event) => {
   } = event;
 
   const { pathname } = new URL(href);
-  console.log(pathname);
 
   window.history.pushState({}, '', `${basePath}${pathname}`);
   handleLocation();
@@ -22,16 +27,19 @@ const routes = {
     route: `${basePath}/home.html`,
     domCallBack: getContentElement,
     apiCallBack: getFilters,
+    htmlElement: homeElement,
   },
   '/favorites': {
     route: `${basePath}/favorites.html`,
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: () => {},
+    apiCallBack: (params) => {},
+    htmlElement: favoritesElement,
   },
   '/exercises': {
     route: `${basePath}/exercises.html`,
     domCallBack: getMainExercises,
     apiCallBack: getExercises,
+    htmlElement: exercisesElement,
   },
 };
 
@@ -41,15 +49,15 @@ export const handleLocation = async () => {
 
   const path = pathname.replace(basePath, '');
 
-  const { route, domCallBack, apiCallBack } = routes[path];
+  const { route, domCallBack, apiCallBack, htmlElement } = routes[path];
   if (path === '/' && !urlParams.size) {
     urlParams.set('filter', 'Muscles');
     urlParams.set('limit', '10');
     urlParams.set('page', '1');
   }
-  const html = await fetch(route).then((data) => data.text());
-
-  document.getElementById('main-page').innerHTML = html;
+  const mainElement = document.getElementById('main-page');
+  mainElement.innerHTML = '';
+  mainElement.appendChild(htmlElement);
 
   domCallBack();
   apiCallBack(urlParams);
