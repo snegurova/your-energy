@@ -5,6 +5,7 @@ import './api-example';
 import './js/burger-menu';
 import './js/modal/modal';
 import { getFavorites } from './js/favorites/favorites-api'
+import { addToFavorites } from './js/favorites/favorites'
 
 const links = document.querySelectorAll('.router-link');
 links.forEach((link) => link.addEventListener('click', route));
@@ -23,4 +24,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('routeUpdated', () => {
   renderExercises({ page: 1, limit: 10 });
 });
-//getFavorites();
+
+addToFavorites('64f389465ae26083f39b17a4')
+addToFavorites('64f389465ae26083f39b1b04')
+addToFavorites('64f389465ae26083f39b17a3')
+addToFavorites('64f389465ae26083f39b17a5')

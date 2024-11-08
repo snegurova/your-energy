@@ -4,14 +4,15 @@ export const createCard = ({
   equipment,
   burnedCalories,
   name,
-  time
+  time,
+  _id
 }) => `
- <li class="exercises-card">
+ <li class="exercises-card set-item">
       <div class="exercises-top">
         <div class="exercises-top-group">
             <span class="exercises-equipment">${equipment}</span>
-        <button class="remove-from-favorites" type="button">
-            <svg><use href="./images/sprite.svg#icon-trash"></use></svg>
+        <button class="remove-from-favorites" type="button" data-id="${_id}">
+            <svg class="favorites-icon"><use href="./images/sprite.svg#icon-trash"></use></svg>
         </button>
         </div>
         <button type="button" class="exercises-btn start-btn">
