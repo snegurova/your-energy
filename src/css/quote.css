@@ -107,7 +107,12 @@
 .quote-main-info {
   position: relative;
 }
-
+.quote-info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-around;
+  flex-direction: column;
+}
 .quote-title {
   font-weight: 500;
   font-size: 20px;
@@ -217,6 +222,9 @@
   }
   .quote-item.q-home {
     width: 100%;
+  }
+  .quote-info.q-home {
+    min-height: auto;
   }
   .quote-item img {
     max-width: 100%;
