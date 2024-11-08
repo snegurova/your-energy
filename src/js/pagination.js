@@ -44,7 +44,7 @@ async function setupPagination(callback) {
 }
 
 
-function renderPagination(callback) { 
+function renderPagination(callback) {
   let pages = [];
 
   if (totalPages <= 3) {
