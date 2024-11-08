@@ -6,6 +6,7 @@ export default class FiltersService {
   #axios;
   #page = 1;
   #filter = '';
+  totalPages = 1;
 
   static FilterTypes = {
     BODY_PARTS: 'Body parts',
@@ -71,9 +72,9 @@ export default class FiltersService {
    * @returns {Promise<Object>} The data of filters fetched from the API.
    * @throws {Error} Throws an error if the request fails.
    */
-  async getFilters(params) {
+  async getFilters(page) {
     try {
-      const { data } = await this.#axios.get(this.#basePath, params);
+      const { data } = await this.#axios.get(this.#basePath, {params: {page}});
       // console.log('FiltersService getFilters data:', data);
       return data;
     } catch (error) {
