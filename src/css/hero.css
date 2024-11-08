@@ -1,223 +1,212 @@
 .fitness-hero-section {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #242424;
+  color: #242424;
+  min-width: 280px;
+  max-width: 375px;
+  margin: 0 auto;
 }
 
 .title-layout {
-    text-align: left;
+  text-align: left;
 }
 
 .fitness-hero-title {
-    text-align: left;
-    font-weight: 400;
-    font-size: 38px;
-    line-height: 44px;
-    letter-spacing: -2%;
-    margin-bottom: 20px;
+  text-align: left;
+  font-weight: 400;
+  font-size: 38px;
+  line-height: 44px;
+  letter-spacing: -2%;
+  margin-bottom: 20px;
 }
 
 .fitness-hero-section .fitness-hero-title em {
-    font-style: italic;
+  font-style: italic;
 }
 
 .fitness-hero-title::before {
-    content: "";
-    display: inline-block;
-    background-image: url('../images/sun.svg');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 38px;
-    height: 38px;
-    margin-right: 15px;
+  content: '';
+  display: inline-block;
+  background-image: url('../images/sun.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 38px;
+  height: 38px;
+  margin-right: 15px;
 }
-
 
 .hero-background-img {
-    background-image: url('../images/women-sportswear-working-out-outdoors-mob@1x.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 30px;
-    width: 335px;
-    height: 460px;
-    margin-bottom: 20px;
+  background-image: url('../images/women-sportswear-working-out-outdoors-mob@1x.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  border-radius: 30px;
+  width: 100%;
+  min-height: 420px;
+  max-height: 490px;
+  margin-bottom: 20px;
 }
 
-
 .fitness-hero-section .fitness-hero-text {
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: -0.02em;
-    margin-bottom: 20px;
-    text-align: left;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  margin-bottom: 20px;
+  text-align: left;
 }
 
 .fitness-hero-section .hero-tags {
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-    flex-wrap: nowrap;
+  display: flex;
+  gap: 8px;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /* flex-wrap: nowrap; */
 }
 
 .fitness-hero-section .hero-tags .hero-tag {
-    padding: 4px 12px;
-    border: 1px solid #242424;
-    border-radius: 30px;
-    font-size: 14px;
-    line-height: 18px;
-    font-weight: 400;
+  padding: 4px 12px;
+  border: 1px solid #242424;
+  border-radius: 30px;
+  font-size: 14px;
+  line-height: 18px;
+  font-weight: 400;
 }
 
 .hero-desktop-container {
-    display: none;
+  display: none;
 }
 
 .hero-mob-container {
-    display: block;
+  display: block;
 }
 
 /* Retina display support */
 @media only screen and (-webkit-min-device-pixel-ratio: 2),
-only screen and (min--moz-device-pixel-ratio: 2),
-only screen and (-o-min-device-pixel-ratio: 2/1),
-only screen and (min-device-pixel-ratio: 2),
-only screen and (min-resolution: 192dpi),
-only screen and (min-resolution: 2dppx) {
-    .hero-background-img {
-        background-image: url('../images/women-sportswear-working-out-outdoors-mob@2x.jpg');
-    }
+  only screen and (min--moz-device-pixel-ratio: 2),
+  only screen and (-o-min-device-pixel-ratio: 2/1),
+  only screen and (min-device-pixel-ratio: 2),
+  only screen and (min-resolution: 192dpi),
+  only screen and (min-resolution: 2dppx) {
+  .hero-background-img {
+    background-image: url('../images/women-sportswear-working-out-outdoors-mob@2x.jpg');
+  }
 }
 
 @media (min-width: 768px) {
-    .fitness-hero-title {
-        font-size: 74px;
-        line-height: 74px;
-        margin-bottom: 20px;
-    }
+  .fitness-hero-title {
+    font-size: 74px;
+    line-height: 74px;
+    margin-bottom: 20px;
+  }
 
-    .fitness-hero-title::before {
+  .fitness-hero-title::before {
+    width: 59px;
+    height: 59px;
+    margin-right: 10px;
+  }
 
-        width: 59px;
-        height: 59px;
-        margin-right: 10px;
-    }
+  .hero-background-img {
+    background-image: url('../images/women-sportswear-working-out-outdoors-tablet@1x.jpg');
+    width: 704px;
+    height: 550px;
+    margin-bottom: 16px;
+  }
 
+  .fitness-hero-section .fitness-hero-text {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 32px;
+  }
 
-    .hero-background-img {
-        background-image: url('../images/women-sportswear-working-out-outdoors-tablet@1x.jpg');
-        width: 704px;
-        height: 550px;
-        margin-bottom: 16px;
-    }
+  .fitness-hero-section .hero-tags {
+    justify-content: flex-end;
+  }
 
-    .fitness-hero-section .fitness-hero-text {
-        font-size: 18px;
-        line-height: 24px;
-        margin-bottom: 32px;
+  .hero-desktop-container {
+    display: none;
+  }
 
-    }
-
-    .fitness-hero-section .hero-tags {
-
-        justify-content: flex-end;
-
-    }
-
-    .hero-desktop-container {
-        display: none;
-    }
-
-    .hero-mob-container {
-        display: block;
-    }
-
-
+  .hero-mob-container {
+    display: block;
+  }
 }
 
 /* Retina display support for tablet */
 @media (min-width: 768px) and (min-resolution: 192dpi),
-(min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
-(min-width: 768px) and (min--moz-device-pixel-ratio: 2),
-(min-width: 768px) and (-o-min-device-pixel-ratio: 2/1),
-(min-width: 768px) and (min-device-pixel-ratio: 2),
-(min-width: 768px) and (min-resolution: 2dppx) {
-    .hero-background-img {
-        background-image: url('../images/women-sportswear-working-out-outdoors-tablet@2x.jpg');
-    }
+  (min-width: 768px) and (-webkit-min-device-pixel-ratio: 2),
+  (min-width: 768px) and (min--moz-device-pixel-ratio: 2),
+  (min-width: 768px) and (-o-min-device-pixel-ratio: 2/1),
+  (min-width: 768px) and (min-device-pixel-ratio: 2),
+  (min-width: 768px) and (min-resolution: 2dppx) {
+  .hero-background-img {
+    background-image: url('../images/women-sportswear-working-out-outdoors-tablet@2x.jpg');
+  }
 }
 
-
 @media (min-width: 1200px) {
+  .hero-background-img {
+    background-image: url('../images/women-sportswear-working-out-outdoors-desk@1x.jpg');
+    width: 1376px;
+    height: 350px;
+  }
 
-    .hero-background-img {
-        background-image: url('../images/women-sportswear-working-out-outdoors-desk@1x.jpg');
-        width: 1376px;
-        height: 350px;
-    }
+  .fitness-hero-section .hero-tags-desktop {
+    display: flex;
+    gap: 8px;
+    justify-content: right;
+    flex-wrap: wrap;
+  }
 
-    .fitness-hero-section .hero-tags-desktop {
-        display: flex;
-        gap: 8px;
-        justify-content: right;
-        flex-wrap: wrap;
-       
-    }
+  .fitness-hero-section .hero-tags-desktop .hero-tag-desktop {
+    padding: 4px 12px;
+    border: 1px solid #242424;
+    border-radius: 30px;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
+  }
 
-    .fitness-hero-section .hero-tags-desktop .hero-tag-desktop {
-        padding: 4px 12px;
-        border: 1px solid #242424;
-        border-radius: 30px;
-        font-size: 16px;
-        line-height: 24px;
-        font-weight: 400;
-    }
+  .fitness-hero-text-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .fitness-hero-text-wrapper {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  .hero-desktop-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    text-align: right;
+    width: 197px;
+  }
 
-    .hero-desktop-container {
-        display: flex;
-  flex-direction: column; 
-  align-items: flex-end;  
-  text-align: right; 
-  width:197px; 
-    }
+  .hero-mob-container {
+    display: none;
+  }
 
-    .hero-mob-container {
-        display: none;
-    }
+  .hero-bgi-desktop {
+    background-image: url('../images/young-women-doing-fitness-outdoors-together@1x.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 30px;
+    width: 168px;
+    height: 100px;
+    margin-bottom: 32px;
+  }
 
-    .hero-bgi-desktop {
-        background-image: url('../images/young-women-doing-fitness-outdoors-together@1x.jpg');
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        border-radius: 30px;
-        width: 168px;
-        height: 100px;
-        margin-bottom: 32px;
-    }
-
-    .fitness-hero-text {
-        max-width: 528px;
-    }
+  .fitness-hero-text {
+    max-width: 528px;
+  }
 }
 
 /* Retina display support for desktop */
 @media (min-width: 1024px) and (min-resolution: 192dpi),
-(min-width: 1024px) and (-webkit-min-device-pixel-ratio: 2),
-(min-width: 1024px) and (min--moz-device-pixel-ratio: 2),
-(min-width: 1024px) and (-o-min-device-pixel-ratio: 2/1),
-(min-width: 1024px) and (min-device-pixel-ratio: 2),
-(min-width: 1024px) and (min-resolution: 2dppx) {
-    .hero-background-img {
-        background-image: url('../images/women-sportswear-working-out-outdoors-desk@2x.jpg');
-    }
+  (min-width: 1024px) and (-webkit-min-device-pixel-ratio: 2),
+  (min-width: 1024px) and (min--moz-device-pixel-ratio: 2),
+  (min-width: 1024px) and (-o-min-device-pixel-ratio: 2/1),
+  (min-width: 1024px) and (min-device-pixel-ratio: 2),
+  (min-width: 1024px) and (min-resolution: 2dppx) {
+  .hero-background-img {
+    background-image: url('../images/women-sportswear-working-out-outdoors-desk@2x.jpg');
+  }
 }
