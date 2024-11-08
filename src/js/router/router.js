@@ -31,8 +31,8 @@ const routes = {
   },
   '/favorites': {
     route: `${basePath}/favorites.html`,
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: () => {},
+    apiCallBack: (params) => {},
     htmlElement: favoritesElement,
   },
   '/exercises': {
