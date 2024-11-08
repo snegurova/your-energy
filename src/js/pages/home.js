@@ -1,6 +1,7 @@
 import api from '../api';
 import { renderCards } from '../categories/categories-api';
 import { getContentPagination } from '../pagination';
+import { route } from '../router/router';
 
 let contentElement;
 let filters;
@@ -17,4 +18,7 @@ export const getFilters = async (params) => {
   const markup = await renderCards(filters);
   categoriesContainer = document.querySelector('.categories');
   categoriesContainer.innerHTML = `<ul class="category-list">${markup}</ul>`;
+  document.querySelectorAll('.category-card.router-link').forEach((link) => {
+    link.addEventListener('click', route);
+  });
 };

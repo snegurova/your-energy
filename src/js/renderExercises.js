@@ -29,7 +29,7 @@ export const createExerciseCard = (
           `
       : `<span class="exercises-rating-group">
           <span class="exercises-rating">${rating.toFixed(1)}</span>
-          <button class="exercises-rating-btn" type="button">
+          <button class="exercises-rating-btn" type="button" data-id="${_id}">
             <svg>
               <use href="./images/sprite.svg#icon-star"></use>
             </svg>
