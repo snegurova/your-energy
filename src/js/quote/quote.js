@@ -1,4 +1,4 @@
-// import api function
+import api from '../api';
 
 function getQuoteExpireTime() {
   const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
@@ -6,50 +6,55 @@ function getQuoteExpireTime() {
 }
 
 function isNeedToUpdate(time) {
+  if (!time) {
+    return true;
+  }
   return time < Date.now();
 }
 
-export function fetchQuote() {
+export async function fetchQuote() {
   // fetch api function
-  const apiResult = {
-    text: 'Text',
-    author: 'author',
-  };
-  apiResult.expire = getQuoteExpireTime();
-  if (!apiResult) {
-    // if not success
+
+  try {
+    const apiResult = await api.quotes.getQuote();
+    apiResult.expire = getQuoteExpireTime();
+    localStorage.setItem('quote', JSON.stringify(apiResult));
+    // console.log('api resut', apiResult);
+    return apiResult;
+  } catch (e) {
+    console.error(e);
     return false;
   }
-  localStorage.setItem('quote', JSON.stringify(apiResult));
-  return apiResult;
 }
 
-function getQuoteInfo() {
+async function getQuoteInfo() {
   const localQuote = localStorage.getItem('quote');
   if (!localQuote) {
-    return fetchQuote();
+    return await fetchQuote();
   }
 
   const quoteInfo = JSON.parse(localQuote);
   if (isNeedToUpdate(quoteInfo.expire)) {
-    return fetchQuote();
+    return await fetchQuote();
   }
 
   return quoteInfo;
 }
 
-function updateQuote() {
+async function updateQuote() {
+  // console.log('upde q');
   const quoteText = document.querySelector('.js-qofd');
   const quoteAuthor = document.querySelector('.quote-author');
-  const quote = getQuoteInfo();
+  const quote = await getQuoteInfo();
+  // console.log(quote);
   if (!(quoteText && quoteAuthor)) {
-    console.error('Missing quotes html element');
+    localStorage.removeItem('quote');
     return;
   }
   if (!quote) {
     return;
   }
-  quoteText.textContent = quote.text;
+  quoteText.textContent = quote.quote;
   quoteAuthor.textContent = quote.author;
 }
 

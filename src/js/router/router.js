@@ -1,5 +1,5 @@
 import { getContentElement, getFilters } from '../pages/home';
-
+import { updateQuote } from '../quote/quote';
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
@@ -56,6 +56,7 @@ export const handleLocation = async () => {
   document.dispatchEvent(event);
   domCallBack();
   apiCallBack(urlParams);
+  updateQuote();
 };
 
 window.onpopstate = handleLocation;
