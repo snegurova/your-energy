@@ -12,10 +12,6 @@ const categoryMarkup = ({ filter, name, imgURL }) => `
 
 const renderCategories = async (data) => {
   const categoriesContainer = document.querySelector('.category-list');
-  if (!categoriesContainer) {
-    console.error("Елемент '.categories' не знайдено.");
-    return;
-  }
   const categoriesMarkup = data.map(categoryMarkup).join('');
   categoriesContainer.innerHTML = categoriesMarkup;
 };
