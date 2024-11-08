@@ -1,6 +1,7 @@
 import { route, handleLocation } from './js/router/router';
 import { renderExercises } from './js/renderExercises';
 import { renderCards } from './js/categories/categories-api';
+import {addToFavorites} from './js/favorites/favorites'
 import './api-example';
 import './js/burger-menu';
 import './js/modal/modal';
@@ -22,3 +23,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 document.addEventListener('routeUpdated', () => {
   renderExercises({ page: 1, limit: 10 });
 });
+
+ addToFavorites('64f389465ae26083f39b17a4')
+ addToFavorites('64f389465ae26083f39b1b04')
+ addToFavorites('64f389465ae26083f39b17a3')
+ addToFavorites('64f389465ae26083f39b17a5')

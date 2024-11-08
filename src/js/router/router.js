@@ -1,5 +1,6 @@
 import { getContentElement, getFilters } from '../pages/home';
 import { updateQuote } from '../quote/quote';
+import { getFavoritesHTML, getFavorites } from "../favorites/favorites-api";
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
@@ -23,8 +24,8 @@ const routes = {
   },
   '/favorites': {
     route: `${basePath}/favorites.html`,
-    domCallBack: () => console.log('your element'),
-    apiCallBack: (params) => console.log(`your data and ${params}`),
+    domCallBack: getFavoritesHTML,
+    apiCallBack: getFavorites,
   },
   '/exercises': {
     route: `${basePath}/exercises.html`,
