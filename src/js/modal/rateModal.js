@@ -40,6 +40,7 @@ function handleCloseRateModal() {
   refs.rateBackdrop.removeEventListener('click', handleBackdropClick);
   refs.rateCloseModalBtn.removeEventListener('click', handleCloseRateModal);
   window.removeEventListener('keydown', handleEscKey);
+  refs.rateModalEl.reset();
 }
 
 function handleBackdropClick(event) {
@@ -65,6 +66,8 @@ const handleRateSubmit = async (e) => {
   };
 
   const res = await api.exercises.addExerciseRatingById(exerciseId, body);
+
+  e.target.reset();
 
   handleCloseRateModal();
 };
