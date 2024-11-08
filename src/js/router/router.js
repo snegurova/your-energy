@@ -46,6 +46,8 @@ export const handleLocation = async () => {
     urlParams.set('filter', 'Muscles');
     urlParams.set('limit', '10');
     urlParams.set('page', '1');
+    window.location.search = urlParams.toString();
+    window.history.pushState({}, '', window.location);
   }
   const html = await fetch(route).then((data) => data.text());
 

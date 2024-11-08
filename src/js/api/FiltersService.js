@@ -73,7 +73,7 @@ export default class FiltersService {
    */
   async getFilters(params) {
     try {
-      const { data } = await this.#axios.get(this.#basePath, params);
+      const { data } = await this.#axios.get(this.#basePath, { params });
       // console.log('FiltersService getFilters data:', data);
       return data;
     } catch (error) {
