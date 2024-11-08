@@ -7,7 +7,7 @@
     <title>Your Energy</title>
     <script type="module" crossorigin src="/your-energy/index.js"></script>
     <link rel="modulepreload" crossorigin href="/your-energy/assets/vendor-CNNbG8jS.js">
-    <link rel="stylesheet" crossorigin href="/your-energy/assets/index-CgVKK65o.css">
+    <link rel="stylesheet" crossorigin href="/your-energy/assets/index-s7S6He1I.css">
   </head>
   <body>
     <header class="header">
@@ -122,7 +122,8 @@
     <main>
       <div id="main-page"></div>
     </main>
-
+    <div id="exercises-container" class="exercises-container"></div>
+   
     <footer class="footer">
   <div class="container">
     <div class="footer-content">
@@ -178,7 +179,7 @@
   <div class="modal">
     <button type="button" class="modal-close-btn">
       <svg class="close-icon" width="24" height="24" stroke="rgba(244, 244, 244, 1)">
-        <use href="/your-energy/assets/sprite-Bi-Z2vEZ.svg#icon-close"></use>
+        <use href="/your-energy/assets/sprite-Dk2xkeTz.svg#icon-close"></use>
       </svg>
     </button>
     <div class="modal-container"></div>
@@ -187,6 +188,12 @@
 
 
 
-
+    <div class="pagination-container">
+    <button class="pagination-btn" id="first-btn">&laquo;</button>
+    <button class="pagination-btn" id="prev-btn">&lsaquo;</button>
+    <span id="page-info"></span> 
+    <button class="pagination-btn" id="next-btn">&rsaquo;</button>
+    <button class="pagination-btn" id="last-btn">&raquo;</button>
+</div>
   </body>
 </html>
