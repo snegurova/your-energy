@@ -1,4 +1,8 @@
-
+document.addEventListener("DOMContentLoaded", async () => {
+  setupPagination((event) => {
+    console.log("Clicked Page:", event.target.value);
+  });
+});
 
 import api from "./api";
 
@@ -7,61 +11,68 @@ async function setupPagination(callback) {
   const totalPages = initialData.totalPages;
   let currentPage = 1;
 
+  // Select pagination elements and verify their existence
   const firstBtn = document.getElementById("first-btn");
   const prevBtn = document.getElementById("prev-btn");
   const nextBtn = document.getElementById("next-btn");
   const lastBtn = document.getElementById("last-btn");
   const pageInfo = document.getElementById("page-info");
 
+  if (!firstBtn || !prevBtn || !nextBtn || !lastBtn || !pageInfo) {
+    console.error("Pagination buttons or container not found in the DOM.");
+    if (!firstBtn) console.error("Missing element: first-btn");
+    if (!prevBtn) console.error("Missing element: prev-btn");
+    if (!nextBtn) console.error("Missing element: next-btn");
+    if (!lastBtn) console.error("Missing element: last-btn");
+    if (!pageInfo) console.error("Missing element: page-info");
+    return; // Exit if any element is missing
+  }
+
   function renderPagination() { 
     let pages = [];
   
     if (totalPages <= 3) {
-      // If there are 3 or fewer pages, display all pages
       for (let i = 1; i <= totalPages; i++) {
         pages.push(i);
       }
     } else {
-      // Display dots and pages based on the current page position
       if (currentPage > 2) {
-        // Add the first page and dots if we're beyond page 2
         pages.push(1);
         pages.push("...");
       }
-  
-      // Define the range to show around the current page
+
       let startPage = Math.max(1, currentPage - 1);
       let endPage = Math.min(totalPages, currentPage + 1);
-  
-      // Adjust startPage and endPage to ensure three pages are shown if possible
+
       if (currentPage === 1) {
-        endPage = 3; // Show pages 1, 2, 3 at the start
+        endPage = 3;
       } else if (currentPage === totalPages) {
-        startPage = totalPages - 2; // Show last three pages
+        startPage = totalPages - 2;
       }
-  
+
       for (let i = startPage; i <= endPage; i++) {
         pages.push(i);
       }
-  
+
       if (currentPage < totalPages - 1) {
-        // Add dots and the last page if we're not near the end
         pages.push("...");
         pages.push(totalPages);
       }
     }
-  
-    // Render pagination buttons with dots
+
     pageInfo.innerHTML = pages
       .map(page => {
         if (page === "...") {
           return `<span class="dots">${page}</span>`;
         }
-        return `<button class="page-number ${page === currentPage ? 'active' : ''}" data-page="${page}">${page}</button>`;
+        return `<button class="page-number ${page === currentPage ? 'active' : ''}" data-page="${page}" value="${page}">${page}</button>`;
       })
       .join(" ");
-  
-    callback(currentPage);
+    
+    // Add event listeners to each page button
+    document.querySelectorAll(".page-number").forEach(button => {
+      button.addEventListener("click", callback);
+    });
   }
   
   async function goToPage(page) {
@@ -75,35 +86,28 @@ async function setupPagination(callback) {
   async function fetchAndRenderExercises(page) {
     const data = await getExercises(page);
     console.log("Current Page Data:", data.results);
-
   }
 
+  // Attach event listeners to navigation buttons
   firstBtn.addEventListener("click", () => goToPage(1));
   prevBtn.addEventListener("click", () => goToPage(currentPage - 1));
   nextBtn.addEventListener("click", () => goToPage(currentPage + 1));
   lastBtn.addEventListener("click", () => goToPage(totalPages));
 
-  pageInfo.addEventListener("click", (e) => {
-    if (e.target.classList.contains("page-number")) {
-      goToPage(parseInt(e.target.getAttribute("data-page")));
-    }
-  });
-
-
+  // Initial fetch and render
   await fetchAndRenderExercises(currentPage);
   renderPagination();
 }
 
+// Example callback for setupPagination
+setupPagination((event) => {
+  console.log("Clicked Page:", event.target.value);
+});
 
-setupPagination((page) => console.log("Current Page:", page));
-
+// Fetch function
 async function getExercises(page = 1) {
   api.exercises.page = page;
   const data = await api.exercises.getExercises();
   console.log(data, "Fetched Data for Page", page);
   return data;
 }
-
-
-
-
