@@ -9,6 +9,7 @@ export const getMainExercises = () => {
 };
 
 export const getExercises = async (params) => {
+  console.log('getExercises is triggered!');
   exercises = await api.exercises.getExercises(params);
   const markup = await renderExercises(exercises);
 
