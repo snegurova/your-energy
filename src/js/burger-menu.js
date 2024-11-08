@@ -1,3 +1,5 @@
+import { route } from './router/router';
+
 document.addEventListener('DOMContentLoaded', () => {
   const burgerMenuButton = document.querySelector('.burger-menu');
   const burgerMenuContent = document.querySelector('.burger-menu-content');
@@ -23,19 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
   navLinks.forEach((link) => {
     link.addEventListener('click', (e) => {
+      route(e);
       navLinks.forEach((l) => l.classList.remove('active'));
       e.target.classList.add('active');
-
-      if (burgerMenuContent.classList.contains('open')) {
-        burgerMenuContent.classList.remove('open');
-        document.body.style.overflow = '';
-      }
     });
   });
 
   logoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.history.pushState({}, '', '/');
+    route(e);
     setActiveLink();
   });
 
