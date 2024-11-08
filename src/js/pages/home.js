@@ -3,6 +3,7 @@ import homeTemplate from '../../home.html?raw';
 import heroTemplate from '../../partials/hero.html?raw';
 import categoriesTemplate from '../../partials/categories.html?raw';
 import quoteTemplate from '../../partials/quote.html?raw';
+import paginationTemplate from '../../partials/pagination.html?raw';
 import { renderCards } from '../categories/categories-api';
 import { getContentPagination } from '../pagination';
 
@@ -27,4 +28,4 @@ homeElement.innerHTML = homeTemplate;
 homeElement.querySelector('.fitness-hero-section').innerHTML = heroTemplate;
 homeElement.querySelector('.quote-exercises-container').innerHTML =
   categoriesTemplate + quoteTemplate;
-console.log(homeElement);
+homeElement.querySelector('.pagination').innerHTML = paginationTemplate;

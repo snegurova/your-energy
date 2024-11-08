@@ -1,6 +1,10 @@
 import { getContentElement, getFilters, homeElement } from '../pages/home';
 import { favoritesElement } from '../pages/favorites';
-import { getMainExercises, getExercises } from '../pages/exercises';
+import {
+  getMainExercises,
+  getExercises,
+  exercisesElement,
+} from '../pages/exercises';
 
 import { updateQuote } from '../quote/quote';
 
@@ -35,7 +39,7 @@ const routes = {
     route: `${basePath}/exercises.html`,
     domCallBack: getMainExercises,
     apiCallBack: getExercises,
-    htmlElement: document.createElement('div'),
+    htmlElement: exercisesElement,
   },
 };
 
