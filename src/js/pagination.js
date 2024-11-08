@@ -27,7 +27,7 @@ export const getContentPagination = () => {
 };
 
 async function setupPagination(callback) {
-  getContentPagination();
+
 
   const initialData = await getExercises(1);
   totalPages = initialData.totalPages;
