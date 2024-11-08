@@ -4,6 +4,8 @@ import { renderCards } from './js/categories/categories-api';
 import './api-example';
 import './js/burger-menu';
 import './js/modal/modal';
+import './js/footer/subscription';
+import './js/footer/animation';
 
 const links = document.querySelectorAll('.router-link');
 links.forEach((link) => link.addEventListener('click', route));
