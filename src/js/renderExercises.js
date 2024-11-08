@@ -66,3 +66,5 @@ export const renderExercises = async (exercises) => {
     return acc + createExerciseCard(exercise);
   }, '');
 };
+
+

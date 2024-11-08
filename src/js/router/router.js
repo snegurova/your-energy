@@ -1,6 +1,7 @@
 import { getContentElement, getFilters } from '../pages/home';
 import { getMainExercises, getExercises } from '../pages/exercises';
 
+import { updateQuote } from '../quote/quote';
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
 export const route = (event) => {
@@ -52,6 +53,7 @@ export const handleLocation = async () => {
 
   domCallBack();
   apiCallBack(urlParams);
+  updateQuote();
 };
 
 window.onpopstate = handleLocation;
