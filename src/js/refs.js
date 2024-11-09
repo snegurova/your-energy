@@ -1,11 +1,11 @@
 export const refs = {
   // modal
-  startModal: document.querySelector('#main-page'),
+  startModal: document.querySelector('body'),
   backdrop: document.querySelector('.backdrop'),
   closeModalBtn: document.querySelector('.modal-close-btn'),
   modalEl: document.querySelector('.modal-container'),
   // rate modal
-  startModal: document.querySelector('#main-page'),
+  startModal: document.querySelector('body'),
   rateBackdrop: document.querySelector('.rate-backdrop'),
   rateCloseModalBtn: document.querySelector('.rate-modal-close-btn'),
   rateModalEl: document.querySelector('.rate-modal-container'),
