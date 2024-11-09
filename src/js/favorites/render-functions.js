@@ -28,7 +28,7 @@ export const createCard = ({
             <use href="./images/sprite.svg#icon-man"></use>
           </svg>
         </span>
-        <h3 class="exercises-name">${name}</h3>
+        <p class="exercises-name name">${name}</p>
       </div>
       <ul class="exercises-attributes">
         <li><p><span class="exercises-attributes-label">Burned calories:</span><span class="exercises-attributes-value">${burnedCalories} / ${time} min</></p></li>
