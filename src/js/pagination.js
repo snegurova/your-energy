@@ -1,14 +1,3 @@
-import api from './api';
-
-async function fetchAndRenderExercises(page) {
-  const data = await getExercises(page);
-  console.log('Current Page Data:', data.results);
-}
-
-document.addEventListener('DOMContentLoaded', async () => {
-  setupPagination(fetchAndRenderExercises);
-});
-
 let firstBtn;
 let prevBtn;
 let nextBtn;
@@ -25,10 +14,10 @@ export const getContentPagination = () => {
   pageInfo = document.getElementById('page-info');
 };
 
-async function setupPagination(callback) {
+export async function initPagination(callback) {
   getContentPagination();
-
-  const initialData = await getExercises(1);
+  const initialData = await callback(1);
+  console.log('initialData', initialData);
   totalPages = initialData.totalPages;
   currentPage = 1;
 
@@ -41,7 +30,13 @@ async function setupPagination(callback) {
 }
 
 function renderPagination(callback) {
+  if (!pageInfo) {
+    console.error('pageInfo element not found.');
+    return;
+  }
+
   let pages = [];
+  console.log('Rendering pagination. Current page:', currentPage);
 
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
@@ -90,18 +85,13 @@ function renderPagination(callback) {
   });
 }
 
-// Function to navigate to a specific page
 async function goToPage(page, callback) {
+  console.log('Navigating to page:', page);
   if (page >= 1 && page <= totalPages && page !== currentPage) {
     currentPage = page;
-    await callback(page);
+    const data = await callback(page);
+    totalPages = data.totalPages;
+    console.log('Total pages', totalPages);
     renderPagination(callback);
   }
-}
-
-// Fetch function for exercises (example)
-async function getExercises(page = 1) {
-  api.exercises.page = page;
-  const data = await api.exercises.getExercises();
-  return data;
 }

@@ -6,6 +6,7 @@ export default class FiltersService {
   #axios;
   #page = 1;
   #filter = '';
+  totalPages = 1;
 
   static FilterTypes = {
     BODY_PARTS: 'Body parts',
@@ -74,7 +75,6 @@ export default class FiltersService {
   async getFilters(params) {
     try {
       const { data } = await this.#axios.get(this.#basePath, params);
-      // console.log('FiltersService getFilters data:', data);
       return data;
     } catch (error) {
       throw error;
