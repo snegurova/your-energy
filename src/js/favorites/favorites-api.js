@@ -3,8 +3,7 @@ import { createCard } from './render-functions'
 import { removeFromFavorites } from './favorites';
 
 const favoritesData = localStorage.getItem('favorites');
-let favoritesHTML;
-export const getFavoritesHTML = () => { favoritesHTML = document.querySelector('.favorites') };
+const favoritesHTML = document.querySelector('.favorites')
 
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
 
