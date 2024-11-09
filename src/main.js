@@ -7,8 +7,8 @@ import './js/pagination';
 import './api-example';
 import './js/burger-menu';
 import './js/modal/modal';
-import './js/subscription';
-import './js/animation';
+import './js/footer/subscription';
+import './js/footer/animation';
 import './js/modal/rateModal';
 
 const links = document.querySelectorAll('.router-link');
