@@ -1,9 +1,3 @@
-.categories-container {
-  min-width: 320px;
-  max-width: 375px;
-  margin: 0 auto;
-}
-
 .categories-container a.router-link {
   display: flex;
   height: 100%;
@@ -70,10 +64,16 @@ span.category-card-title {
   color: rgba(244, 244, 244, 0.4);
 }
 
+@media only screen and (max-width: 375px) {
+  .categories-container {
+    margin: 0 auto;
+  }
+}
+
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .categories-container {
-    max-width: 705px;
+    width: 705px;
   }
 
   ul.category-list {
@@ -92,7 +92,7 @@ span.category-card-title {
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1200px) {
   .categories-container {
-    max-width: 900px;
+    width: 900px;
   }
 
   ul.category-list {

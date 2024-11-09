@@ -62,28 +62,33 @@
     flex-direction: column;
     align-items: center;
   }
+
   .card-set {
     row-gap: 32px;
   }
+
   .set-item {
     width: calc((100% - 16px * (2 - 1)) / 2);
   }
+
   .favorites-section {
     margin-top: 0px;
   }
+
   .not-exist {
     font-size: 18px;
     width: 554px;
     padding-top: 132px;
   }
 }
+
 .remove-from-favorites svg {
   fill: #ffffff;
   height: 16px;
   width: 16px;
 }
 
-@media screen and (min-width: 1168px) {
+@media screen and (min-width: 1200px) {
   .favorites {
     max-height: 485px;
     overflow-y: scroll;
@@ -93,7 +98,13 @@
   .favorites-section {
     margin-right: 16px;
   }
-  .quote-exercises-container {
+
+  .quote-exercises-container:not(.favorites) {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
+  .quote-exercises-container.favorites {
     flex-direction: row;
   }
 }
@@ -107,6 +118,7 @@
   @media screen and (min-width: 768px) {
     max-width: 272px;
   }
+
   @media screen and (min-width: 1440px) {
     max-width: 100%;
   }
