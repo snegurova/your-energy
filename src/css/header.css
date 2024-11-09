@@ -8,8 +8,6 @@
 .header .container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
 }
 
 .logo {
@@ -98,24 +96,23 @@
 }
 
 .social-list {
-  display: none;
-  align-items: flex-start;
+  width: 156px;
+  height: 44px;
   gap: 12px;
 }
 
 .social-link {
   display: flex;
-  padding: 8px;
   align-items: center;
   justify-content: center;
+  width: 44px;
+  height: 44px;
   border-radius: 10px;
   border: 1px solid rgba(36, 36, 36, 0.1);
   transition: all 0.3s ease;
 }
 
 .social-link .icon {
-  width: 28px;
-  height: 28px;
   flex-shrink: 0;
   opacity: 0.8;
   fill: #242424;
@@ -137,6 +134,8 @@
   border: none;
   background: none;
   color: #242424;
+
+  margin-left: 175px;
 }
 
 .burger-menu-content {
@@ -197,7 +196,8 @@
   display: flex;
   justify-content: center;
   margin-top: auto;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
+  width: 100%;
 }
 
 .burger-menu-content .social-link {
@@ -217,7 +217,7 @@
   fill: #242424;
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (max-width: 768px) {
   .header {
     /* padding-top: 20px;
     padding-bottom: 80px; */
@@ -244,6 +244,8 @@
   }
 
   .nav {
+    margin-left: 103px;
+    margin-right: 80px;
     display: block;
   }
 
@@ -265,23 +267,18 @@
   .social-list {
     display: inline-flex;
   }
-
-  .header .container {
-    gap: 16px;
-  }
 }
 
 @media only screen and (min-width: 1200px) {
+
   .burger-menu {
     display: none;
   }
 
   .nav {
     display: block;
-  }
-
-  .header .container {
-    gap: 30px;
+    margin-left: 423px;
+    margin-right: 400px;
   }
 
   .navbar-list {
@@ -289,6 +286,7 @@
     height: 52px;
     flex-shrink: 0;
     margin: 0;
+    
   }
 
   .navbar-item:first-child {
@@ -301,5 +299,6 @@
 
   .social-list {
     display: inline-flex;
+
   }
 }
