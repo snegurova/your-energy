@@ -12,6 +12,7 @@ async function handleOpenModal(event) {
   refs.closeModalBtn.addEventListener('click', handleCloseModal);
   window.addEventListener('keydown', handleEscKey);
 
+  document.body.style.overflow = 'hidden';
   await renderExerciseById(exerciseId);
 }
 
@@ -22,6 +23,7 @@ function handleCloseModal() {
   window.removeEventListener('keydown', handleEscKey);
 
   refs.modalEl.innerHTML = '';
+  document.body.style.overflow = 'auto';
 }
 
 function handleBackdropClick(event) {
