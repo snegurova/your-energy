@@ -4,32 +4,32 @@
     margin: 0 auto;
 }
 
-/* Styles for Tablet devices */
-@media only screen and (min-width: 768px) {
-    .categories-container {
-        max-width: 705px;
-    }
-}
-
-/* Styles for Desktop devices */
-@media only screen and (min-width: 1200px) {
-    .categories-container {
-        max-width: 900px;
-    }
-}
-
-ul.category-list {
+/* ul.category-list {
     display: flex;
     row-gap: 32px;
     column-gap: 15px;
     flex-wrap: wrap;
     justify-content: center;
+} */
+
+a.router-link {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+ul.category-list {
+    display: grid;
+    row-gap: 20px;
+    column-gap: 0;
+    grid-template-columns: repeat(1, 1fr);
 }
 
 .category-card {
     background-color: rgba(17, 17, 17, 0.5);
-    height: 242px;
-    width: 290px;
+    max-height: 225px;
+    width: 335px;
     position: relative;
     overflow: hidden;
     border-radius: 12px;
@@ -73,6 +73,60 @@ span.category-card-title {
     text-align: center;
 }
 
-.category-card-filter{
+.category-card-filter {
     color: rgba(244, 244, 244, 0.4);
+}
+
+/* Styles for Tablet devices */
+@media only screen and (min-width: 768px) {
+    .categories-container {
+        max-width: 705px;
+    }
+
+    .router-link {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    ul.category-list {
+        display: grid;
+        row-gap: 32px;
+        column-gap: 15px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-card {
+        height: 225px;
+        width: 225px;
+    }
+}
+
+/* Styles for Desktop devices */
+@media only screen and (min-width: 1200px) {
+    .categories-container {
+        max-width: 900px;
+    }
+
+    ul.category-list {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .router-link {
+        padding: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    ul.category-list {
+        display: grid;
+        row-gap: 32px;
+        column-gap: 15px;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .category-card {
+        min-height: 242px;
+        max-width: 290px;
+    }
 }
