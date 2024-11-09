@@ -1,4 +1,3 @@
-// import storageService from '../services/storage';
 import { refs } from '../refs';
 import renderExerciseById from './render-exercise';
 

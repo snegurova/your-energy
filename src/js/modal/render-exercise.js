@@ -42,8 +42,8 @@ export default async function renderExerciseById(exerciseId) {
         </ul>
         <p class="exercise-description">${
           description || 'We hope you will enjoy it'
-        }</p>
-      </div>
+        }</p> 
+      <div class="btn-wrap">
       <button type="button" class="modal-btn" data-id="${_id}">
         ${
           isFavorite
@@ -54,6 +54,8 @@ export default async function renderExerciseById(exerciseId) {
         }
       </button>
       <button type="button" class="modal-btn rate-btn">Give a rating</button>
+      </div>
+      </div>
     </div>`;
 
     refs.modalEl.innerHTML = modalMarkup;
@@ -75,9 +77,9 @@ function generateStarRating(rating) {
 
   for (let i = 1; i <= maxStars; i++) {
     if (roundedRating >= i) {
-      starsMarkup += `<li class="star full"><svg class="star-icon"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star full"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
     } else {
-      starsMarkup += `<li class="star empty"><svg class="star-icon"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star empty"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
     }
   }
 
