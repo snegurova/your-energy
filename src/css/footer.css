@@ -13,10 +13,21 @@
   text-align: center;
 }
 
-.footer-logo img {
-  max-width: 132px;
+.logotypes {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
+.footer-logo {
+  width: 132px;
+  height: 14px;
+  fill: #f4f4f4;
+}
+
+.footer-logo:hover {
+  fill: #c6cdd1;
+}
 .social-logo {
   display: flex;
   flex-direction: row;
@@ -88,8 +99,10 @@
   border: 1px solid #f4f4f4;
   border-radius: 30px;
   padding: 12px 14px;
+
   width: 100%;
   max-height: 42px;
+  box-sizing: border-box;
 
   background-color: #242424;
 
@@ -144,10 +157,15 @@
   color: #c6cdd1;
 }
 
+.website-documents:hover {
+  color: #f4f4f4;
+}
+
 .copyright-container {
   display: flex;
   gap: 79px;
 }
+
 .copyright-mark {
   text-align: end;
 }
@@ -198,10 +216,8 @@
   }
 
   .subscribe-form input {
-    padding: 12px 298px 12px 14px;
-
     max-height: 48px;
-    max-width: 352px;
+    width: 100%;
 
     font-weight: 400;
     font-size: 16px;
@@ -266,8 +282,7 @@
 
   .subscribe-form {
     max-width: 352px;
-    margin-left: 0px;
-    padding-left: 115px;
+    margin-left: 115px;
   }
 
   .subscribe-form p {
@@ -277,21 +292,21 @@
   }
 
   .subscribe-form input {
-    max-width: 352px;
     max-height: 48px;
-    font-weight: 400;
+    width: 100%;
     font-size: 16px;
     line-height: 150%;
   }
 
   .subscribe-form button {
+    max-width: 352px;
+    max-height: 48px;
+
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
     border-radius: 30px;
     padding: 12px 157px;
-    width: 352px;
-    height: 48px;
   }
 
   .footer-bottom p {
@@ -321,6 +336,6 @@
   }
 
   .copyright-container {
-    gap: 488px;
+    gap: 475px;
   }
 }
