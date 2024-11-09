@@ -7,7 +7,7 @@ import {
 } from '../pages/exercises';
 
 import { updateQuote } from '../quote/quote';
-import { getFavoritesHTML, getFavorites } from "../favorites/favorites-api";
+import { getFavoritesHTML, getFavorites } from '../favorites/favorites-api';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
