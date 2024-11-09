@@ -1,0 +1,34 @@
+<div class="rate-backdrop is-hidden">
+  <div class="modal">
+    <button type="button" class="rate-modal-close-btn">
+      <svg
+        class="close-icon"
+        width="24"
+        height="24"
+        stroke="rgba(244, 244, 244, 1)"
+      >
+        <use href="./images/sprite.svg#icon-close"></use>
+      </svg>
+    </button>
+    <form class="rate-modal-container rate-modal-form">
+      <h2 class="rate-modal-title">Rate this exercise</h2>
+      <ul class="rate-modal-stars"></ul>
+      <input
+        type="email"
+        name="email"
+        class="rate-modal-email"
+        placeholder="Your email"
+        pattern="^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$"
+        required
+      />
+      <textarea
+        class="rate-modal-comment"
+        name="review"
+        placeholder="Your comment"
+        rows="4"
+        required
+      ></textarea>
+      <button type="submit" class="rate-modal-submit-btn">Submit</button>
+    </form>
+  </div>
+</div>

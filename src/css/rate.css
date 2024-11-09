@@ -1,0 +1,132 @@
+.rate-modal-title {
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+
+.rate-modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+.rate-modal-stars {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+  gap: 0.5rem;
+}
+
+.rate-modal-radio {
+  display: none;
+}
+
+.rate-modal-label {
+  cursor: pointer;
+  display: block;
+  line-height: 1;
+}
+
+.rate-modal-stars:has(.rate-modal-radio:checked) .star-icon {
+  stroke: #eea10c;
+  fill: #eea10c;
+}
+.star-icon {
+  width: 30px;
+  height: 30px;
+  stroke: rgba(244, 244, 244, 0.2);
+  fill: rgba(244, 244, 244, 0.2);
+  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Style for checked stars */
+.rate-modal-star-item:has(.rate-modal-radio:checked)
+  ~ .rate-modal-star-item
+  .rate-modal-label
+  .star-icon {
+  stroke: rgba(244, 244, 244, 0.2);
+  fill: rgba(244, 244, 244, 0.2);
+}
+
+.rate-modal-email,
+.rate-modal-comment {
+  display: block;
+  width: 100%;
+}
+
+.rate-modal-email,
+.rate-modal-comment {
+  padding: 12px 14px;
+  border: 1px solid #f4f4f4;
+  border-radius: 30px;
+  color: rgba(244, 244, 244, 0.6);
+  background-color: transparent;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.rate-modal-comment {
+  resize: none;
+}
+
+.rate-backdrop .modal {
+  margin: 0;
+  max-width: none;
+  width: 90%;
+}
+
+.rate-modal-submit-btn {
+  border-radius: 30px;
+  padding: 12px 48px;
+  border: none;
+
+  background-color: #f4f4f4;
+
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #242424;
+  transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+}
+
+.rate-modal-submit-btn:hover,
+.rate-modal-submit-btn:focus {
+  background-color: #242424;
+  color: #f4f4f4;
+  border-color: #f4f4f4;
+}
+
+@media screen and (min-width: 768px) {
+  .rate-modal-email,
+  .rate-modal-comment {
+    font-size: 16px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .rate-modal-submit-btn {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    border-radius: 30px;
+  }
+  .rate-backdrop .modal {
+    width: 800px;
+  }
+}
+
+.rate-modal-close-btn svg {
+  transition: stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rate-modal-close-btn:hover svg,
+.rate-modal-close-btn:focus svg {
+  stroke: #eea10c;
+}

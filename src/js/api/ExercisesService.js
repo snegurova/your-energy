@@ -7,7 +7,6 @@ export default class ExercisesService {
   #page = 1;
   #filter = '';
   #name = '';
- 
 
   constructor(axios) {
     this.#axios = axios;
@@ -52,9 +51,7 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
-      const { data } = await this.#axios.get(
-        `${this.#basePath}?${params.toString()}`
-      );
+      const { data } = await this.#axios.get(this.#basePath, params);
       return data;
     } catch (error) {
       throw error;
@@ -78,7 +75,6 @@ export default class ExercisesService {
         `${this.#basePath}/${id}/rating`,
         body
       );
-      // console.log('ExercisesService addExerciseRatingById data:', data);
       return data;
     } catch (error) {
       throw error;
