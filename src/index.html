@@ -13,13 +13,34 @@
     <section class="home-container">
       <div class="container">
         <h1 class="visually-hidden">Home</h1>
-        <section class="fitness-hero-section"></section>
+        <load src="./partials/hero.html" icon-path="img/sprite.svg#logo" />
         <div class="main-exercises-nav">
           <h1 class="main-exercises-title">Exercises</h1>
           <div class="main-exercises-links">
-            <a class="active router-link" href="/">Muscles</a>
-            <a class="router-link" href="/?filter=">Body parts</a>
-            <a class="router-link" href="/?filter=">Equipment</a>
+            <a
+              class="active filter-link"
+              data-filter="Muscles"
+              data-page="1"
+              data-limit="12"
+              href="/"
+              >Muscles</a
+            >
+            <a
+              class="filter-link"
+              data-filter="Body parts"
+              data-page="1"
+              data-limit="12"
+              href="/"
+              >Body parts</a
+            >
+            <a
+              class="filter-link"
+              data-filter="Equipment"
+              data-page="1"
+              data-limit="12"
+              href="/"
+              >Equipment</a
+            >
           </div>
         </div>
         <div class="quote-exercises-container">
@@ -37,8 +58,8 @@
 
     <load src="./partials/footer.html" />
 
-    <!-- <load src="./partials/modal.html" /> -->
-    <!-- <load src="./partials/rate-modal.html" /> -->
+    <load src="./partials/modal.html" />
+    <load src="./partials/rate-modal.html" />
     <script type="module" src="./main.js"></script>
   </body>
 </html>
