@@ -19,7 +19,6 @@
   "dependencies": {
     "axios": "^1.7.7",
     "vite-plugin-full-reload": "^1.2.0",
-    "vite-plugin-html-inject": "^1.1.2",
-    "vite-plugin-html-template": "^1.2.2"
+    "vite-plugin-html-inject": "^1.1.2"
   }
 }

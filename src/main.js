@@ -1,24 +1,37 @@
-import { route, handleLocation } from './js/router/router';
-
-import { renderExercises } from './js/renderExercises';
+import { getFilters } from './js/pages/home';
 
 import './js/pagination';
 
 import './api-example';
 import './js/burger-menu';
-import './js/modal/modal';
+// import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
-import './js/modal/rateModal';
+// import './js/modal/rateModal';
 
-const links = document.querySelectorAll('.router-link');
-links.forEach((link) => link.addEventListener('click', route));
-links.forEach((link) => {
-  link.addEventListener('click', route);
-});
+const SEARCH_PARAMS = {
+  FILTER: 'filter',
+  PAGE: 'page',
+  LIMIT: 'limit',
+};
 
-handleLocation();
+const FILTERS = {
+  MUSCLES: 'Muscles',
+  BODY_PARTS: 'Body parts',
+  EQUIPMENT: 'Equipment',
+};
 
-document.addEventListener('routeUpdated', () => {
-  renderExercises({ page: 1, limit: 10 });
+const defaultParams = new URLSearchParams([
+  [SEARCH_PARAMS.FILTER, FILTERS.MUSCLES],
+  [SEARCH_PARAMS.PAGE, 1],
+  [SEARCH_PARAMS.LIMIT, 10],
+]);
+
+document.addEventListener('DOMContentLoaded', () => {
+  const { pathname, search } = window.location;
+  if (pathname === '/' && !search) {
+    console.log(defaultParams.toString());
+
+    getFilters(defaultParams);
+  }
 });
