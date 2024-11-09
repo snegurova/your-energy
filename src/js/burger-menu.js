@@ -34,9 +34,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   logoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.history.pushState({}, '', '/');
-    setActiveLink();
+    if (burgerMenuContent.classList.contains('open')) {
+      burgerMenuContent.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    window.location.href = '/';
   });
 
   burgerMenuButton.addEventListener('click', () => {
