@@ -1,6 +1,8 @@
 import { createCard } from './render-template';
+import { addListener, handleClick } from '../../main';
 
-export const renderCards = async (data) => {
-  //const results = data.results;
-  return data.results.map(createCard).join('');
+export const renderCards = (data, element) => {
+  const markup = data.results.map(createCard).join('');
+  element.innerHTML = `<ul class="category-list">${markup}</ul>`;
+  addListener('.category-link', handleClick);
 };
