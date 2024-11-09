@@ -76,12 +76,6 @@ span.category-card-title {
     max-width: 705px;
   }
 
-  .router-link {
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-
   ul.category-list {
     display: grid;
     row-gap: 32px;
@@ -105,12 +99,6 @@ span.category-card-title {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .router-link {
-    padding: 0;
-    width: 100%;
-    height: 100%;
-  }
-
   ul.category-list {
     display: grid;
     row-gap: 32px;
@@ -119,7 +107,7 @@ span.category-card-title {
   }
 
   .category-card {
-    min-height: 242px;
-    max-width: 290px;
+    height: 242px;
+    width: 290px;
   }
 }
