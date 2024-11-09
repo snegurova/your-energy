@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { refs } from '../refs';
 import storageService from '../services/storage';
+import spriteUrl from '../../images/sprite.svg';
 
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api/';
 
@@ -48,12 +49,12 @@ export default async function renderExerciseById(exerciseId) {
         ${
           isFavorite
             ? `Remove from favorites
-          <svg width="18" height="18"><use href="./images/sprite.svg#icon-trash"></use></svg>`
+          <svg width="18" height="18"><use href="${spriteUrl}#icon-trash"></use></svg>`
             : `Add to favorites
-          <svg width="18" height="18"><use href="./images/sprite.svg#icon-heart"></use></svg>`
+          <svg width="18" height="18"><use href="${spriteUrl}#icon-heart"></use></svg>`
         }
       </button>
-      <button type="button" class="modal-btn rate-btn">Give a rating</button>
+      <button type="button" class="modal-btn rate-btn open-exercise-rate-modal">Give a rating</button>
       </div>
       </div>
     </div>`;
@@ -77,9 +78,9 @@ function generateStarRating(rating) {
 
   for (let i = 1; i <= maxStars; i++) {
     if (roundedRating >= i) {
-      starsMarkup += `<li class="star full"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star full"><svg class="rate-star-icon" width="18" height="18"><use href="${spriteUrl}#icon-star"></use></svg></li>`;
     } else {
-      starsMarkup += `<li class="star empty"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star empty"><svg class="rate-star-icon" width="18" height="18"><use href="${spriteUrl}#icon-star"></use></svg></li>`;
     }
   }
 
@@ -111,7 +112,7 @@ function handleAddToFavorites(exerciseId) {
     const button = document.querySelector('.modal-btn');
     if (button) {
       button.innerHTML = `Remove from favorites
-        <svg width="18" height="18"><use href="./images/sprite.svg#icon-trash"></use></svg>`;
+        <svg width="18" height="18"><use href="${spriteUrl}#icon-trash"></use></svg>`;
     }
   });
 }
@@ -122,6 +123,6 @@ function handleRemoveFromFavorites(exerciseId) {
   const button = document.querySelector('.modal-btn');
   if (button) {
     button.innerHTML = `Add to favorites
-      <svg width="18" height="18"><use href="./images/sprite.svg#icon-heart"></use></svg>`;
+      <svg width="18" height="18"><use href="${spriteUrl}#icon-heart"></use></svg>`;
   }
 }

@@ -1,5 +1,6 @@
 import { refs } from '../refs';
 import api from '../api';
+import spriteUrl from '../../images/sprite.svg';
 
 refs.startModal.addEventListener('click', handleOpenRateModal);
 
@@ -7,15 +8,15 @@ const createRateBtn = (rate) => {
   return `<li class="rate-modal-star-item"><input required class="rate-modal-radio" type="radio" id="star${rate}" name="rate" value="${rate}">
   <label for="star${rate}" class="rate-modal-label">
         <svg class="star-icon" aria-hidden="true">
-          <use href="./images/sprite.svg#icon-star"></use>
+          <use href="${spriteUrl}#icon-star"></use>
         </svg>
       </label></li>`;
 };
 
 function handleOpenRateModal(event) {
-  if (!event.target.closest('.exercises-rating-btn')) return;
+  if (!event.target.closest('.open-exercise-rate-modal')) return;
   const exerciseId = event.target
-    .closest('.exercises-rating-btn')
+    .closest('.open-exercise-rate-modal')
     .getAttribute('data-id');
 
   refs.rateBackdrop.classList.remove('is-hidden');
@@ -32,6 +33,7 @@ function handleOpenRateModal(event) {
   const container = document.querySelector('.rate-modal-stars');
   refs.rateModalEl.setAttribute('data-id', exerciseId);
 
+  document.body.style.overflow = 'hidden';
   container.innerHTML = markup;
 }
 
@@ -40,6 +42,7 @@ function handleCloseRateModal() {
   refs.rateBackdrop.removeEventListener('click', handleBackdropClick);
   refs.rateCloseModalBtn.removeEventListener('click', handleCloseRateModal);
   window.removeEventListener('keydown', handleEscKey);
+  document.body.style.overflow = 'auto';
   refs.rateModalEl.reset();
 }
 
@@ -67,9 +70,11 @@ const handleRateSubmit = async (e) => {
 
   const res = await api.exercises.addExerciseRatingById(exerciseId, body);
 
-  e.target.reset();
+  if (res) {
+    e.target.reset();
 
-  handleCloseRateModal();
+    handleCloseRateModal();
+  }
 };
 
 refs.rateModalEl.addEventListener('submit', handleRateSubmit);
