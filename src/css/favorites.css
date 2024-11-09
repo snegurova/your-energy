@@ -11,7 +11,7 @@
 
 .remove-from-favorites:hover,
 .remove-from-favorites:focus {
-  color: #0c10ee;
+  color: #eea10c;
 }
 
 .favorites-icon {
@@ -38,24 +38,24 @@
   margin-top: 40px;
 }
 
-.card-description {
-  display: flex;
-}
-
 .card-set {
   display: flex;
   flex-wrap: wrap;
-  row-gap: 32px;
+  row-gap: 20px;
   column-gap: 16px;
 }
 
 .set-item {
-  width: calc((100% - var(16px) * (var(1) - 1)) / var(1));
+  width: calc((100% - 20px * (2 - 1)) / 1);
+  height: 141px;
 }
 
 @media screen and (min-width: 768px) {
+  .card-set {
+    row-gap: 32px;
+  }
   .set-item {
-    flex-basis: calc((100% - 1 * 16px) / 2);
+    width: calc((100% - 16px * (2 - 1)) / 2);
   }
 
   .favorites-section {
@@ -80,6 +80,25 @@
   .favorites {
     max-width: 826px;
     max-height: 485px;
-    overflow-y: auto;
+    overflow-y: scroll;
+    scrollbar-color: #242424 #242424;
+  }
+
+  .favorites-section {
+    margin-right: 16px;
+  }
+}
+
+.name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 250px;
+
+  @media screen and (min-width: 768px) {
+    max-width: 272px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 100%;
   }
 }
