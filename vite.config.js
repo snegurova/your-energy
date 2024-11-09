@@ -2,14 +2,13 @@ import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
 import FullReload from 'vite-plugin-full-reload';
-import htmlTemplatePlugin from 'vite-plugin-html-template';
+import htmlTemplate from 'vite-plugin-html-template';
 import SortCss from 'postcss-sort-media-queries';
 
-const htmlTemplate = htmlTemplatePlugin.default;
+// const htmlTemplate = htmlTemplatePlugin.default;
 
 export default defineConfig(({ command }) => {
   return {
-    assetsInclude: ['/src/pages/index/main'],
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
@@ -42,7 +41,19 @@ export default defineConfig(({ command }) => {
       emptyOutDir: true,
     },
     plugins: [
-      htmlTemplate(),
+      htmlTemplate.default({
+        pagesDir: '',
+        pages: {
+          index: {
+            template: './src/index.html',
+            title: 'Homepage',
+          },
+          favorites: {
+            template: './src/favorites.html',
+            title: 'Favorite',
+          },
+        },
+      }),
       injectHTML(),
       FullReload(['./src/**/**.html']),
       SortCss({
