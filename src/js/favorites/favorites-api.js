@@ -11,9 +11,8 @@ axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
 
 export const remove = async (event) => {
   const dataId = event.target.dataset.id;
-  removeFromFavorites(dataId)  
+  removeFromFavorites(dataId)
   const arrEl = event.target.closest('.exercises-card');
-  console.log("🚀 ~ remove ~ arrEl:", arrEl)
   arrEl.remove()
 };
 

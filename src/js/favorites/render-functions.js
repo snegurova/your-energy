@@ -1,11 +1,11 @@
 export const createCard = ({
-  bodyPart,
-  target,
-  equipment,
-  burnedCalories,
-  name,
-  time,
-  _id
+   bodyPart,
+   target,
+   equipment,
+   burnedCalories,
+   name,
+   time,
+   _id
 }) => `
  <li class="exercises-card set-item">
       <div class="exercises-top">
@@ -37,3 +37,4 @@ export const createCard = ({
       </ul>
     </li>
     `;
+  
