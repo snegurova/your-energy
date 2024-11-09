@@ -10,13 +10,13 @@ import { route } from '../router/router';
 
 let contentElement;
 let filters;
+let categoriesContainer;
 
 export const getContentElement = () => {
   contentElement = document.querySelector('.content');
   getContentPagination();
 };
 
-let categoriesContainer;
 export const getFilters = async (params) => {
   filters = await api.filters.getFilters(params);
   const markup = await renderCards(filters);

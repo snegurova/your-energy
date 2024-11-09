@@ -1,4 +1,4 @@
-import { getContentElement, apiCallbackFilters, homeElement } from '../pages/home';
+import { getContentElement, getFilters, homeElement } from '../pages/home';
 import { favoritesElement } from '../pages/favorites';
 import {
   getMainExercises,
@@ -26,7 +26,7 @@ const routes = {
   '/': {
     route: `${basePath}/home.html`,
     domCallBack: getContentElement,
-    apiCallBack: apiCallbackFilters,
+    apiCallBack: getFilters,
     htmlElement: homeElement,
   },
   '/favorites': {
