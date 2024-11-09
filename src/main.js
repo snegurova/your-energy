@@ -1,5 +1,6 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
+import { getFavorites } from './js/favorites/favorites-api';
 
 import './js/pagination';
 
@@ -65,6 +66,7 @@ export const handleLocation = async () => {
     return;
   }
   getFilters(urlParams);
+  getFavorites(urlParams);
 };
 
 export const pushState = (url) => {
