@@ -7,6 +7,7 @@ import {
 } from '../pages/exercises';
 
 import { updateQuote } from '../quote/quote';
+import { getFavoritesHTML, getFavorites } from '../favorites/favorites-api';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
@@ -31,8 +32,8 @@ const routes = {
   },
   '/favorites': {
     route: `${basePath}/favorites.html`,
-    domCallBack: () => {},
-    apiCallBack: (params) => {},
+    domCallBack: getFavoritesHTML,
+    apiCallBack: getFavorites,
     htmlElement: favoritesElement,
   },
   '/exercises': {
