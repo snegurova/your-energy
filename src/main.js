@@ -10,6 +10,8 @@ import './js/footer/subscription';
 import './js/footer/animation';
 import './js/modal/rateModal';
 
+const basePath = import.meta.env.BASE_URL.slice(0, -1);
+
 export const SEARCH_PARAMS = {
   FILTER: 'filter',
   PAGE: 'page',
@@ -31,7 +33,7 @@ export const defaultParams = new URLSearchParams([
 
 document.addEventListener('DOMContentLoaded', () => {
   const { pathname, search } = window.location;
-  if (pathname === '/' && !search) {
+  if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams);
     return;
   }
@@ -41,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 export const getUrl = (event) => {
   event.preventDefault();
   const url = new URL(event.currentTarget.href);
+  url.pathname = `${basePath}${url.pathname}`;
   return url;
 };
 
