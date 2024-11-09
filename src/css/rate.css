@@ -31,14 +31,14 @@
 }
 
 .rate-modal-stars:has(.rate-modal-radio:checked) .star-icon {
-  stroke: #eea10c;
-  fill: #eea10c;
+  stroke: var(--gold);
+  fill: var(--gold);
 }
 .star-icon {
   width: 30px;
   height: 30px;
-  stroke: rgba(244, 244, 244, 0.2);
-  fill: rgba(244, 244, 244, 0.2);
+  stroke: var(--star-grey);
+  fill: var(--star-grey);
   transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -48,8 +48,8 @@
   ~ .rate-modal-star-item
   .rate-modal-label
   .star-icon {
-  stroke: rgba(244, 244, 244, 0.2);
-  fill: rgba(244, 244, 244, 0.2);
+  stroke: var(--star-grey);
+  fill: var(--star-grey);
 }
 
 .rate-modal-email,
@@ -61,9 +61,9 @@
 .rate-modal-email,
 .rate-modal-comment {
   padding: 12px 14px;
-  border: 1px solid #f4f4f4;
+  border: 1px solid var(--white);
   border-radius: 30px;
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--text-grey-primary);
   background-color: transparent;
   font-size: 14px;
   font-family: inherit;
@@ -84,12 +84,12 @@
   padding: 12px 48px;
   border: none;
 
-  background-color: #f4f4f4;
+  background-color: var(--white);
 
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
-  color: #242424;
+  color: var(--black);
   transition: background-color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     color 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     border-color 0.25s cubic-bezier(0.4, 0, 0.2, 1);
@@ -98,9 +98,9 @@
 
 .rate-modal-submit-btn:hover,
 .rate-modal-submit-btn:focus {
-  background-color: #242424;
-  color: #f4f4f4;
-  border-color: #f4f4f4;
+  background-color: var(--black);
+  color: var(--white);
+  border-color: var(--white);
 }
 
 @media screen and (min-width: 768px) {
@@ -128,5 +128,5 @@
 
 .rate-modal-close-btn:hover svg,
 .rate-modal-close-btn:focus svg {
-  stroke: #eea10c;
+  stroke: var(--gold);
 }
