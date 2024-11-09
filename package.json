@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=/your-energy/",
+    "buildDev": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
