@@ -3,6 +3,7 @@
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
+  gap: 32px;
 }
 
 .main-exercises-nav {
