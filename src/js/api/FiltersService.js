@@ -72,10 +72,9 @@ export default class FiltersService {
    * @returns {Promise<Object>} The data of filters fetched from the API.
    * @throws {Error} Throws an error if the request fails.
    */
-  async getFilters(page) {
+  async getFilters(params) {
     try {
-      const { data } = await this.#axios.get(this.#basePath, {params: {page}});
-      // console.log('FiltersService getFilters data:', data);
+      const { data } = await this.#axios.get(this.#basePath, params);
       return data;
     } catch (error) {
       throw error;

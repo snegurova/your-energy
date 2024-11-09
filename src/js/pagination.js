@@ -1,4 +1,3 @@
-
 let firstBtn;
 let prevBtn;
 let nextBtn;
@@ -8,20 +7,19 @@ let currentPage = 1;
 let totalPages = 0;
 
 export const getContentPagination = () => {
-  firstBtn = document.getElementById("first-btn");
-  prevBtn = document.getElementById("prev-btn");
-  nextBtn = document.getElementById("next-btn");
-  lastBtn = document.getElementById("last-btn");
-  pageInfo = document.getElementById("page-info");
+  firstBtn = document.getElementById('first-btn');
+  prevBtn = document.getElementById('prev-btn');
+  nextBtn = document.getElementById('next-btn');
+  lastBtn = document.getElementById('last-btn');
+  pageInfo = document.getElementById('page-info');
 };
 
 export async function initPagination(callback) {
   getContentPagination();
   const initialData = await callback(1);
-  console.log("initialData", initialData)
+  console.log('initialData', initialData);
   totalPages = initialData.totalPages;
   currentPage = 1;
-
 
   renderPagination(callback);
 
@@ -33,12 +31,12 @@ export async function initPagination(callback) {
 
 function renderPagination(callback) {
   if (!pageInfo) {
-    console.error("pageInfo element not found.");
+    console.error('pageInfo element not found.');
     return;
   }
 
   let pages = [];
-  console.log("Rendering pagination. Current page:", currentPage,);
+  console.log('Rendering pagination. Current page:', currentPage);
 
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
@@ -88,13 +86,12 @@ function renderPagination(callback) {
 }
 
 async function goToPage(page, callback) {
-  console.log("Navigating to page:", page);
+  console.log('Navigating to page:', page);
   if (page >= 1 && page <= totalPages && page !== currentPage) {
     currentPage = page;
     const data = await callback(page);
     totalPages = data.totalPages;
-    console.log("Total pages", totalPages)
+    console.log('Total pages', totalPages);
     renderPagination(callback);
   }
 }
-
