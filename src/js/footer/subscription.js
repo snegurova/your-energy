@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-import api from '../api';
+import { api } from './subscription-api';
 
 const emailPattern = /^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
@@ -9,6 +9,7 @@ export function handleSubscription() {
   const submitButton = refs.submitButton;
 
   if (!subscribeForm) {
+    console.error('Subscription form element not found in DOM.');
     return;
   }
 
@@ -16,6 +17,7 @@ export function handleSubscription() {
     event.preventDefault();
 
     const emailValue = emailInput.value.trim();
+    console.log('Submitting email:', emailValue);
 
     if (!emailPattern.test(emailValue)) {
       alert('Please enter a valid email address');
@@ -24,16 +26,25 @@ export function handleSubscription() {
 
     try {
       const response = await api.subscription.subscribe(emailValue);
+      console.log('Subscription response:', response);
 
-      if (response.status === 200) {
-        alert('Subscription successful!');
-        emailInput.value = '';
+      if (response && response.status === 200) {
+        alert(response.message || 'Subscription successful!'); 
+        emailInput.value = ''; 
+      } else if (response && response.status === 409) {
+        alert('This email is already subscribed.'); 
+      } else if (response && response.message) {
+        alert(response.message); 
       } else {
-        alert('Failed to subscribe. Please try again.');
+        alert('Failed to subscribe. Please try again.'); 
       }
     } catch (error) {
       console.error('Error during subscription:', error);
-      alert('An error occurred. Please try again later.');
+      alert('An error occurred. Please try again later.'); 
     }
   });
 }
+
+document.addEventListener('DOMContentLoaded', () => {
+  handleSubscription(); 
+});
