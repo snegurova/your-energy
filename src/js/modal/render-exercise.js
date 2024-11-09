@@ -62,8 +62,8 @@ export default async function renderExerciseById(exerciseId) {
 
     const button = document.querySelector('.modal-btn');
     if (button) {
-      button.removeEventListener('click', handleAddToRemoveToggle); 
-      button.addEventListener('click', handleAddToRemoveToggle); 
+      button.removeEventListener('click', handleAddToRemoveToggle);
+      button.addEventListener('click', handleAddToRemoveToggle);
     }
   } catch (error) {
     console.error(error);
@@ -95,7 +95,7 @@ function isExerciseFavorite(exerciseId) {
 function handleAddToRemoveToggle(event) {
   const button = event.target;
   const exerciseId = button.getAttribute('data-id');
-  const isFavorite = button.innerHTML.includes('Remove from favorites'); 
+  const isFavorite = button.innerHTML.includes('Remove from favorites');
 
   if (isFavorite) {
     handleRemoveFromFavorites(exerciseId);
