@@ -1,5 +1,5 @@
-import { refs } from '../refs';
-import api from '../api';
+import { refs } from './refs';
+import api from './api';
 
 const emailPattern = /^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
@@ -27,7 +27,7 @@ export function handleSubscription() {
 
       if (response.status === 200) {
         alert('Subscription successful!');
-        emailInput.value = ''; 
+        emailInput.value = '';
       } else {
         alert('Failed to subscribe. Please try again.');
       }
