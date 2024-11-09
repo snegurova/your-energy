@@ -1,4 +1,3 @@
-import { fileURLToPath, URL } from 'node:url';
 import { defineConfig } from 'vite';
 import { glob } from 'glob';
 import injectHTML from 'vite-plugin-html-inject';
@@ -10,16 +9,11 @@ const htmlTemplate = htmlTemplatePlugin.default;
 
 export default defineConfig(({ command }) => {
   return {
+    assetsInclude: ['/src/pages/index/main'],
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
     root: 'src',
-    resolve: {
-      extensions: ['.js'],
-      alias: {
-        '@': fileURLToPath(new URL('./src', import.meta.url)),
-      },
-    },
     build: {
       sourcemap: true,
       rollupOptions: {
