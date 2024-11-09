@@ -42,8 +42,8 @@ export default async function renderExerciseById(exerciseId) {
         </ul>
         <p class="exercise-description">${
           description || 'We hope you will enjoy it'
-        }</p>
-      </div>
+        }</p> 
+      <div class="btn-wrap">
       <button type="button" class="modal-btn" data-id="${_id}">
         ${
           isFavorite
@@ -54,14 +54,16 @@ export default async function renderExerciseById(exerciseId) {
         }
       </button>
       <button type="button" class="modal-btn rate-btn">Give a rating</button>
+      </div>
+      </div>
     </div>`;
 
     refs.modalEl.innerHTML = modalMarkup;
 
     const button = document.querySelector('.modal-btn');
     if (button) {
-      button.removeEventListener('click', handleAddToRemoveToggle); 
-      button.addEventListener('click', handleAddToRemoveToggle); 
+      button.removeEventListener('click', handleAddToRemoveToggle);
+      button.addEventListener('click', handleAddToRemoveToggle);
     }
   } catch (error) {
     console.error(error);
@@ -75,9 +77,9 @@ function generateStarRating(rating) {
 
   for (let i = 1; i <= maxStars; i++) {
     if (roundedRating >= i) {
-      starsMarkup += `<li class="star full"><svg class="star-icon"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star full"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
     } else {
-      starsMarkup += `<li class="star empty"><svg class="star-icon"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
+      starsMarkup += `<li class="star empty"><svg class="rate-star-icon" width="18" height="18"><use href="./images/sprite.svg#icon-star"></use></svg></li>`;
     }
   }
 
@@ -93,7 +95,7 @@ function isExerciseFavorite(exerciseId) {
 function handleAddToRemoveToggle(event) {
   const button = event.target;
   const exerciseId = button.getAttribute('data-id');
-  const isFavorite = button.innerHTML.includes('Remove from favorites'); 
+  const isFavorite = button.innerHTML.includes('Remove from favorites');
 
   if (isFavorite) {
     handleRemoveFromFavorites(exerciseId);
