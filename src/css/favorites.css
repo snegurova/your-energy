@@ -55,7 +55,7 @@
 
 @media screen and (min-width: 768px) {
   .set-item {
-    flex-basis: calc((100% - 1 * 24px) / 2);
+    flex-basis: calc((100% - 1 * 16px) / 2);
   }
 
   .favorites-section {
