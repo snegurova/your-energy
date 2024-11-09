@@ -16,6 +16,11 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  transition: fill 0.3s ease;
+}
+
+.logo:hover .icon-logo {
+  fill: #c6cdd1;
 }
 
 .icon-logo {
