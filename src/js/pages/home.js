@@ -17,7 +17,9 @@ const handleFilterClick = (event) => {
   event.target.classList.toggle(ACTIVE_CLASS);
 };
 
-addListener(filterLinks, handleFilterClick);
+filterLinks.forEach((link) => {
+  link.addEventListener('click', handleFilterClick);
+});
 
 export const getFilters = async (params) => {
   const categoriesData = await api.filters.getFilters(params);
