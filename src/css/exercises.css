@@ -19,8 +19,9 @@
 }
 
 .exercises-card:hover,
-.exercises-card:has(.exercises-favorite-btn:focus),
-.exercises-card:has(.exercises-btn:focus) {
+.exercises-card:has(.exercises-rating-btn:focus),
+.exercises-card:has(.exercises-btn:focus),
+.exercises-card:has(.exercises-delete-btn:focus) {
   box-shadow: 0px 0px 20px 0px rgba(36, 36, 36, 0.25);
 }
 
@@ -30,7 +31,8 @@
 .exercises-top-group,
 .exercises-icon,
 .exercises-rating-group,
-.exercises-btn {
+.exercises-btn,
+.exercises-rating-wrapper {
   display: flex;
   align-items: center;
 }
@@ -120,28 +122,61 @@
   color: rgba(36, 36, 36, 1);
   overflow: hidden;
   text-overflow: ellipsis;
+  flex-shrink: 0;
+  white-space: nowrap;
+  max-width: 55px;
+  @media screen and (min-width: 768px) {
+    max-width: 45px;
+  }
+  @media screen and (min-width: 1440px) {
+    max-width: 100%;
+  }
 }
 
 .exercises-attributes-value::first-letter {
   text-transform: uppercase;
 }
 
-.exercises-favorite-btn,
-.exercises-btn {
+.exercises-rating-btn,
+.exercises-btn,
+.exercises-delete-btn {
   background-color: transparent;
   border: none;
 }
 
-.exercises-favorite-btn {
+.exercises-rating-btn,
+.exercises-delete-btn {
   height: 18px;
   width: 18px;
-  padding: 2px;
+  padding: 1px;
+  flex-shrink: 0;
 }
 
-.exercises-favorite-btn svg {
+.exercises-delete-btn svg {
+  stroke: #242424;
+  fill: none;
+  height: 100%;
+  width: 100%;
+  transition: stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exercises-rating-wrapper {
+  overflow: hidden;
+  width: 18px;
+}
+
+.exercises-rating-btn svg {
   fill: #eea10c;
   height: 100%;
   width: 100%;
+  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+    stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.exercises-rating-btn:hover svg,
+.exercises-rating-btn:focus svg {
+  fill: transparent;
+  stroke: #eea10c;
 }
 .exercises-btn {
   font-size: 1rem;
@@ -166,4 +201,9 @@
 .exercises-btn:focus svg {
   stroke: #eea10c;
   transform: translateX(2px);
+}
+
+.exercises-delete-btn:hover svg,
+.exercises-delete-btn:focus svg {
+  stroke: #ea1d2c;
 }
