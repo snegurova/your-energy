@@ -1,8 +1,9 @@
 import api from '../api';
 
 function getQuoteExpireTime() {
-  const tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-  return tomorrow.getTime();
+  const nextTime = new Date();
+  nextTime.setHours(12, 0, 0, 0); // quote will fetch every 12 hours
+  return nextTime.getTime();
 }
 
 function isNeedToUpdate(time) {
