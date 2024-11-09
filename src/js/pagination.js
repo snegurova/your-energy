@@ -1,15 +1,3 @@
-import api from "./api";
-
-async function fetchAndRenderExercises(page) {
-  const data = await getExercises(page);
-  console.log("Current Page Data:", data.results);
-
-}
-
-document.addEventListener("DOMContentLoaded", async () => {
-  setupPagination(fetchAndRenderExercises);
-});
-
 let firstBtn;
 let prevBtn;
 let nextBtn;
@@ -19,33 +7,36 @@ let currentPage = 1;
 let totalPages = 0;
 
 export const getContentPagination = () => {
-  firstBtn = document.getElementById("first-btn");
-  prevBtn = document.getElementById("prev-btn");
-  nextBtn = document.getElementById("next-btn");
-  lastBtn = document.getElementById("last-btn");
-  pageInfo = document.getElementById("page-info");
+  firstBtn = document.getElementById('first-btn');
+  prevBtn = document.getElementById('prev-btn');
+  nextBtn = document.getElementById('next-btn');
+  lastBtn = document.getElementById('last-btn');
+  pageInfo = document.getElementById('page-info');
 };
 
-async function setupPagination(callback) {
+export async function initPagination(callback) {
   getContentPagination();
-
-  const initialData = await getExercises(1);
+  const initialData = await callback(1);
+  console.log('initialData', initialData);
   totalPages = initialData.totalPages;
   currentPage = 1;
 
   renderPagination(callback);
 
-  firstBtn.addEventListener("click", () => goToPage(1, callback));
-  prevBtn.addEventListener("click", () => goToPage(currentPage - 1, callback));
-  nextBtn.addEventListener("click", () => goToPage(currentPage + 1, callback));
-  lastBtn.addEventListener("click", () => goToPage(totalPages, callback));
-
-
+  firstBtn.addEventListener('click', () => goToPage(1, callback));
+  prevBtn.addEventListener('click', () => goToPage(currentPage - 1, callback));
+  nextBtn.addEventListener('click', () => goToPage(currentPage + 1, callback));
+  lastBtn.addEventListener('click', () => goToPage(totalPages, callback));
 }
 
-
 function renderPagination(callback) {
+  if (!pageInfo) {
+    console.error('pageInfo element not found.');
+    return;
+  }
+
   let pages = [];
+  console.log('Rendering pagination. Current page:', currentPage);
 
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
@@ -54,7 +45,7 @@ function renderPagination(callback) {
   } else {
     if (currentPage > 2) {
       pages.push(1);
-      pages.push("...");
+      pages.push('...');
     }
 
     let startPage = Math.max(1, currentPage - 1);
@@ -71,40 +62,36 @@ function renderPagination(callback) {
     }
 
     if (currentPage < totalPages - 1) {
-      pages.push("...");
+      pages.push('...');
       pages.push(totalPages);
     }
   }
 
   pageInfo.innerHTML = pages
-    .map(page => {
-      if (page === "...") {
+    .map((page) => {
+      if (page === '...') {
         return `<span class="dots">${page}</span>`;
       }
-      return `<button class="page-number ${page === currentPage ? 'active' : ''}" data-page="${page}" value="${page}">${page}</button>`;
+      return `<button class="page-number ${
+        page === currentPage ? 'active' : ''
+      }" data-page="${page}" value="${page}">${page}</button>`;
     })
-    .join(" ");
+    .join(' ');
 
-  document.querySelectorAll(".page-number").forEach(button => {
-    button.addEventListener("click", (event) => {
+  document.querySelectorAll('.page-number').forEach((button) => {
+    button.addEventListener('click', (event) => {
       goToPage(Number(event.target.value), callback);
     });
   });
 }
 
-// Function to navigate to a specific page
 async function goToPage(page, callback) {
+  console.log('Navigating to page:', page);
   if (page >= 1 && page <= totalPages && page !== currentPage) {
     currentPage = page;
-    await callback(page);
+    const data = await callback(page);
+    totalPages = data.totalPages;
+    console.log('Total pages', totalPages);
     renderPagination(callback);
   }
-}
-
-// Fetch function for exercises (example)
-async function getExercises(page = 1) {
-  api.exercises.page = page;
-  const data = await api.exercises.getExercises();
-  console.log(data, "Fetched Data for Page", page);
-  return data;
 }

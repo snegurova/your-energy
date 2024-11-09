@@ -7,7 +7,6 @@ export default class ExercisesService {
   #page = 1;
   #filter = '';
   #name = '';
- 
 
   constructor(axios) {
     this.#axios = axios;
@@ -76,7 +75,6 @@ export default class ExercisesService {
         `${this.#basePath}/${id}/rating`,
         body
       );
-      // console.log('ExercisesService addExerciseRatingById data:', data);
       return data;
     } catch (error) {
       throw error;
