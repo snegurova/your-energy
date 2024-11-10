@@ -245,7 +245,7 @@
 }
 
 /* Desktop Styles */
-@media only screen and (min-width: 1200px) and (max-width: 1439px) {
+/* @media only screen and (min-width: 1200px) and (max-width: 1439px) {
   .footer {
     padding: 64px 0px 16px 0px;
   }
@@ -332,7 +332,7 @@
   .copyright-container {
     gap: 357px;
   }
-}
+} */
 
 @media only screen and (min-width: 1440px) {
   .footer {
