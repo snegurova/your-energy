@@ -20,11 +20,11 @@
 .footer-logo {
   width: 132px;
   height: 14px;
-  fill: #f4f4f4;
+  fill: var(--white);
 }
 
 .footer-logo:hover {
-  fill: #c6cdd1;
+  fill: var(--secondary-white);
 }
 .social-logo {
   display: flex;
@@ -35,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid rgba(244, 244, 244, 0.1);
+  border: 1px solid var(--inactive-socials);
   border-radius: 10px;
   width: 40px;
   height: 40px;
@@ -45,18 +45,18 @@
 }
 
 .social-item {
-  fill: #f4f4f4;
+  fill: var(--white);
   width: 28px;
   height: 28px;
 }
 
 .social-logo a:hover {
-  background: #f4f4f4;
-  fill: #242424;
+  background: var(--white);
+  fill: var(--black);
 }
 
 .social-logo a:hover .social-item {
-  fill: #242424;
+  fill: var(--black);
 }
 
 .footer-text {
@@ -94,7 +94,7 @@
 }
 
 .subscribe-form input {
-  border: 1px solid #f4f4f4;
+  border: 1px solid var(--white);
   border-radius: 30px;
   padding: 12px 14px;
 
@@ -102,12 +102,12 @@
   max-height: 42px;
   box-sizing: border-box;
 
-  background: #242424;
+  background: var(--black);
 
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
-  color: rgba(244, 244, 244, 0.6);
+  color: var(--text-grey-primary);
 }
 
 .subscribe-form button {
@@ -117,18 +117,18 @@
   max-height: 42px;
   border: none;
 
-  background: #f4f4f4;
+  background: var(--white);
 
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
-  color: #242424;
+  color: var(--black);
 }
 
 .subscribe-form button:hover {
-  background: #242424;
-  color: #f4f4f4;
-  border: 1px solid #f4f4f4;
+  background: var(--black);
+  color: var(--white);
+  border: 1px solid var(--white);
 }
 
 .footer-bottom {
@@ -142,7 +142,7 @@
   font-size: 14px;
   line-height: 129%;
   letter-spacing: -0.02em;
-  color: #c6cdd1;
+  color: var(--secondary-white);
   opacity: 0.9;
 }
 
@@ -152,11 +152,11 @@
   line-height: 129%;
   letter-spacing: -0.02em;
   text-align: right;
-  color: #c6cdd1;
+  color: var(--secondary-white);
 }
 
 .website-documents:hover {
-  color: #f4f4f4;
+  color: var(--white);
 }
 
 .copyright-container {
@@ -314,7 +314,7 @@
     font-size: 14px;
     line-height: 129%;
     letter-spacing: -0.02em;
-    color: #c6cdd1;
+    color: var(--secondary-white);
     opacity: 0.9;
   }
 
@@ -324,7 +324,7 @@
     line-height: 129%;
     letter-spacing: -0.02em;
     text-align: right;
-    color: #c6cdd1;
+    color: var(--secondary-white);
   }
 
   .footer-bottom {
