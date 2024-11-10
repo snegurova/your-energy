@@ -83,7 +83,7 @@
   width: 16px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .favorites {
     max-height: 485px;
     overflow-y: scroll;
