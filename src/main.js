@@ -1,7 +1,7 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
 import { getFavorites } from './js/favorites/favorites-api';
-
+import { updateQuote } from './js/quote/quote';
 import './js/pagination';
 
 import './api-example';
@@ -93,5 +93,5 @@ export const addListener = (selector, callback) => {
   });
   return elements;
 };
-
+updateQuote();
 window.addEventListener('popstate', handleLocation);
