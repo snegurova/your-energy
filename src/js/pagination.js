@@ -1,43 +1,55 @@
-let firstBtn;
-let prevBtn;
-let nextBtn;
-let lastBtn;
-let pageInfo;
-let currentPage = 1;
-let totalPages = 0;
+import {
+  updateParameter,
+  pushState,
+  SEARCH_PARAMS,
+  handleLocation,
+} from '../main';
 
-export const getContentPagination = () => {
-  firstBtn = document.getElementById('first-btn');
-  prevBtn = document.getElementById('prev-btn');
-  nextBtn = document.getElementById('next-btn');
-  lastBtn = document.getElementById('last-btn');
-  pageInfo = document.getElementById('page-info');
-};
+let totalPages;
+let currentPage;
 
-export async function initPagination(callback) {
-  getContentPagination();
-  const initialData = await callback(1);
-  console.log('initialData', initialData);
-  totalPages = initialData.totalPages;
-  currentPage = 1;
+const prevBtn = document.getElementById('prev-btn');
+const nextBtn = document.getElementById('next-btn');
+const firstBtn = document.getElementById('first-btn');
+const lastBtn = document.getElementById('last-btn');
+const pageInfo = document.getElementById('page-info');
+
+export const initPagination = (callback, current, total) => {
+  currentPage = +current;
+  totalPages = total;
 
   renderPagination(callback);
 
   firstBtn.addEventListener('click', () => goToPage(1, callback));
-  prevBtn.addEventListener('click', () => goToPage(currentPage - 1, callback));
-  nextBtn.addEventListener('click', () => goToPage(currentPage + 1, callback));
+  prevBtn.addEventListener('click', () =>
+    goToPage(currentPage === 1 ? 1 : currentPage - 1, callback)
+  );
+  nextBtn.addEventListener('click', () =>
+    goToPage(
+      currentPage === totalPages ? totalPages : currentPage + 1,
+      callback
+    )
+  );
   lastBtn.addEventListener('click', () => goToPage(totalPages, callback));
-}
+  goToPage(currentPage);
+};
 
-function renderPagination(callback) {
-  if (!pageInfo) {
+export const renderPagination = (
+  callback,
+  current,
+  total,
+  isInitPagination
+) => {
+  if (!pageInfo || (!current && !total)) {
     console.error('pageInfo element not found.');
     return;
   }
 
-  let pages = [];
-  console.log('Rendering pagination. Current page:', currentPage);
+  if ((!currentPage && !totalPages) || isInitPagination) {
+    initPagination(callback, current, total);
+  }
 
+  let pages = [];
   if (totalPages <= 3) {
     for (let i = 1; i <= totalPages; i++) {
       pages.push(i);
@@ -72,26 +84,29 @@ function renderPagination(callback) {
       if (page === '...') {
         return `<span class="dots">${page}</span>`;
       }
-      return `<button class="page-number ${
+      return `<button value="${page}" class="pagination-btn page-number ${
         page === currentPage ? 'active' : ''
-      }" data-page="${page}" value="${page}">${page}</button>`;
+      }" data-page="${page}" value="${page}"><span class="numbers button-content ${
+        page > 9 ? 'large' : ''
+      }">${page}</span></button>`;
     })
     .join(' ');
 
   document.querySelectorAll('.page-number').forEach((button) => {
     button.addEventListener('click', (event) => {
-      goToPage(Number(event.target.value), callback);
+      goToPage(Number(event.currentTarget.value), callback);
     });
   });
-}
+};
 
 async function goToPage(page, callback) {
-  console.log('Navigating to page:', page);
-  if (page >= 1 && page <= totalPages && page !== currentPage) {
-    currentPage = page;
-    const data = await callback(page);
-    totalPages = data.totalPages;
-    console.log('Total pages', totalPages);
-    renderPagination(callback);
-  }
+  currentPage = page;
+  callback(page);
+  renderPagination(callback);
 }
+
+export const paginationCallback = (page) => {
+  const url = updateParameter(SEARCH_PARAMS.PAGE, page);
+  pushState(url);
+  handleLocation();
+};

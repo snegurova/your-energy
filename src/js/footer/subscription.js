@@ -1,5 +1,7 @@
 import { refs } from '../refs';
-import { api } from './subscription-api';
+import api from '../api';
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 
 const emailPattern = /^\w+(\.\w+)?@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
 
@@ -9,7 +11,6 @@ export function handleSubscription() {
   const submitButton = refs.submitButton;
 
   if (!subscribeForm) {
-    console.error('Subscription form element not found in DOM.');
     return;
   }
 
@@ -17,34 +18,38 @@ export function handleSubscription() {
     event.preventDefault();
 
     const emailValue = emailInput.value.trim();
-    console.log('Submitting email:', emailValue);
 
     if (!emailPattern.test(emailValue)) {
-      alert('Please enter a valid email address');
+      iziToast.error({
+        title: 'Error',
+        message: 'Please enter a valid email address.',
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
       return;
     }
 
     try {
       const response = await api.subscription.subscribe(emailValue);
-      console.log('Subscription response:', response);
 
-      if (response && response.status === 200) {
-        alert(response.message || 'Subscription successful!'); 
-        emailInput.value = ''; 
-      } else if (response && response.status === 409) {
-        alert('This email is already subscribed.'); 
-      } else if (response && response.message) {
-        alert(response.message); 
-      } else {
-        alert('Failed to subscribe. Please try again.'); 
-      }
+      iziToast.success({
+        title: 'Success',
+        message: response.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
+      event.target.reset();
     } catch (error) {
-      console.error('Error during subscription:', error);
-      alert('An error occurred. Please try again later.'); 
+      iziToast.error({
+        title: 'Error',
+        message: error?.response?.data?.message ?? error.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
     }
   });
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  handleSubscription(); 
+  handleSubscription();
 });

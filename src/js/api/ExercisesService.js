@@ -1,3 +1,6 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 /**
  * Service class to interact with exercises API.
  */
@@ -51,20 +54,29 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
-      const { data } = await this.#axios.get(this.#basePath, params);
+      const { data } = await this.#axios.get(this.#basePath, { params });
       return data;
     } catch (error) {
-      throw error;
+      iziToast.error({
+        title: 'Error',
+        message: error?.response?.data?.message ?? error.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
     }
   }
 
   async getExercisesById(id) {
     try {
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
-      // console.log('ExercisesService getExercisesById data:', data);
       return data;
     } catch (error) {
-      throw error;
+      iziToast.error({
+        title: 'Error',
+        message: error?.response?.data?.message ?? error.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
     }
   }
 
@@ -75,9 +87,20 @@ export default class ExercisesService {
         `${this.#basePath}/${id}/rating`,
         body
       );
+      iziToast.success({
+        title: 'Success',
+        message: 'Rating added successfully',
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
       return data;
     } catch (error) {
-      throw error;
+      iziToast.error({
+        title: 'Error',
+        message: error?.response?.data?.message ?? error.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
     }
   }
 

@@ -1,3 +1,5 @@
+import spriteUrl from '../images/sprite.svg';
+
 export const createExerciseCard = (
   {
     bodyPart,
@@ -23,15 +25,15 @@ export const createExerciseCard = (
     (isFavourite
       ? `<button class="exercises-delete-btn" data-id="${_id}" type="button">
             <svg>
-              <use href="./images/sprite.svg#icon-trash"></use>
+              <use href="${spriteUrl}#icon-trash"></use>
             </svg>
           </button>
           `
       : `<span class="exercises-rating-group">
           <span class="exercises-rating">${rating.toFixed(1)}</span>
-          <button class="exercises-rating-btn" type="button" data-id="${_id}">
+          <button class="exercises-rating-btn open-exercise-rate-modal" type="button" data-id="${_id}">
             <svg>
-              <use href="./images/sprite.svg#icon-star"></use>
+              <use href="${spriteUrl}#icon-star"></use>
             </svg>
           </button>
         </span>`) +
@@ -39,14 +41,14 @@ export const createExerciseCard = (
         <button type="button" class="exercises-btn start-btn" data-id="${_id}">
           Start
           <svg width="13" height="13">
-            <use href="./images/sprite.svg#icon-arrow"></use>
+            <use href="${spriteUrl}#icon-arrow"></use>
           </svg>
         </button>
       </div>
       <div class="exercises-content">
         <span class="exercises-icon">
           <svg width="14" height="16">
-            <use href="./images/sprite.svg#icon-man"></use>
+            <use href="${spriteUrl}#icon-man"></use>
           </svg>
         </span>
         <h3 class="exercises-name">${name}</h3>
@@ -61,7 +63,7 @@ export const createExerciseCard = (
   );
 };
 
-export const renderExercises = async (exercises) => {
+export const renderExercises = (exercises) => {
   return exercises.results.reduce((acc, exercise) => {
     return acc + createExerciseCard(exercise);
   }, '');
