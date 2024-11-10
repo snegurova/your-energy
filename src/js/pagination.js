@@ -31,7 +31,6 @@ export const initPagination = (callback, current, total) => {
     )
   );
   lastBtn.addEventListener('click', () => goToPage(totalPages, callback));
-  goToPage(currentPage);
 };
 
 export const renderPagination = (
@@ -40,8 +39,7 @@ export const renderPagination = (
   total,
   isInitPagination
 ) => {
-  if (!pageInfo || (!current && !total)) {
-    console.error('pageInfo element not found.');
+  if (!pageInfo || (!current && !total) || !callback) {
     return;
   }
 

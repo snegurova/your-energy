@@ -1,8 +1,8 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
-import { getFavorites } from './js/favorites/favorites-api';
+// import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
-import './js/pagination';
+import { appendSearch, removeSearch } from './js/search/search';
 
 import './api-example';
 import './js/header/burger-menu';
@@ -25,6 +25,12 @@ export const FILTERS = {
   MUSCLES: 'Muscles',
   BODY_PARTS: 'Body parts',
   EQUIPMENT: 'Equipment',
+};
+
+export const FILTERS_MAPPER = {
+  [FILTERS.MUSCLES]: 'muscles',
+  [FILTERS.BODY_PARTS]: 'bodypart',
+  [FILTERS.EQUIPMENT]: 'equipment',
 };
 
 export const defaultParams = new URLSearchParams([
@@ -52,7 +58,10 @@ export const getUrl = (event) => {
 
 export const setParams = (event, url) => {
   const dataset = event.currentTarget.dataset;
-  const searchKeys = Object.values(SEARCH_PARAMS);
+  const searchKeys = [
+    ...Object.values(SEARCH_PARAMS),
+    ...Object.values(FILTERS_MAPPER),
+  ];
   Object.keys(dataset).forEach((key) => {
     if (searchKeys.includes(key)) {
       url.searchParams.set(key, dataset[key]);
@@ -64,14 +73,16 @@ export const handleLocation = async (isInitPagination) => {
   const { search } = window.location;
   const urlParams = new URLSearchParams(search);
 
-  if (urlParams.has('name')) {
+  if (!urlParams.has(SEARCH_PARAMS.FILTER)) {
     const searchEl = document.querySelector('.search-exercises');
-    if (!searchEl) appendSearch(urlParams);
-    getExercises(urlParams, history.state.isInitPagination || isInitPagination);
+    if (!searchEl) {
+      appendSearch(urlParams);
+    }
+    getExercises(urlParams, isInitPagination || history.state.isInitPagination);
     return;
   }
-  getFilters(urlParams, history.state.isInitPagination || isInitPagination);
-  getFavorites(urlParams);
+  getFilters(urlParams, isInitPagination || history.state.isInitPagination);
+  // getFavorites(urlParams);
   removeSearch();
 };
 
@@ -105,46 +116,6 @@ export const updateParameter = (key, value) => {
   const url = new URL(href);
   url.searchParams.set(key, value);
   return url;
-};
-
-
-function debounce(f, t) {
-  return function (args) {
-    let previousCall = this.lastCall;
-    this.lastCall = Date.now();
-    if (previousCall && this.lastCall - previousCall <= t) {
-      clearTimeout(this.lastCallTimer);
-    }
-    this.lastCallTimer = setTimeout(() => f(args), t);
-  };
-}
-
-function onSearch(e) {
-  const searchQuery = e.target.value.trim();
-  const url = new URL(window.location.href);
-  url.searchParams.set('keyword', searchQuery);
-  url.searchParams.set('page', 1);
-  pushState(url);
-}
-
-const appendSearch = (urlParams) => {
-  const filtersContainerEl = document.querySelector('.main-filters-container');
-  if (filtersContainerEl) {
-    const searchContainerEl = document.createElement('div');
-    searchContainerEl.classList.add('search-container');
-    searchContainerEl.innerHTML = `<input class="search-exercises" type="text" id="search" name="search" placeholder="Search" /><svg class="search-icon" width="18" height="18"><use href="./images/sprite.svg#icon-search"></use></svg>`;
-    filtersContainerEl.prepend(searchContainerEl);
-    const searchEl = document.querySelector('.search-exercises');
-    searchEl.value = urlParams.get('keyword') || '';
-    searchEl.addEventListener('input', debounce(onSearch, 500));
-  }
-};
-
-const removeSearch = () => {
-  const searchContainerEl = document.querySelector('.search-container');
-  if (searchContainerEl) {
-    searchContainerEl.remove();
-  }
 };
 
 updateQuote();
