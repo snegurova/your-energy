@@ -1,5 +1,4 @@
 .header {
-  background-color: #fff;
   position: relative;
   line-height: 24px;
   font-size: 16px;
@@ -248,13 +247,13 @@
   }
 
   .nav {
-    margin-left: 103px;
-    margin-right: 80px;
+    /* margin-left: 103px;
+      margin-right: 80px; */
     display: block;
   }
 
   .navbar-list {
-    width: 233px;
+    /* width: 233px; */
     height: 52px;
     flex-shrink: 0;
     margin: 0;
@@ -274,15 +273,14 @@
 }
 
 @media only screen and (min-width: 1200px) {
-
   .burger-menu {
     display: none;
   }
 
   .nav {
     display: block;
-    margin-left: 423px;
-    margin-right: 400px;
+    /* margin-left: 423px;
+    margin-right: 400px; */
   }
 
   .navbar-list {
@@ -290,7 +288,6 @@
     height: 52px;
     flex-shrink: 0;
     margin: 0;
-    
   }
 
   .navbar-item:first-child {
@@ -303,6 +300,5 @@
 
   .social-list {
     display: inline-flex;
-
   }
 }

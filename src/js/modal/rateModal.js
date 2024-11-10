@@ -3,6 +3,7 @@ import api from '../api';
 import spriteUrl from '../../images/sprite.svg';
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { handleCloseModal, openModal } from './modal';
 
 refs.startModal.addEventListener('click', handleOpenRateModal);
 
@@ -15,12 +16,18 @@ const createRateBtn = (rate) => {
       </label></li>`;
 };
 
-function handleOpenRateModal(event) {
+let isEnteredFromModal = false;
+
+async function handleOpenRateModal(event) {
   if (!event.target.closest('.open-exercise-rate-modal')) return;
   const exerciseId = event.target
     .closest('.open-exercise-rate-modal')
     .getAttribute('data-id');
 
+  isEnteredFromModal = !refs.backdrop.classList.contains('is-hidden');
+  if (isEnteredFromModal) {
+    handleCloseModal();
+  }
   refs.rateBackdrop.classList.remove('is-hidden');
   refs.rateBackdrop.addEventListener('click', handleBackdropClick);
   refs.rateCloseModalBtn.addEventListener('click', handleCloseRateModal);
@@ -31,6 +38,9 @@ function handleOpenRateModal(event) {
   for (let i = 1; i <= 5; i++) {
     markup += createRateBtn(i);
   }
+
+  const res = await api.exercises.getExercisesById(exerciseId);
+  refs.rateValue.textContent = res.rating.toFixed(1);
 
   const container = document.querySelector('.rate-modal-stars');
   refs.rateModalEl.setAttribute('data-id', exerciseId);
@@ -44,9 +54,11 @@ function handleCloseRateModal() {
   refs.rateBackdrop.removeEventListener('click', handleBackdropClick);
   refs.rateCloseModalBtn.removeEventListener('click', handleCloseRateModal);
   window.removeEventListener('keydown', handleEscKey);
-  if (refs.backdrop.classList.contains('is-hidden')) {
-    document.body.style.overflow = 'auto';
+
+  if (isEnteredFromModal) {
+    openModal(refs.rateModalEl.getAttribute('data-id'));
   }
+
   refs.rateModalEl.reset();
 }
 

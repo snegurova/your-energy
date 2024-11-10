@@ -69,10 +69,14 @@ export default class ExercisesService {
   async getExercisesById(id) {
     try {
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
-      // console.log('ExercisesService getExercisesById data:', data);
       return data;
     } catch (error) {
-      throw error;
+      iziToast.error({
+        title: 'Error',
+        message: error?.response?.data?.message ?? error.message,
+        position: 'bottomRight',
+        maxWidth: '400px',
+      });
     }
   }
 
