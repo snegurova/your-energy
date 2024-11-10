@@ -1,7 +1,5 @@
 .categories-container {
-  min-width: 320px;
-  max-width: 375px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .categories-container a.router-link {
@@ -21,7 +19,6 @@ ul.category-list {
 .category-card {
   background-color: rgba(17, 17, 17, 0.5);
   max-height: 225px;
-  width: 335px;
   position: relative;
   overflow: hidden;
   border-radius: 12px;
@@ -73,7 +70,7 @@ span.category-card-title {
 /* Styles for Tablet devices */
 @media only screen and (min-width: 768px) {
   .categories-container {
-    max-width: 705px;
+    /* max-width: 705px; */
   }
 
   .router-link {
@@ -90,15 +87,15 @@ span.category-card-title {
   }
 
   .category-card {
-    height: 225px;
-    width: 225px;
+    height: auto;
+    max-width: 225px;
   }
 }
 
 /* Styles for Desktop devices */
 @media only screen and (min-width: 1200px) {
   .categories-container {
-    max-width: 900px;
+    /* max-width: 900px; */
   }
 
   ul.category-list {
@@ -117,9 +114,13 @@ span.category-card-title {
     column-gap: 15px;
     grid-template-columns: repeat(3, 1fr);
   }
-
   .category-card {
-    min-height: 242px;
+    max-width: 220px; /* if we change it container to design 1400px it not neede */
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .category-card {
     max-width: 290px;
   }
 }
