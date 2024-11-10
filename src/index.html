@@ -8,14 +8,16 @@
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-    <load src="./partials/hero.html" icon-path="img/sprite.svg#logo" />
-    <section class="home-container">
-      <div class="container">
-        <h1 class="visually-hidden">Home</h1>
-        <div class="main-exercises-nav">
-          <h1 class="main-exercises-title">Exercises</h1>
-          <div class="main-filters-container">
+
+
+      <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+      <main>
+        <load src="./partials/hero.html" icon-path="img/sprite.svg#logo" />
+      <section class="home-container">
+        <div class="container">
+          <div class="main-exercises-nav">
+            <h1 class="main-exercises-title">Exercises</h1>
+            <div class="main-filters-container">
             <div class="main-exercises-links">
               <a
                 class="active filter-link"
@@ -42,20 +44,19 @@
                 >Equipment</a
               >
             </div>
+            </div>
           </div>
-        </div>
-        <div class="quote-exercises-container">
-          <load src="./partials/categories.html" />
-          <load src="./partials/quote.html" img-name="img-1" page="q-home" />
-        </div>
+          <div class="quote-exercises-container">
+            <load src="./partials/categories.html" />
+            <load src="./partials/quote.html" img-name="img-1" page="q-home" />
+          </div>
 
-        <div class="content"><load src="./partials/pagination.html" /></div>
-        <div class="quote-exercises-container"></div>
+          <div class="content"><load src="./partials/pagination.html" /></div>
+        </div>
+      </section>
+      <div id="exercises-container" class="exercises-container"></div>
+    </main>
 
-        <div class="pagination content"></div>
-      </div>
-    </section>
-    <div id="exercises-container" class="exercises-container"></div>
 
     <load src="./partials/footer.html" />
 

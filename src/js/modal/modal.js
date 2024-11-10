@@ -1,5 +1,5 @@
 import { refs } from '../refs';
-import renderExerciseById from './render-exercise';
+import renderExerciseById from './renderExercise';
 
 refs.startModal.addEventListener('click', handleOpenModal);
 

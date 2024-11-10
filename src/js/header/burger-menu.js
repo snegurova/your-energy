@@ -5,6 +5,17 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.router-link');
   const logoLink = document.querySelector('.icon-logo');
 
+  document.addEventListener('click', (e) => {
+    if (
+      burgerMenuContent.classList.contains('open') &&
+      !burgerMenuContent.contains(e.target) &&
+      !burgerMenuButton.contains(e.target)
+    ) {
+      burgerMenuContent.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+  });
+
   function setActiveLink() {
     const currentPath = window.location.pathname;
     navLinks.forEach((link) => {

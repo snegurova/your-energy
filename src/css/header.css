@@ -18,19 +18,15 @@
 }
 
 .icon-logo {
-  fill: #242424;
-  transition: fill 0.3s ease;
-}
-
-.router-link:hover .icon-logo {
-  fill: #c6cdd1;
-}
-
-.icon-logo {
   width: 132px;
   height: 24px;
   flex-shrink: 0;
-  fill: #242424;
+  fill: var(--black);
+  transition: fill 0.3s ease;
+}
+
+.icon-logo:hover {
+  fill: var(--secondary-white);
 }
 
 .icon {
@@ -49,26 +45,18 @@
 .navbar-list {
   display: flex;
   align-items: center;
-  background: #242424;
+  justify-content: space-around;
+  gap: 18px;
+  background: var(--black);
   border-radius: 60px;
   padding: 4px;
   height: 52px;
-  position: relative;
 }
 
 .navbar-item {
-  position: absolute;
   height: 36px;
   display: flex;
   align-items: center;
-}
-
-.navbar-item:first-child {
-  left: 34px;
-}
-
-.navbar-item:last-child {
-  right: 34px;
 }
 
 .pill {
@@ -76,7 +64,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 30px;
-  color: #f4f4f4;
+  color: var(--white);
   font-family: 'DM Sans', sans-serif;
   font-size: 16px;
   font-style: normal;
@@ -85,24 +73,16 @@
   text-align: center;
   transition: all 0.3s ease;
   height: 100%;
+  padding: 6px 12px;
 }
 
 .pill.active {
-  background: #f4f4f4;
-  color: #242424;
-}
-
-.navbar-item:first-child .pill {
-  width: 68px;
-}
-
-.navbar-item:last-child .pill {
-  width: 96px;
+  background: var(--white);
+  color: var(--black);
 }
 
 .social-list {
-  width: 156px;
-  height: 44px;
+  display: none;
   gap: 12px;
 }
 
@@ -113,24 +93,24 @@
   width: 44px;
   height: 44px;
   border-radius: 10px;
-  border: 1px solid rgba(36, 36, 36, 0.1);
-  transition: all 0.3s ease;
+  border: 1px solid var(--bgr-socials);
+  transition: border 0.3s ease, background 0.3s ease;
 }
 
 .social-link .icon {
   flex-shrink: 0;
   opacity: 0.8;
-  fill: #242424;
+  fill: var(--black);
   transition: fill 0.3s ease;
 }
 
 .social-link:hover {
-  border: 1px solid rgba(36, 36, 36, 0.1);
+  border-color: var(--bgr-socials);
   background: rgba(36, 36, 36, 0.8);
 }
 
 .social-link:hover .icon {
-  fill: #f4f4f4;
+  fill: var(--white);
 }
 
 .burger-menu {
@@ -138,7 +118,7 @@
   padding: 0;
   border: none;
   background: none;
-  color: #242424;
+  color: var(--black);
 }
 
 .burger-menu-content {
@@ -149,7 +129,7 @@
   right: -210px;
   width: 210px;
   height: 100vh;
-  background-color: #242424;
+  background-color: var(--black);
   z-index: 100;
   transform: translateX(0);
   opacity: 0;
@@ -167,7 +147,7 @@
   padding-right: 20px;
   border: none;
   background: none;
-  color: #f4f4f4;
+  color: var(--white);
 }
 
 .burger-nav {
@@ -182,7 +162,7 @@
 }
 
 .burger-nav ul li a {
-  color: #f4f4f4;
+  color: var(--white);
   font-family: 'DM Sans', sans-serif;
   font-size: 14px;
   font-weight: 400;
@@ -204,26 +184,24 @@
 }
 
 .burger-menu-content .social-link {
-  border-color: rgba(244, 244, 244, 0.1);
+  border-color: var(--inactive-socials);
 }
 
 .burger-menu-content .social-link .icon {
-  fill: #f4f4f4;
+  fill: var(--white);
 }
 
 .burger-menu-content .social-link:hover {
-  border: 1px solid rgba(244, 244, 244, 0.1);
-  background: #f4f4f4;
+  border-color: var(--inactive-socials);
+  background: var(--white);
 }
 
 .burger-menu-content .social-link:hover .icon {
-  fill: #242424;
+  fill: var(--black);
 }
 
 @media only screen and (max-width: 768px) {
   .header {
-    /* padding-top: 20px;
-    padding-bottom: 80px; */
     padding-top: 20px;
     margin-bottom: 80px;
   }
@@ -232,39 +210,23 @@
     display: none;
   }
 
-  .social-list {
-    display: none;
-  }
-
   .burger-menu {
     display: flex;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1199px) {
+@media only screen and (min-width: 768px) {
   .burger-menu {
     display: none;
   }
 
   .nav {
-    /* margin-left: 103px;
-      margin-right: 80px; */
     display: block;
   }
 
   .navbar-list {
-    /* width: 233px; */
     height: 52px;
-    flex-shrink: 0;
-    margin: 0;
-  }
-
-  .navbar-item:first-child {
-    left: 34px;
-  }
-
-  .navbar-item:last-child {
-    right: 34px;
+    padding: 8px 34px;
   }
 
   .social-list {
@@ -273,32 +235,16 @@
 }
 
 @media only screen and (min-width: 1200px) {
-  .burger-menu {
-    display: none;
-  }
-
   .nav {
     display: block;
-    /* margin-left: 423px;
-    margin-right: 400px; */
+    height: 52px;
   }
 
   .navbar-list {
-    width: 265px;
-    height: 52px;
-    flex-shrink: 0;
-    margin: 0;
+    padding: 8px 50px;
   }
 
-  .navbar-item:first-child {
-    left: 50px;
-  }
-
-  .navbar-item:last-child {
-    right: 50px;
-  }
-
-  .social-list {
-    display: inline-flex;
+  .navbar-item {
+    width: 100%;
   }
 }
