@@ -262,7 +262,7 @@
 
   .footer-text {
     margin-top: 0px;
-    margin-left: 94px;
+    margin-left: 104px;
   }
 
   .footer-text h2 {
@@ -275,7 +275,7 @@
 
   .subscribe-form {
     max-width: 352px;
-    margin-left: 94px;
+    margin-left: 114px;
     margin-top: 0;
   }
 
@@ -325,12 +325,12 @@
 
   .footer-bottom {
     display: flex;
-    gap: 53px;
+    gap: 63px;
     margin-top: 70px;
   }
 
   .copyright-container {
-    gap: 343px;
+    gap: 357px;
   }
 }
 
