@@ -1,11 +1,6 @@
-import axios from 'axios';
+import api from '../api';
 import storageService from '../services/storage';
 import spriteUrl from '../../images/sprite.svg';
-
-axios.defaults.baseURL = 'https://your-energy.b.goit.study/api/';
-
-export const getExerciseById = (id) =>
-  axios.get(`/exercises/${id}`).then((res) => res.data);
 
 export function generateStarRating(rating) {
   const maxStars = 5;
@@ -42,7 +37,7 @@ export function handleAddToRemoveToggle(event) {
 }
 
 export function handleAddToFavorites(exerciseId) {
-  getExerciseById(exerciseId).then((exercise) => {
+  api.exercises.getExercisesById(exerciseId).then((exercise) => {
     storageService.save('favorites', exercise);
 
     const button = document.querySelector('.modal-btn');
