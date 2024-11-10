@@ -1,8 +1,8 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
-import { getFavorites } from './js/favorites/favorites-api';
+// import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
-import './js/pagination';
+import { appendSearch, removeSearch } from './js/search/search';
 
 import './api-example';
 import './js/header/burger-menu';
@@ -18,12 +18,19 @@ export const SEARCH_PARAMS = {
   PAGE: 'page',
   LIMIT: 'limit',
   NAME: 'name',
+  KEYWORD: 'keyword',
 };
 
 export const FILTERS = {
   MUSCLES: 'Muscles',
   BODY_PARTS: 'Body parts',
   EQUIPMENT: 'Equipment',
+};
+
+export const FILTERS_MAPPER = {
+  [FILTERS.MUSCLES]: 'muscles',
+  [FILTERS.BODY_PARTS]: 'bodypart',
+  [FILTERS.EQUIPMENT]: 'equipment',
 };
 
 export const defaultParams = new URLSearchParams([
@@ -53,7 +60,10 @@ export const getUrl = (event) => {
 
 export const setParams = (event, url) => {
   const dataset = event.currentTarget.dataset;
-  const searchKeys = Object.values(SEARCH_PARAMS);
+  const searchKeys = [
+    ...Object.values(SEARCH_PARAMS),
+    ...Object.values(FILTERS_MAPPER),
+  ];
   Object.keys(dataset).forEach((key) => {
     if (searchKeys.includes(key)) {
       url.searchParams.set(key, dataset[key]);
@@ -62,15 +72,20 @@ export const setParams = (event, url) => {
 };
 
 export const handleLocation = async (isInitPagination) => {
-  const { pathname, search } = window.location;
+  const { search } = window.location;
   const urlParams = new URLSearchParams(search);
 
-  if (urlParams.has('name')) {
-    getExercises(urlParams, history.state.isInitPagination || isInitPagination);
+  if (!urlParams.has(SEARCH_PARAMS.FILTER)) {
+    const searchEl = document.querySelector('.search-exercises');
+    if (!searchEl) {
+      appendSearch(urlParams);
+    }
+    getExercises(urlParams, isInitPagination || history.state.isInitPagination);
     return;
   }
-  getFilters(urlParams, history.state.isInitPagination || isInitPagination);
-  getFavorites(urlParams);
+  getFilters(urlParams, isInitPagination || history.state.isInitPagination);
+  // getFavorites(urlParams);
+  removeSearch();
 };
 
 export const pushState = (url, state = {}) => {
