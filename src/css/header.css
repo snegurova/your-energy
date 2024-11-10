@@ -22,7 +22,7 @@
   transition: fill 0.3s ease;
 }
 
-.router-link:hover .icon-logo {
+.icon-logo:hover {
   fill: var(--secondary-white);
 }
 
