@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createCard } from './render-functions'
-import { removeFromFavorites } from './favorites';
+import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js'
 
 const favoritesData = localStorage.getItem('favorites');
 const favoritesHTML = document.querySelector('.favorites')
@@ -8,8 +8,8 @@ const favoritesHTML = document.querySelector('.favorites')
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
 
 export const remove = async (event) => {
-  const dataId = event.target.dataset.id;
-  removeFromFavorites(dataId)
+  const dataId = event.currentTarget.dataset.id;
+  handleRemoveFromFavorites(dataId)
   const arrEl = event.target.closest('.exercises-card');
   arrEl.remove()
 };
@@ -21,13 +21,12 @@ const displayData = async (objects) => {
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
 }
 
-
 export const getFavorites = async (params) => {
   const page = params.page;
-  const elemPerPage = 6; 
+  const elemPerPage = 6;
+  const objects = JSON.parse(favoritesData);
 
-  if (favoritesData) {
-    const objects = JSON.parse(favoritesData);
+  if (objects.length > 0) {
     const sorted = objects.toSorted();
 
     if (page !== undefined) {
@@ -43,7 +42,7 @@ export const getFavorites = async (params) => {
       }
     }
 
-    const requests = sorted.map(item => axios.get(`/exercises/${item}`).then(response => response.data));
+    const requests = sorted.map(item => axios.get(`/exercises/${item['_id']}`).then(response => response.data));
     const exercisesData = await Promise.all(requests)
     const cards = exercisesData.map(createCard).join('');
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
@@ -54,7 +53,7 @@ export const getFavorites = async (params) => {
     </p>`
   }
 
-  const buttons = document.querySelectorAll('.remove-from-favorites');
+  const buttons = document.querySelectorAll('.exercises-delete-btn');
 
   buttons.forEach(button => {
     button.addEventListener('click', remove);

@@ -14,7 +14,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .quote-container {
     max-width: 444px;
     margin: 0;
@@ -213,7 +213,7 @@
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .quote-list {
     flex-direction: column;
   }

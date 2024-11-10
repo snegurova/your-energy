@@ -44,6 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams, true);
     return;
+  } else if (pathname === `${basePath}/favorites`) {
+    return;
   }
 
   handleLocation(true);

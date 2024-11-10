@@ -95,7 +95,7 @@ span.category-card-title {
 }
 
 /* Styles for Desktop devices */
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   ul.category-list {
     grid-template-columns: repeat(3, 1fr);
   }
