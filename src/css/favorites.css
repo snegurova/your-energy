@@ -36,8 +36,13 @@
     scrollbar-color: var(--black) var(--black);
   }
 
-  .quote-exercises-container {
+  .quote-exercises-container:not(.favorites) {
     flex-direction: row-reverse;
+    align-items: flex-start;
+  }
+
+  .quote-exercises-container.favorites {
+    flex-direction: row;
     align-items: flex-start;
   }
 
