@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { hideLoader, showLoader } from '../loader';
 
 /**
  * Service class to interact with exercises API.
@@ -54,9 +55,12 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
+      showLoader();
       const { data } = await this.#axios.get(this.#basePath, { params });
+      hideLoader();
       return data;
     } catch (error) {
+      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
@@ -68,9 +72,12 @@ export default class ExercisesService {
 
   async getExercisesById(id) {
     try {
+      showLoader();
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
+      hideLoader();
       return data;
     } catch (error) {
+      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
@@ -82,11 +89,13 @@ export default class ExercisesService {
 
   async addExerciseRatingById(id, body) {
     try {
+      showLoader();
       this.#validateBodyForRating(body);
       const { data } = await this.#axios.patch(
         `${this.#basePath}/${id}/rating`,
         body
       );
+      hideLoader();
       iziToast.success({
         title: 'Success',
         message: 'Rating added successfully',
@@ -95,6 +104,7 @@ export default class ExercisesService {
       });
       return data;
     } catch (error) {
+      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
@@ -108,14 +118,17 @@ export default class ExercisesService {
     if (!value || value.trim() === '') {
       throw new Error('Search value cannot be an empty string.');
     }
-
+    
     try {
+      showLoader();
       const { data } = await this.#axios.get(
         `${this.#basePath}?${this.#filter}=${this.#name}&keyword=${value}`
       );
       // console.log('ExercisesService search data:', data);
+      hideLoader();
       return data;
     } catch (error) {
+      hideLoader();
       throw error;
     }
   }
