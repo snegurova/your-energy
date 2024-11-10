@@ -8,10 +8,17 @@
 
 .main-exercises-nav {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  align-items: flex-start;
   flex-direction: column;
-  margin-bottom: 32px;
+  gap: 20px;
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .main-exercises-nav {
+    gap: 32px;
+    margin-bottom: 32px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -20,5 +27,6 @@
   }
   .main-exercises-nav {
     flex-direction: row;
+    justify-content: space-between;
   }
 }
