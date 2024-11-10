@@ -60,6 +60,7 @@ function handleCloseRateModal() {
   }
 
   refs.rateModalEl.reset();
+  document.body.style.overflow = 'auto';
 }
 
 function handleBackdropClick(event) {

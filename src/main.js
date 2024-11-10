@@ -4,7 +4,7 @@ import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
 import { getPageLimitOption } from './js/services/limit';
 import { handlePageReloader } from './js/categories/reloader';
-import './js/pagination';
+import { appendSearch, removeSearch } from './js/search/search';
 
 import './api-example';
 import './js/header/burger-menu';
@@ -12,6 +12,7 @@ import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
 import './js/modal/rateModal';
+import './js/scrollToTop';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
@@ -20,12 +21,19 @@ export const SEARCH_PARAMS = {
   PAGE: 'page',
   LIMIT: 'limit',
   NAME: 'name',
+  KEYWORD: 'keyword',
 };
 
 export const FILTERS = {
   MUSCLES: 'Muscles',
   BODY_PARTS: 'Body parts',
   EQUIPMENT: 'Equipment',
+};
+
+export const FILTERS_MAPPER = {
+  [FILTERS.MUSCLES]: 'muscles',
+  [FILTERS.BODY_PARTS]: 'bodypart',
+  [FILTERS.EQUIPMENT]: 'equipment',
 };
 
 export const defaultParams = new URLSearchParams([
@@ -39,7 +47,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams, true);
     return;
-  } else if (pathname === `${basePath}/favorites`) {
+  } else if (pathname.includes('favorites')) {
+    getFavorites();
     return;
   }
 
@@ -55,7 +64,10 @@ export const getUrl = (event) => {
 
 export const setParams = (event, url) => {
   const dataset = event.currentTarget.dataset;
-  const searchKeys = Object.values(SEARCH_PARAMS);
+  const searchKeys = [
+    ...Object.values(SEARCH_PARAMS),
+    ...Object.values(FILTERS_MAPPER),
+  ];
   Object.keys(dataset).forEach((key) => {
     if (searchKeys.includes(key)) {
       url.searchParams.set(key, dataset[key]);
@@ -64,15 +76,19 @@ export const setParams = (event, url) => {
 };
 
 export const handleLocation = async (isInitPagination) => {
-  const { pathname, search } = window.location;
+  const { search } = window.location;
   const urlParams = new URLSearchParams(search);
 
-  if (urlParams.has('name')) {
-    getExercises(urlParams, history.state.isInitPagination || isInitPagination);
+  if (!urlParams.has(SEARCH_PARAMS.FILTER)) {
+    const searchEl = document.querySelector('.search-exercises');
+    if (!searchEl) {
+      appendSearch(urlParams);
+    }
+    getExercises(urlParams, isInitPagination || history.state.isInitPagination);
     return;
   }
-  getFilters(urlParams, history.state.isInitPagination || isInitPagination);
-  getFavorites(urlParams);
+  getFilters(urlParams, isInitPagination || history.state.isInitPagination);
+  removeSearch();
 };
 
 export const pushState = (url, state = {}) => {

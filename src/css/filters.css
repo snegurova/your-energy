@@ -1,4 +1,37 @@
+.main-filters-container {
+  display: flex;
+  align-items: center;
+}
+
+.search-container {
+  position: relative;
+  margin-right: 30px;
+}
+
+.search-exercises {
+  display: block;
+  padding: 12px 14px;
+  padding-right: 30px;
+
+  border-radius: 30px;
+  min-width: 208px;
+  border: 1px solid #242424;
+  background-color: transparent;
+
+  font-family: 'DM Sans';
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  outline: none;
+}
+
+.search-exercises::placeholder {
+  color: #242424;
+}
+
 .main-exercises-links {
+  padding-bottom: 10px;
   display: flex;
   gap: 20px;
 }
@@ -25,4 +58,11 @@
   height: 4px;
   border-radius: 2px;
   background-color: var(--black);
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 14px;
 }

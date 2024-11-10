@@ -79,7 +79,7 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
-
+  width: 100%;
   max-width: 335px;
 
   margin-top: 20px;
@@ -111,7 +111,7 @@
 
 .subscribe-form button {
   border-radius: 30px;
-  padding: 12px 150px;
+  padding: 12px 24px;
 
   max-height: 42px;
   border: none;
@@ -336,5 +336,44 @@
 
   .copyright-container {
     gap: 498px;
+  }
+}
+
+.scroll-to-top {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: #242424;
+  border: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(135deg);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-to-top-icon {
+  fill: #f4f4f4;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.scroll-to-top:hover .scroll-to-top-icon,
+.scroll-to-top:focus .scroll-to-top-icon {
+  transform: scale(1.1);
+}
+
+@media screen and (min-width: 768px) {
+  .scroll-to-top {
+    height: 100px;
+    width: 100px;
+  }
+  .scroll-to-top-icon {
+    width: 24px;
+    height: 24px;
   }
 }
