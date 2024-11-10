@@ -6,7 +6,6 @@ export const createCard = ({ filter, name, imgURL }) => {
       data-page="1"
       data-limit="12"
       data-name="${name}"
-      data-category="${getCategoryName(filter)}"
     >
       <div class="category-card-description">
         <span class="category-card-title">${name}</span>
@@ -17,16 +16,3 @@ export const createCard = ({ filter, name, imgURL }) => {
   </li>
 `;
 };
-
-function getCategoryName(category) {
-  switch (category.toLowerCase()) {
-    case 'body parts':
-      return 'bodypart';
-    case 'muscles':
-      return 'muscles';
-    case 'equipment':
-      return 'equipment';
-    default:
-      return 'unknown';
-  }
-}

@@ -1,6 +1,6 @@
 import api from '../api';
 import { renderCards } from '../categories/categories-api';
-import { handleClickFilter } from '../../main';
+import { handleClick } from '../../main';
 
 const cardsContainer = document.querySelector('.cards-container');
 const filterLinks = document.querySelectorAll('.filter-link');
@@ -8,7 +8,7 @@ const filterLinks = document.querySelectorAll('.filter-link');
 const ACTIVE_CLASS = 'active';
 
 const handleFilterClick = (event) => {
-  handleClickFilter(event);
+  handleClick(event);
   filterLinks.forEach((link) => {
     if (link.classList.contains(ACTIVE_CLASS)) {
       link.classList.toggle(ACTIVE_CLASS);

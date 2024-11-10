@@ -19,9 +19,6 @@ export const SEARCH_PARAMS = {
   LIMIT: 'limit',
   NAME: 'name',
   KEYWORD: 'keyword',
-  BODY_PART: 'bodypart',
-  MUSCLES: 'muscles',
-  EQUIPMENT: 'equipment',
 };
 
 export const FILTERS = {
@@ -45,18 +42,18 @@ document.addEventListener('DOMContentLoaded', () => {
   handleLocation();
 });
 
-export const getUrl = (stringUrl) => {
-  const url = new URL(stringUrl);
-
-  url.pathname = `${basePath}${url.pathname}`;
+export const getUrl = (event) => {
+  event.preventDefault();
+  const url = new URL(event.currentTarget.href);
   return url;
 };
 
-export const setParams = (queries = {}, url) => {
+export const setParams = (event, url) => {
+  const dataset = event.currentTarget.dataset;
   const searchKeys = Object.values(SEARCH_PARAMS);
-  Object.keys(queries).forEach((key) => {
+  Object.keys(dataset).forEach((key) => {
     if (searchKeys.includes(key)) {
-      url.searchParams.set(key, queries[key]);
+      url.searchParams.set(key, dataset[key]);
     }
   });
 };
@@ -64,7 +61,7 @@ export const setParams = (queries = {}, url) => {
 export const handleLocation = async () => {
   const { search } = window.location;
   const urlParams = new URLSearchParams(search);
-  if (!urlParams.has('filter')) {
+  if (urlParams.has('name')) {
     const searchEl = document.querySelector('.search-exercises');
     if (!searchEl) appendSearch(urlParams);
     getExercises(urlParams);
@@ -80,24 +77,9 @@ export const pushState = (url) => {
   handleLocation();
 };
 
-export const handleClickFilter = (event) => {
-  event.preventDefault();
-  const url = getUrl(event.currentTarget.href);
-  setParams(event.currentTarget.dataset, url);
-  pushState(url);
-};
-
-export const handleClickCategory = (event) => {
-  event.preventDefault();
-  const url = getUrl(window.location.origin);
-  setParams(
-    {
-      [event.currentTarget.dataset.category]: event.currentTarget.dataset.name,
-      [SEARCH_PARAMS.PAGE]: 1,
-      [SEARCH_PARAMS.LIMIT]: 12,
-    },
-    url
-  );
+export const handleClick = (event) => {
+  const url = getUrl(event);
+  setParams(event, url);
   pushState(url);
 };
 
@@ -128,8 +110,8 @@ function debounce(f, t) {
 
 function onSearch(e) {
   const searchQuery = e.target.value.trim();
-  const url = getUrl(window.location.href);
-  setParams({ keyword: searchQuery }, url);
+  const url = new URL(window.location.href);
+  url.searchParams.set('keyword', searchQuery);
   pushState(url);
 }
 
