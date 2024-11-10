@@ -11,7 +11,7 @@
 
 .remove-from-favorites:hover,
 .remove-from-favorites:focus {
-  color: #eea10c;
+  color: var(--gold);
 }
 
 .favorites-icon {
@@ -54,15 +54,10 @@
   width: 318px;
   text-align: center;
   font-size: 14px;
-  color: #242424;
+  color: var(--black);
 }
 
 @media screen and (min-width: 768px) {
-  .quote-exercises-container {
-    flex-direction: column;
-    align-items: center;
-  }
-
   .card-set {
     row-gap: 32px;
   }
@@ -92,20 +87,11 @@
   .favorites {
     max-height: 485px;
     overflow-y: scroll;
-    scrollbar-color: #242424 #242424;
+    scrollbar-color: var(--black) var(--black);
   }
 
   .favorites-section {
     margin-right: 16px;
-  }
-
-  .quote-exercises-container:not(.favorites) {
-    flex-direction: row-reverse;
-    align-items: flex-start;
-  }
-
-  .quote-exercises-container.favorites {
-    flex-direction: row;
   }
 }
 

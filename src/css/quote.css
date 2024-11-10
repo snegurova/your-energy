@@ -78,7 +78,7 @@
   left: 20px;
   width: 32px;
   height: 32px;
-  background-color: rgba(244, 244, 244, 0.2);
+  background-color: var(--star-grey);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -146,7 +146,7 @@
   font-weight: 400;
   font-size: 14px;
   line-height: 129%;
-  color: rgba(36, 36, 36, 0.6);
+  color: var(--text-grey-secondary);
   margin-bottom: 16px;
 }
 .news-text.q-favorites {

@@ -9,6 +9,7 @@ export function handleSubscription() {
   const subscribeForm = refs.subscribeForm;
   const emailInput = refs.emailInput;
   const submitButton = refs.submitButton;
+
   if (!subscribeForm) {
     return;
   }
@@ -49,4 +50,6 @@ export function handleSubscription() {
   });
 }
 
-handleSubscription();
+document.addEventListener('DOMContentLoaded', () => {
+  handleSubscription();
+});

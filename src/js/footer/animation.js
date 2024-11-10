@@ -15,3 +15,24 @@ export function setupScrollToTop() {
     });
   });
 }
+
+export function setupLogoAnimation() {
+  const logo = document.getElementById('logo');
+
+  if (!logo) {
+    return;
+  }
+
+  logo.addEventListener('click', () => {
+    logo.style.transition = 'transform 0.5s ease-in-out';
+    logo.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+      logo.style.transform = 'scale(1)';
+    }, 500);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupScrollToTop();
+  setupLogoAnimation();
+});

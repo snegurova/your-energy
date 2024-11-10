@@ -1,22 +1,26 @@
 import { refs } from '../refs';
-import renderExerciseById from './render-exercise';
+import renderExerciseById from './renderExercise';
 
 refs.startModal.addEventListener('click', handleOpenModal);
 
-async function handleOpenModal(event) {
+function handleOpenModal(event) {
   if (!event.target.closest('.start-btn')) return;
   const exerciseId = event.target.closest('.start-btn').getAttribute('data-id');
 
+  openModal(exerciseId);
+}
+
+export function openModal(exerciseId) {
   refs.backdrop.classList.remove('is-hidden');
   refs.backdrop.addEventListener('click', handleBackdropClick);
   refs.closeModalBtn.addEventListener('click', handleCloseModal);
   window.addEventListener('keydown', handleEscKey);
 
   document.body.style.overflow = 'hidden';
-  await renderExerciseById(exerciseId);
+  renderExerciseById(exerciseId);
 }
 
-function handleCloseModal() {
+export function handleCloseModal() {
   refs.backdrop.classList.toggle('is-hidden');
   refs.backdrop.removeEventListener('click', handleBackdropClick);
   refs.closeModalBtn.removeEventListener('click', handleCloseModal);
