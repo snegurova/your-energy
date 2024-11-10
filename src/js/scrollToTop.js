@@ -1,15 +1,14 @@
 const anchor = document.querySelector('.scroll-to-top');
-console.log(anchor);
+
 document.addEventListener('scroll', function () {
   if (window.scrollY === 0) {
-    anchor.style.transform = 'rotate(0deg)';
+    anchor.style.transform = 'rotate(135deg)';
   } else {
-    anchor.style.transform = 'rotate(180deg)';
+    anchor.style.transform = 'rotate(-45deg)';
   }
 });
 
 const handleScrollBtn = () => {
-  console.log('scroll');
   if (window.scrollY === 0) {
     window.scrollTo({
       top: document.body.scrollHeight,

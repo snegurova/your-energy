@@ -352,12 +352,19 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  transform: rotate(135deg);
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .scroll-to-top-icon {
   fill: #f4f4f4;
-  width: 13px;
-  height: 13px;
+  width: 10px;
+  height: 10px;
+  transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.scroll-to-top:hover .scroll-to-top-icon,
+.scroll-to-top:focus .scroll-to-top-icon {
+  transform: scale(1.1);
 }
 
 @media screen and (min-width: 768px) {
@@ -366,7 +373,7 @@
     width: 100px;
   }
   .scroll-to-top-icon {
-    width: 33px;
-    height: 33px;
+    width: 24px;
+    height: 24px;
   }
 }

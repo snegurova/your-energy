@@ -10,6 +10,7 @@ import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
 import './js/modal/rateModal';
+import './js/scrollToTop';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
