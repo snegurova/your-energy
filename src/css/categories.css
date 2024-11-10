@@ -15,7 +15,6 @@ ul.category-list {
 .category-card {
   background-color: rgba(17, 17, 17, 0.5);
   max-height: 225px;
-  width: 335px;
   position: relative;
   overflow: hidden;
   border-radius: 12px;
@@ -64,7 +63,7 @@ span.category-card-title {
   color: rgba(244, 244, 244, 0.4);
 }
 
-@media only screen and (max-width: 375px) {
+@media only screen and (min-width: 375px) {
   .categories-container {
     margin: 0 auto;
   }
