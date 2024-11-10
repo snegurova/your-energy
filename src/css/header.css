@@ -2,6 +2,12 @@
   position: relative;
   line-height: 24px;
   font-size: 16px;
+  padding: 20px 0;
+}
+@media screen and (min-width: 768px) {
+  .header {
+    padding: 24px 0;
+  }
 }
 
 .header .container {
@@ -234,7 +240,7 @@
   }
 }
 
-@media only screen and (min-width: 1200px) {
+@media only screen and (min-width: 1440px) {
   .nav {
     display: block;
     height: 52px;
