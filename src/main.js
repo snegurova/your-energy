@@ -1,6 +1,6 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
-// import { getFavorites } from './js/favorites/favorites-api';
+import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
 import { appendSearch, removeSearch } from './js/search/search';
 
@@ -44,7 +44,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams, true);
     return;
-  } else if (pathname === `${basePath}/favorites`) {
+  } else if (pathname.includes('favorites')) {
+    getFavorites();
     return;
   }
 
@@ -84,7 +85,6 @@ export const handleLocation = async (isInitPagination) => {
     return;
   }
   getFilters(urlParams, isInitPagination || history.state.isInitPagination);
-  // getFavorites(urlParams);
   removeSearch();
 };
 
