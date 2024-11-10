@@ -1,7 +1,7 @@
 import { refs } from '../refs';
+import api from '../api';
 import spriteUrl from '../../images/sprite.svg';
 import {
-  getExerciseById,
   generateStarRating,
   isExerciseFavorite,
   handleAddToRemoveToggle,
@@ -11,7 +11,7 @@ export default async function renderExerciseById(exerciseId) {
   refs.modalEl.innerHTML = '';
 
   try {
-    const exercise = await getExerciseById(exerciseId);
+    const exercise = await api.exercises.getExercisesById(exerciseId);
     const {
       _id,
       bodyPart,
@@ -29,7 +29,9 @@ export default async function renderExerciseById(exerciseId) {
     const starRatingMarkup = generateStarRating(rating);
 
     const modalMarkup = `<div class="modal-info">
-      <img class="exercise-img" src="${gifUrl || 'Oops, there is no video for this exercise'}" alt="${name}" />
+      <img class="exercise-img" src="${
+        gifUrl || 'Oops, there is no video for this exercise'
+      }" alt="${name}" />
       <div class="modal-info-box">
         <h2 class="exercise-title">${name}</h2>
         <div class="exercise-rating">${rating.toFixed(
