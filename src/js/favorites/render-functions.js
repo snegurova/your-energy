@@ -1,3 +1,5 @@
+import spriteUrl from '../../images/sprite.svg';
+
 export const createCard = ({
    bodyPart,
    target,
@@ -6,26 +8,27 @@ export const createCard = ({
    name,
    time,
    _id
-}) => `
- <li class="exercises-card set-item">
+}) => `<li class="exercises-card" data-id="${_id}">
       <div class="exercises-top">
         <div class="exercises-top-group">
             <span class="exercises-equipment">${equipment}</span>
-        <button class="remove-from-favorites" type="button" data-id="${_id}">
-            <svg class="favorites-icon"><use href="./images/sprite.svg#icon-trash"></use></svg>
-        </button>
-        </div>
-        <button type="button" class="exercises-btn start-btn">
+            <button class="exercises-delete-btn" data-id="${_id}" type="button">
+            <svg>
+              <use href="${spriteUrl}#icon-trash"></use>
+            </svg>
+          </button>
+          </div>
+        <button type="button" class="exercises-btn start-btn" data-id="${_id}">
           Start
           <svg width="13" height="13">
-            <use href="./images/sprite.svg#icon-arrow"></use>
+            <use href="${spriteUrl}#icon-arrow"></use>
           </svg>
         </button>
       </div>
       <div class="exercises-content">
         <span class="exercises-icon">
           <svg width="14" height="16">
-            <use href="./images/sprite.svg#icon-man"></use>
+            <use href="${spriteUrl}#icon-man"></use>
           </svg>
         </span>
         <p class="exercises-name name">${name}</p>

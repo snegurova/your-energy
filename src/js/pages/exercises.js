@@ -7,7 +7,6 @@ const cardsContainer = document.querySelector('.cards-container');
 
 export const getExercises = async (params, isInitPagination) => {
   const exercises = await api.exercises.getExercises(params);
-  console.log(params.toString());
   const markup = renderExercises(exercises);
   cardsContainer.innerHTML = `<ul class="main-exercises">${markup}</ul>`;
   renderPagination(
