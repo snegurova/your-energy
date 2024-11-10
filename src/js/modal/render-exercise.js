@@ -33,7 +33,9 @@ export default async function renderExerciseById(exerciseId) {
       <img class="exercise-img" src="${gifUrl}" alt="${name}" />
       <div class="modal-info-box">
         <h2 class="exercise-title">${name}</h2>
-        <div class="exercise-rating">${rating}${starRatingMarkup}</div>
+        <div class="exercise-rating">${rating.toFixed(
+          1
+        )}${starRatingMarkup}</div>
         <ul class="exercise-set">
           <li class="exercise-set-item"><h3 class="item-title">Target</h3><p class="item-description">${target}</p></li>
           <li class="exercise-set-item"><h3 class="item-title">Body Part</h3><p class="item-description">${bodyPart}</p></li>
@@ -54,7 +56,7 @@ export default async function renderExerciseById(exerciseId) {
           <svg width="18" height="18"><use href="${spriteUrl}#icon-heart"></use></svg>`
         }
       </button>
-      <button type="button" class="modal-btn rate-btn open-exercise-rate-modal">Give a rating</button>
+      <button type="button" class="modal-btn rate-btn open-exercise-rate-modal" data-id="${_id}">Give a rating</button>
       </div>
       </div>
     </div>`;

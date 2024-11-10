@@ -1,13 +1,25 @@
-.rate-modal-title {
-  font-size: 1.5em;
-  margin-bottom: 1rem;
+.rate-stars-name {
+  color: rgba(244, 244, 244, 0.4);
+  line-height: 12px;
+  line-height: 1.5;
+  margin-bottom: 8px;
 }
 
+.rate-modal-selected-value {
+  margin-right: 2px;
+  color: #f4f4f4;
+  line-height: 12px;
+  line-height: 1.5;
+}
+
+.rate-modal-stars-wrapper {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
 .rate-modal-form {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   width: 100%;
 }
 
@@ -17,7 +29,7 @@
   justify-content: center;
   padding: 0;
   margin: 0;
-  gap: 0.5rem;
+  gap: 2px;
 }
 
 .rate-modal-radio {
@@ -28,19 +40,20 @@
   cursor: pointer;
   display: block;
   line-height: 1;
+  padding: 2px;
 }
 
 .rate-modal-stars:has(.rate-modal-radio:checked) .star-icon {
-  stroke: var(--gold);
+  stroke: transparent;
   fill: var(--gold);
 }
 .star-icon {
-  width: 30px;
-  height: 30px;
-  stroke: var(--star-grey);
+  display: block;
+  width: 20px;
+  height: 20px;
+  stroke: transparent;
   fill: var(--star-grey);
-  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    stroke 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: fill 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Style for checked stars */
@@ -48,7 +61,7 @@
   ~ .rate-modal-star-item
   .rate-modal-label
   .star-icon {
-  stroke: var(--star-grey);
+  stroke: transparent;
   fill: var(--star-grey);
 }
 
@@ -56,27 +69,33 @@
 .rate-modal-comment {
   display: block;
   width: 100%;
-}
-
-.rate-modal-email,
-.rate-modal-comment {
   padding: 12px 14px;
   border: 1px solid var(--white);
-  border-radius: 30px;
   color: var(--text-grey-primary);
   background-color: transparent;
   font-size: 14px;
   font-family: inherit;
 }
 
+.rate-modal-email {
+  border-radius: 30px;
+  margin-bottom: 10px;
+}
+
 .rate-modal-comment {
   resize: none;
+  border-radius: 15px;
+  margin-bottom: 20px;
 }
 
 .rate-backdrop .modal {
   margin: 0;
   max-width: none;
-  width: 90%;
+  width: 100%;
+  max-width: 335px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .rate-modal-submit-btn {
@@ -108,6 +127,12 @@
   .rate-modal-comment {
     font-size: 16px;
   }
+
+  .rate-backdrop .modal {
+    max-width: none;
+    width: 430px;
+    padding: 40px;
+  }
 }
 
 @media only screen and (min-width: 1200px) {
@@ -118,7 +143,7 @@
     border-radius: 30px;
   }
   .rate-backdrop .modal {
-    width: 800px;
+    width: 430px;
   }
 }
 

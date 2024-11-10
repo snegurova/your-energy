@@ -8,6 +8,7 @@
 .header .container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
 }
 
 .logo {
@@ -17,7 +18,12 @@
   transition: fill 0.3s ease;
 }
 
-.logo:hover .icon-logo {
+.icon-logo {
+  fill: var(--black);
+  transition: fill 0.3s ease;
+}
+
+.router-link:hover .icon-logo {
   fill: var(--secondary-white);
 }
 
@@ -134,8 +140,6 @@
   border: none;
   background: none;
   color: var(--black);
-
-  margin-left: 175px;
 }
 
 .burger-menu-content {
