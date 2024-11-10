@@ -112,6 +112,7 @@ function onSearch(e) {
   const searchQuery = e.target.value.trim();
   const url = new URL(window.location.href);
   url.searchParams.set('keyword', searchQuery);
+  url.searchParams.set('page', 1);
   pushState(url);
 }
 
