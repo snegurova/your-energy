@@ -2,6 +2,8 @@ import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
 import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
+import { getPageLimitOption } from './js/services/limit';
+import { handlePageReloader } from './js/categories/reloader';
 import './js/pagination';
 
 import './api-example';
@@ -29,7 +31,7 @@ export const FILTERS = {
 export const defaultParams = new URLSearchParams([
   [SEARCH_PARAMS.FILTER, FILTERS.MUSCLES],
   [SEARCH_PARAMS.PAGE, 1],
-  [SEARCH_PARAMS.LIMIT, 12],
+  [SEARCH_PARAMS.LIMIT, getPageLimitOption()],
 ]);
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -106,4 +108,5 @@ export const updateParameter = (key, value) => {
 };
 
 updateQuote();
+handlePageReloader();
 window.addEventListener('popstate', handleLocation);
