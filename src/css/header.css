@@ -6,8 +6,17 @@
 }
 @media screen and (min-width: 768px) {
   .header {
+    padding: 28px 0;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .header {
     padding: 24px 0;
   }
+}
+
+.index-link {
+  display: flex;
 }
 
 .header .container {
@@ -114,7 +123,6 @@
   border-color: var(--bgr-socials);
   background: rgba(36, 36, 36, 0.8);
 }
-
 .social-link:hover .icon {
   fill: var(--white);
 }
@@ -207,11 +215,6 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .header {
-    padding-top: 20px;
-    margin-bottom: 80px;
-  }
-
   .nav {
     display: none;
   }
