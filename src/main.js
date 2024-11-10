@@ -5,7 +5,7 @@ import { getFavorites } from './js/favorites/favorites-api';
 import './js/pagination';
 
 import './api-example';
-import './js/burger-menu';
+import './js/header/burger-menu';
 import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
