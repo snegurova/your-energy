@@ -57,6 +57,7 @@ span.category-card-title {
   font-weight: 400;
   line-height: 24px;
   text-align: center;
+  text-transform: capitalize;
 }
 
 .category-card-filter {
