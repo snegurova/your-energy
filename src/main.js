@@ -1,11 +1,11 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
-// import { getFavorites } from './js/favorites/favorites-api';
-
+import { getFavorites } from './js/favorites/favorites-api';
+import { updateQuote } from './js/quote/quote';
 import './js/pagination';
 
 import './api-example';
-// import './js/burger-menu';
+import './js/header/burger-menu';
 import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
@@ -68,7 +68,7 @@ export const handleLocation = async (isInitPagination) => {
     return;
   }
   getFilters(urlParams, history.state.isInitPagination || isInitPagination);
-  // getFavorites(urlParams);
+  getFavorites(urlParams);
 };
 
 export const pushState = (url, state = {}) => {
@@ -103,4 +103,5 @@ export const updateParameter = (key, value) => {
   return url;
 };
 
+updateQuote();
 window.addEventListener('popstate', handleLocation);
