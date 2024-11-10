@@ -11,6 +11,6 @@
   --inactive-title: rgba(36, 36, 36, 0.4);
   --text-grey-primary: rgba(244, 244, 244, 0.6);
   --text-grey-secondary: rgba(36, 36, 36, 0.6);
-  --text-grey-tertiary: rgba(244, 244, 244, 0.4);
+  --text-grey-tertiary: rgb(134 149 157);
   --inactive-page: rgba(212, 212, 212, 1);
 }
