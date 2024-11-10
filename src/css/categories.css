@@ -59,7 +59,7 @@ ul.category-list {
 
 span.category-card-title {
   font-family: DM Sans;
-  color: rgba(244, 244, 244, 1);
+  color: var(--white);
   font-size: 24px;
   font-weight: 400;
   line-height: 24px;
@@ -67,7 +67,7 @@ span.category-card-title {
 }
 
 .category-card-filter {
-  color: rgba(244, 244, 244, 0.4);
+  color: var(--text-grey-tertiary);
 }
 
 /* Styles for Tablet devices */

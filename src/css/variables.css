@@ -1,0 +1,16 @@
+:root {
+  --black: #242424;
+  --white: #f4f4f4;
+  --secondary-white: #c6cdd1;
+  --gold: #eea10c;
+  --star-grey: rgba(244, 244, 244, 0.2);
+  --inactive-socials: rgba(244, 244, 244, 0.1);
+  --bgr-socials: rgba(36, 36, 36, 0.1);
+  --bgr-backdrop: rgba(4, 4, 4, 0.4);
+  --inactive-arrow: rgba(36, 36, 36, 0.5);
+  --inactive-title: rgba(36, 36, 36, 0.4);
+  --text-grey-primary: rgba(244, 244, 244, 0.6);
+  --text-grey-secondary: rgba(36, 36, 36, 0.6);
+  --text-grey-tertiary: rgba(244, 244, 244, 0.4);
+  --inactive-page: rgba(212, 212, 212, 1);
+}
