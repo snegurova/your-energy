@@ -1,6 +1,6 @@
 import axios from 'axios';
-import { createCard } from './render-functions'
 import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js'
+import { createExerciseCard } from '../renderExercises.js'
 
 const favoritesData = localStorage.getItem('favorites');
 const favoritesHTML = document.querySelector('.favorites')
@@ -17,7 +17,7 @@ export const remove = async (event) => {
 const displayData = async (objects) => {
   const requests = objects.map(item => axios.get(`/exercises/${item}`).then(response => response.data));
     const exercisesData = await Promise.all(requests)
-    const cards = exercisesData.map(createCard).join('');
+    const cards = exercisesData.map((card) => createExerciseCard(card, true)).join('');
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
 }
 
@@ -44,7 +44,7 @@ export const getFavorites = async (params) => {
 
     const requests = sorted.map(item => axios.get(`/exercises/${item['_id']}`).then(response => response.data));
     const exercisesData = await Promise.all(requests)
-    const cards = exercisesData.map(createCard).join('');
+    const cards = exercisesData.map((card) => createExerciseCard(card, true)).join('');
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
 
   } else {

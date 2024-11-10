@@ -38,7 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     getFilters(defaultParams, true);
     return;
   } else if (pathname === `${basePath}/favorites`) {
-    getFavorites(defaultParams)
     return;
   }
 
