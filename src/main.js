@@ -1,11 +1,11 @@
 import { getFilters } from './js/pages/home';
 import { getExercises } from './js/pages/exercises';
-import { getFavorites } from './js/favorites/favorites-api';
+// import { getFavorites } from './js/favorites/favorites-api';
 
 import './js/pagination';
 
 import './api-example';
-import './js/burger-menu';
+// import './js/burger-menu';
 import './js/modal/modal';
 import './js/footer/subscription';
 import './js/footer/animation';
@@ -35,10 +35,11 @@ export const defaultParams = new URLSearchParams([
 document.addEventListener('DOMContentLoaded', () => {
   const { pathname, search } = window.location;
   if (pathname === `${basePath}/` && !search) {
-    getFilters(defaultParams);
+    getFilters(defaultParams, true);
     return;
   }
-  handleLocation();
+
+  handleLocation(true);
 });
 
 export const getUrl = (event) => {
@@ -58,26 +59,27 @@ export const setParams = (event, url) => {
   });
 };
 
-export const handleLocation = async () => {
+export const handleLocation = async (isInitPagination) => {
   const { pathname, search } = window.location;
   const urlParams = new URLSearchParams(search);
+
   if (urlParams.has('name')) {
-    getExercises(urlParams);
+    getExercises(urlParams, history.state.isInitPagination || isInitPagination);
     return;
   }
-  getFilters(urlParams);
-  getFavorites(urlParams);
+  getFilters(urlParams, history.state.isInitPagination || isInitPagination);
+  // getFavorites(urlParams);
 };
 
-export const pushState = (url) => {
-  window.history.pushState({}, '', url);
+export const pushState = (url, state = {}) => {
+  window.history.pushState(state, '', url);
   handleLocation();
 };
 
-export const handleClick = (event) => {
+export const handleClick = (event, state = {}) => {
   const url = getUrl(event);
   setParams(event, url);
-  pushState(url);
+  pushState(url, state);
 };
 
 export const addListener = (selector, callback) => {
@@ -92,6 +94,13 @@ export const addListener = (selector, callback) => {
     link.addEventListener('click', callback);
   });
   return elements;
+};
+
+export const updateParameter = (key, value) => {
+  const { href, search } = window.location;
+  const url = new URL(href);
+  url.searchParams.set(key, value);
+  return url;
 };
 
 window.addEventListener('popstate', handleLocation);

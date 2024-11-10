@@ -61,7 +61,7 @@ export const createExerciseCard = (
   );
 };
 
-export const renderExercises = async (exercises) => {
+export const renderExercises = (exercises) => {
   return exercises.results.reduce((acc, exercise) => {
     return acc + createExerciseCard(exercise);
   }, '');

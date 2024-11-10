@@ -51,7 +51,7 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
-      const { data } = await this.#axios.get(this.#basePath, params);
+      const { data } = await this.#axios.get(this.#basePath, { params });
       return data;
     } catch (error) {
       throw error;
