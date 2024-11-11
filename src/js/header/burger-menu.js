@@ -19,13 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   function setActiveLink() {
     const currentPath = window.location.pathname;
     navLinks.forEach((link) => {
-      if (
-        link.getAttribute('href') === currentPath ||
-        (currentPath === '/' && link.getAttribute('href') === '/')
-      ) {
-        link.classList.add('active');
-      } else {
-        link.classList.remove('active');
+      const linkTarget = link.getAttribute('href');
+      if (linkTarget === './') {
+        currentPath === '/'
+          ? link.classList.add('active')
+          : link.classList.remove('active');
+      }
+      if (linkTarget === './favorites') {
+        currentPath.includes('favorites')
+          ? link.classList.add('active')
+          : link.classList.remove('active');
+        return;
       }
     });
   }
