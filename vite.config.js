@@ -9,7 +9,8 @@ export default defineConfig(({ command }) => {
     define: {
       [command === 'serve' ? 'global' : '_global']: {},
     },
-    root: 'src',
+    root: './src',
+    publicDir: './src/public',
     build: {
       sourcemap: true,
       rollupOptions: {
