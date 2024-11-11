@@ -5,6 +5,10 @@ import { updateQuote } from './js/quote/quote';
 import { getCategoriesLimit } from './js/services/limit';
 import { handlePageReloader } from './js/reloader/reloader';
 import { appendSearch, removeSearch } from './js/search/search';
+import {
+  appendBreadcrumbs,
+  removeBreadcrumbs,
+} from './js/breadcrumbs/breadcrumbs';
 
 import './api-example';
 import './js/header/burger-menu';
@@ -84,6 +88,11 @@ export const handleLocation = async (isInitPagination) => {
 
   if (!urlParams.has(SEARCH_PARAMS.FILTER)) {
     const searchEl = document.querySelector('.search-exercises');
+    const breadcrumbEl = document.querySelector('.main-breadcrumb-title');
+
+    if (!breadcrumbEl) {
+      appendBreadcrumbs(urlParams.get('name'));
+    }
     if (!searchEl) {
       appendSearch(urlParams);
     }
@@ -92,6 +101,7 @@ export const handleLocation = async (isInitPagination) => {
   }
   getFilters(urlParams, isInitPagination || history.state.isInitPagination);
   removeSearch();
+  removeBreadcrumbs();
 };
 
 export const pushState = (url, state = {}) => {
