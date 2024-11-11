@@ -57,16 +57,16 @@ export default class ExercisesService {
     try {
       showLoader();
       const { data } = await this.#axios.get(this.#basePath, { params });
-      hideLoader();
       return data;
     } catch (error) {
-      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
@@ -74,16 +74,16 @@ export default class ExercisesService {
     try {
       showLoader();
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
-      hideLoader();
       return data;
     } catch (error) {
-      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
@@ -95,7 +95,6 @@ export default class ExercisesService {
         `${this.#basePath}/${id}/rating`,
         body
       );
-      hideLoader();
       iziToast.success({
         title: 'Success',
         message: 'Rating added successfully',
@@ -104,13 +103,14 @@ export default class ExercisesService {
       });
       return data;
     } catch (error) {
-      hideLoader();
       iziToast.error({
         title: 'Error',
         message: error?.response?.data?.message ?? error.message,
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
@@ -118,18 +118,18 @@ export default class ExercisesService {
     if (!value || value.trim() === '') {
       throw new Error('Search value cannot be an empty string.');
     }
-    
+
     try {
       showLoader();
       const { data } = await this.#axios.get(
         `${this.#basePath}?${this.#filter}=${this.#name}&keyword=${value}`
       );
       // console.log('ExercisesService search data:', data);
-      hideLoader();
       return data;
     } catch (error) {
-      hideLoader();
       throw error;
+    } finally {
+      hideLoader();
     }
   }
 

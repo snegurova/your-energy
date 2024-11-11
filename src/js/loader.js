@@ -1,4 +1,4 @@
-const loader = document.querySelector('.loader');
+const loader = document.querySelector('.spinner');
 
 export function showLoader() {
     loader.classList.remove('hide');
