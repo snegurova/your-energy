@@ -2,7 +2,6 @@ import api from '../api';
 import { renderCards } from '../categories/categories-api';
 import { handleClick, SEARCH_PARAMS } from '../../main';
 import { renderPagination, paginationCallback } from '../pagination';
-
 const cardsContainer = document.querySelector('.cards-container');
 const filterLinks = document.querySelectorAll('.filter-link');
 
