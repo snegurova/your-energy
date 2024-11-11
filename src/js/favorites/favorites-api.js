@@ -54,9 +54,7 @@ export const getFavorites = async (params) => {
       .map((card) => createExerciseCard(card, true))
       .join('');
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
-    console.log('upd content', cards);
   } else {
-    console.log('ob not exists');
     favoritesHTML.innerHTML = `<p class="not-exist">It appears that you haven't added any exercises to your favorites yet.
     To get started, you can add exercises that you like to your favorites for easier access in the future.
     </p>`;
