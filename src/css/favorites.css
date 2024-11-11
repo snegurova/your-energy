@@ -1,6 +1,9 @@
 .fav .quote-exercises-container {
   margin-top: 20px;
 }
+.favorites {
+  flex-grow: 1;
+}
 
 .fav .exercises-container {
   position: relative;
