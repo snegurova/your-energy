@@ -121,7 +121,7 @@
 
 .social-link:hover {
   border-color: var(--bgr-socials);
-  background: rgba(36, 36, 36, 0.8);
+  background: var(--inactive-socials-icons);
 }
 .social-link:hover .icon {
   fill: var(--white);

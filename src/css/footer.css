@@ -1,5 +1,5 @@
 .footer {
-  background-color: #1c1c1c;
+  background-color:var(--black);
   color: #fff;
   padding: 45px 0px 10px 0px;
 }
@@ -26,6 +26,7 @@
 .footer-logo:hover {
   fill: var(--secondary-white);
 }
+
 .social-links {
   display: flex;
   flex-direction: row;
@@ -44,18 +45,17 @@
 }
 
 .social-item {
-  fill: var(--white);
+  fill: var(--secondary-white);
   width: 28px;
   height: 28px;
 }
 
 .social-links a:hover {
   background: var(--white);
-  fill: var(--black);
 }
 
 .social-links a:hover .social-item {
-  fill: var(--black);
+  fill: var(--inactive-socials-icons)
 }
 
 .footer-text {
@@ -250,6 +250,7 @@
   .footer {
     padding: 64px 0px 16px 0px;
   }
+  
   .logo-text {
     display: flex;
   }
@@ -343,7 +344,7 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  background-color: #242424;
+  background-color:var(--black);
   border: none;
   position: fixed;
   bottom: 20px;
