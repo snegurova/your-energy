@@ -18,7 +18,6 @@ const initAPI = ({ host }) => {
   };
 
   const instance = axios.create(config);
-  // instance.get('https://your-energy.b.goit.study/api/filters', { params });
 
   return {
     axiosInstance: instance,
