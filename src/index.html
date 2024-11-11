@@ -18,7 +18,9 @@
       <section class="home-container">
         <div class="container">
           <div class="main-exercises-nav">
-            <h1 class="main-exercises-title">Exercises</h1>
+            <div class="main-exercises-breadcrumbs">
+              <h2 class="main-exercises-title">Exercises</h2>
+            </div>
             <div class="main-filters-container">
               <div class="main-exercises-links">
                 <a
@@ -48,14 +50,13 @@
               </div>
             </div>
           </div>
-            <div class="quote-exercises-container">
-              <load src="./partials/categories.html" />
-              <load
-                src="./partials/quote.html"
-                img-name="img-1"
-                page="q-home"
-              />
-            </div>
+          <div class="quote-exercises-container">
+            <load src="./partials/categories.html" />
+            <load src="./partials/quote.html" img-name="img-1" page="q-home" />
+            <load src="./partials/loader.html" />
+          </div>
+
+          <div class="content"><load src="./partials/pagination.html" /></div>
         </div>
       </section>
     </main>
@@ -64,7 +65,6 @@
 
     <load src="./partials/modal.html" />
     <load src="./partials/rate-modal.html" />
-    <load src="./partials/loader.html" />
     <script type="module" src="./main.js"></script>
   </body>
 </html>

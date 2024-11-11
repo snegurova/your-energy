@@ -5,8 +5,8 @@
   right: 0;
   bottom: 0;
   z-index: 9999;
- background: linear-gradient(113.5deg, rgb(234, 234, 234) 22.3%, rgb(201, 234, 211) 56.6%, rgb(255, 180, 189) 90.9%);
-  opacity: 0.7;
+  background: var(--white);
+  opacity: 0.95;
   visibility: visible;
   transition: opacity 0.5s ease, visibility 0.5s ease;
 }
@@ -18,8 +18,8 @@
 
 .loader {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 45%;
+  left: 45%;
   z-index: 9999;
   opacity: 1;
   visibility: visible;
@@ -56,5 +56,13 @@
 @keyframes l23 {
   100% {
     transform: rotate(1turn);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .loader {
+    top: 50%;
+    left: 50%;
+    width: 85px;
   }
 }

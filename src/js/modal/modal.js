@@ -1,6 +1,6 @@
 import { refs } from '../refs';
 import renderExerciseById from './renderExercise';
-
+import { getFavorites } from '../favorites/favorites-api';
 refs.startModal.addEventListener('click', handleOpenModal);
 
 function handleOpenModal(event) {
@@ -16,7 +16,7 @@ export function openModal(exerciseId) {
   refs.closeModalBtn.addEventListener('click', handleCloseModal);
   window.addEventListener('keydown', handleEscKey);
 
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflowY = 'hidden';
   renderExerciseById(exerciseId);
 }
 
@@ -27,7 +27,11 @@ export function handleCloseModal() {
   window.removeEventListener('keydown', handleEscKey);
 
   refs.modalEl.innerHTML = '';
-  document.body.style.overflow = 'auto';
+  document.body.style.overflowY = 'auto';
+  const favorites = document.querySelector('.favorites');
+  if (favorites) {
+    getFavorites();
+  }
 }
 
 function handleBackdropClick(event) {

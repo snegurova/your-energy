@@ -1,8 +1,8 @@
 import axios from 'axios';
 import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js';
 import { createExerciseCard } from '../renderExercises.js';
+import { showLoader, hideLoader } from '../loader.js';
 
-const favoritesData = localStorage.getItem('favorites');
 const favoritesHTML = document.querySelector('.favorites');
 
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
@@ -26,6 +26,8 @@ const displayData = async (objects) => {
 };
 
 export const getFavorites = async (params) => {
+  showLoader();
+  const favoritesData = localStorage.getItem('favorites');
   const page = 1;
   const elemPerPage = 6;
   const objects = JSON.parse(favoritesData);
@@ -52,4 +54,5 @@ export const getFavorites = async (params) => {
   buttons.forEach((button) => {
     button.addEventListener('click', remove);
   });
+  hideLoader();
 };
