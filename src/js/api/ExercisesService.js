@@ -1,5 +1,6 @@
 import iziToast from 'izitoast';
 import 'izitoast/dist/css/iziToast.min.css';
+import { hideLoader, showLoader } from '../loader';
 
 /**
  * Service class to interact with exercises API.
@@ -54,6 +55,7 @@ export default class ExercisesService {
 
   async getExercises(params) {
     try {
+      showLoader();
       const { data } = await this.#axios.get(this.#basePath, { params });
       return data;
     } catch (error) {
@@ -63,11 +65,14 @@ export default class ExercisesService {
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
   async getExercisesById(id) {
     try {
+      showLoader();
       const { data } = await this.#axios.get(`${this.#basePath}/${id}`);
       return data;
     } catch (error) {
@@ -77,11 +82,14 @@ export default class ExercisesService {
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
   async addExerciseRatingById(id, body) {
     try {
+      showLoader();
       this.#validateBodyForRating(body);
       const { data } = await this.#axios.patch(
         `${this.#basePath}/${id}/rating`,
@@ -101,6 +109,8 @@ export default class ExercisesService {
         position: 'bottomRight',
         maxWidth: '400px',
       });
+    } finally {
+      hideLoader();
     }
   }
 
@@ -110,6 +120,7 @@ export default class ExercisesService {
     }
 
     try {
+      showLoader();
       const { data } = await this.#axios.get(
         `${this.#basePath}?${this.#filter}=${this.#name}&keyword=${value}`
       );
@@ -117,6 +128,8 @@ export default class ExercisesService {
       return data;
     } catch (error) {
       throw error;
+    } finally {
+      hideLoader();
     }
   }
 
