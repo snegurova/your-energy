@@ -146,7 +146,13 @@
     max-width: 33px;
   }
   @media screen and (min-width: 1440px) {
-    max-width: 100%;
+    max-width: 64px;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .is-favourite .exercises-attributes-value {
+    max-width: 50px;
   }
 }
 
