@@ -1,3 +1,12 @@
+.fav .quote-exercises-container {
+  margin-top: 20px;
+}
+
+.favorites {
+  padding: 16px;
+  margin-top: -16px;
+}
+
 .card-set {
   display: grid;
   row-gap: 20px;
@@ -15,6 +24,7 @@
 @media screen and (min-width: 768px) {
   .fav .quote-exercises-container {
     flex-direction: column;
+    margin-top: 32px;
   }
 
   .card-set {
@@ -30,7 +40,7 @@
 
 @media screen and (min-width: 1440px) {
   .favorites {
-    max-height: 485px;
+    max-height: 501px;
     overflow-y: scroll;
     scrollbar-color: var(--black) var(--black);
   }
@@ -49,12 +59,4 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   max-width: 250px;
-
-  @media screen and (min-width: 768px) {
-    max-width: 272px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    max-width: 100%;
-  }
 }

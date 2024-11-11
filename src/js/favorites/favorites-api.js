@@ -2,6 +2,7 @@ import axios from 'axios';
 import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js';
 import { createExerciseCard } from '../renderExercises.js';
 import { showLoader, hideLoader } from '../loader.js';
+
 const favoritesHTML = document.querySelector('.favorites');
 
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
@@ -13,17 +14,6 @@ export const remove = async (event) => {
   arrEl.remove();
 };
 
-const displayData = async (objects) => {
-  const requests = objects.map((item) =>
-    axios.get(`/exercises/${item._id}`).then((response) => response.data)
-  );
-  const exercisesData = await Promise.all(requests);
-  const cards = exercisesData
-    .map((card) => createExerciseCard(card, true))
-    .join('');
-  favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
-};
-
 export const getFavorites = async (params) => {
   showLoader();
   const favoritesData = localStorage.getItem('favorites');
@@ -33,19 +23,6 @@ export const getFavorites = async (params) => {
 
   if (objects && objects.length > 0) {
     const sorted = objects.toSorted();
-
-    if (page !== undefined) {
-      if (page === 1) {
-        const chunk = sorted.slice(0, elemPerPage);
-        displayData(chunk);
-      }
-
-      if (page !== 1) {
-        const startIndex = page - 1 * elemPerPage;
-        const chunk = sorted.slice(startIndex, startIndex + elemPerPage);
-        displayData(chunk);
-      }
-    }
 
     const requests = sorted.map((item) =>
       axios.get(`/exercises/${item['_id']}`).then((response) => response.data)
