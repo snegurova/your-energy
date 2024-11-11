@@ -10,7 +10,6 @@ import {
   removeBreadcrumbs,
 } from './js/breadcrumbs/breadcrumbs';
 
-import './api-example';
 import './js/header/burger-menu';
 import './js/modal/modal';
 import './js/footer/subscription';

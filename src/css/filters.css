@@ -102,6 +102,20 @@
   right: 14px;
 }
 
+.search-empty-placeholder {
+  padding: 80px 15px;
+  max-width: 500px;
+  margin: 0 auto;
+  color: var(--black);
+  text-align: center;
+  font-family: 'DM Sans';
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+}
+
 @media screen and (min-width: 768px) {
   .main-filters-container {
     flex-direction: row;
