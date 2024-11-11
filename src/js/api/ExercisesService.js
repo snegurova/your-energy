@@ -8,49 +8,9 @@ import { hideLoader, showLoader } from '../loader';
 export default class ExercisesService {
   #basePath = '/exercises';
   #axios;
-  #page = 1;
-  #filter = '';
-  #name = '';
 
   constructor(axios) {
     this.#axios = axios;
-  }
-
-  get page() {
-    return this.#page;
-  }
-
-  set page(value) {
-    if (typeof value === 'number' && value >= 1) {
-      this.#page = value;
-    } else {
-      console.warn('Page must be a positive number. Setting to 1.');
-      this.#page = 1;
-    }
-  }
-
-  get filter() {
-    return this.#filter;
-  }
-
-  set filter(value) {
-    if (typeof value === 'string') {
-      this.#filter = value;
-    } else {
-      console.warn('Filter must be a string');
-    }
-  }
-
-  get name() {
-    return this.#name;
-  }
-
-  set name(value) {
-    if (typeof value === 'string') {
-      this.#name = value;
-    } else {
-      console.warn('Name must be a string');
-    }
   }
 
   async getExercises(params) {
@@ -109,25 +69,6 @@ export default class ExercisesService {
         position: 'bottomRight',
         maxWidth: '400px',
       });
-    } finally {
-      hideLoader();
-    }
-  }
-
-  async search(value) {
-    if (!value || value.trim() === '') {
-      throw new Error('Search value cannot be an empty string.');
-    }
-
-    try {
-      showLoader();
-      const { data } = await this.#axios.get(
-        `${this.#basePath}?${this.#filter}=${this.#name}&keyword=${value}`
-      );
-      // console.log('ExercisesService search data:', data);
-      return data;
-    } catch (error) {
-      throw error;
     } finally {
       hideLoader();
     }
