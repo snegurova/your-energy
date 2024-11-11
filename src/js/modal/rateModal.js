@@ -45,7 +45,7 @@ async function handleOpenRateModal(event) {
   const container = document.querySelector('.rate-modal-stars');
   refs.rateModalEl.setAttribute('data-id', exerciseId);
 
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflowY = 'hidden';
   container.innerHTML = markup;
 }
 
@@ -60,7 +60,7 @@ function handleCloseRateModal() {
   }
 
   refs.rateModalEl.reset();
-  document.body.style.overflow = 'auto';
+  document.body.style.overflowY = 'auto';
 }
 
 function handleBackdropClick(event) {
