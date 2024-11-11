@@ -17,17 +17,29 @@
   column-gap: 16px;
   grid-template-columns: repeat(1, 1fr);
 }
+.quote-exercises-container .favorites:has(.not-exist) {
+  align-self: center;
+}
+
+.favorites.not-exist {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .not-exist {
-  padding-top: 20px;
   text-align: center;
   font-size: 14px;
   color: var(--black);
+}
+.fav .quote-exercises-container {
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 768px) {
   .fav .quote-exercises-container {
     flex-direction: column;
+    margin-top: 32px;
     margin-top: 32px;
   }
 
@@ -37,24 +49,21 @@
 
   .not-exist {
     font-size: 18px;
-    width: 554px;
-    padding-top: 132px;
+    max-width: 554px;
   }
 }
 
 @media screen and (min-width: 1440px) {
   .favorites {
     max-height: 501px;
-    overflow-y: scroll;
-    scrollbar-color: var(--black) var(--black);
+    overflow-y: auto;
+    scrollbar-color: var(--black) rgba(36, 36, 36, 0.1);
   }
-
+  .favorites-section.card-set {
+    row-gap: 32px;
+  }
   .fav .quote-exercises-container {
     flex-direction: row;
-  }
-
-  .not-exist {
-    padding-top: 0px;
   }
 }
 
