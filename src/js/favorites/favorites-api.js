@@ -33,19 +33,6 @@ export const getFavorites = async (params) => {
   if (objects && objects.length > 0) {
     const sorted = objects.toSorted();
 
-    // if (page !== undefined) {
-    //   if (page === 1) {
-    //     const chunk = sorted.slice(0, elemPerPage);
-    //     displayData(chunk);
-    //   }
-
-    //   if (page !== 1) {
-    //     const startIndex = page - 1 * elemPerPage;
-    //     const chunk = sorted.slice(startIndex, startIndex + elemPerPage);
-    //     displayData(chunk);
-    //   }
-    // }
-
     const requests = sorted.map((item) =>
       axios.get(`/exercises/${item['_id']}`).then((response) => response.data)
     );
