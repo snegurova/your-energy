@@ -26,6 +26,7 @@
 .footer-logo:hover {
   fill: var(--secondary-white);
 }
+
 .social-links {
   display: flex;
   flex-direction: row;
@@ -44,18 +45,17 @@
 }
 
 .social-item {
-  fill: var(--white);
+  fill: var(--secondary-white);
   width: 28px;
   height: 28px;
 }
 
 .social-links a:hover {
   background: var(--white);
-  fill: var(--black);
 }
 
 .social-links a:hover .social-item {
-  fill: var(--black);
+  fill: rgba(36, 36, 36, 0.8);
 }
 
 .footer-text {
@@ -250,6 +250,7 @@
   .footer {
     padding: 64px 0px 16px 0px;
   }
+  
   .logo-text {
     display: flex;
   }
