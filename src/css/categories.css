@@ -1,5 +1,6 @@
 .categories-container {
   width: 100%;
+  position: relative;
 }
 
 .categories-container a.router-link {

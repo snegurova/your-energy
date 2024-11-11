@@ -2,6 +2,10 @@
   margin-top: 20px;
 }
 
+.fav .exercises-container {
+  position: relative;
+}
+
 .favorites {
   padding: 16px;
   margin-top: -16px;
