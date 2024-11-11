@@ -13,6 +13,7 @@ import './js/footer/subscription';
 import './js/footer/animation';
 import './js/modal/rateModal';
 import './js/scrollToTop';
+import { setActiveLink, burgerMenuHandler } from './js/header/burger-menu';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);
 
@@ -43,6 +44,7 @@ export const defaultParams = new URLSearchParams([
 ]);
 
 document.addEventListener('DOMContentLoaded', () => {
+  setActiveLink(basePath);
   const { pathname, search } = window.location;
   if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams, true);
@@ -51,7 +53,6 @@ document.addEventListener('DOMContentLoaded', () => {
     getFavorites();
     return;
   }
-
   handleLocation(true);
 });
 
@@ -122,7 +123,7 @@ export const updateParameter = (key, value) => {
   url.searchParams.set(key, value);
   return url;
 };
-
+burgerMenuHandler();
 updateQuote();
 handlePageReloader();
 window.addEventListener('popstate', handleLocation);
