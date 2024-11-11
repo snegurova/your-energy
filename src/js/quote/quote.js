@@ -1,9 +1,8 @@
 import api from '../api';
 
 function getQuoteExpireTime() {
-  const nextTime = new Date();
-  nextTime.setHours(12, 0, 0, 0); // quote will fetch every 12 hours
-  return nextTime.getTime();
+  const expiryDate = new Date(Date.now() + 12 * (60 * 60 * 1000));
+  return expiryDate.getTime();
 }
 
 function isNeedToUpdate(time) {
@@ -15,12 +14,10 @@ function isNeedToUpdate(time) {
 
 export async function fetchQuote() {
   // fetch api function
-
   try {
     const apiResult = await api.quotes.getQuote();
     apiResult.expire = getQuoteExpireTime();
     localStorage.setItem('quote', JSON.stringify(apiResult));
-    // console.log('api resut', apiResult);
     return apiResult;
   } catch (e) {
     console.error(e);
@@ -43,11 +40,9 @@ async function getQuoteInfo() {
 }
 
 async function updateQuote() {
-  // console.log('upde q');
   const quoteText = document.querySelector('.js-qofd');
   const quoteAuthor = document.querySelector('.quote-author');
   const quote = await getQuoteInfo();
-  // console.log(quote);
   if (!(quoteText && quoteAuthor)) {
     localStorage.removeItem('quote');
     return;
