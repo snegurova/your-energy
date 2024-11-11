@@ -1,4 +1,5 @@
 import { pushState } from '../../main';
+import icons from '../../images/sprite.svg';
 
 function debounce(f, t) {
   return function (args) {
@@ -26,7 +27,7 @@ export const appendSearch = (urlParams) => {
   if (filtersContainerEl) {
     const searchContainerEl = document.createElement('div');
     searchContainerEl.classList.add('search-container');
-    searchContainerEl.innerHTML = `<input class="search-exercises" type="text" id="search" name="search" placeholder="Search" /><svg class="search-icon" width="18" height="18"><use href="./images/sprite.svg#icon-search"></use></svg>`;
+    searchContainerEl.innerHTML = `<input class="search-exercises" type="text" id="search" name="search" placeholder="Search" /><svg class="search-icon" width="18" height="18"><use href="${icons}#icon-search"></use></svg>`;
     filtersContainerEl.prepend(searchContainerEl);
     const searchEl = document.querySelector('.search-exercises');
     searchEl.addEventListener('input', debounce(onSearch, 500));
