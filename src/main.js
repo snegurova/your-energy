@@ -16,6 +16,7 @@ import './js/footer/subscription';
 import './js/footer/animation';
 import './js/modal/rateModal';
 import './js/scrollToTop';
+import './js/svgxuse';
 import { setActiveLink, burgerMenuHandler } from './js/header/burger-menu';
 
 const basePath = import.meta.env.BASE_URL.slice(0, -1);

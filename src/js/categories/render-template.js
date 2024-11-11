@@ -15,7 +15,7 @@ export const createCard = ({ filter, name, imgURL }) => {
         <span class="category-card-title">${name}</span>
         <span class="category-card-filter">${filter}</span>
       </div>
-      <img class="category-image" src="${imgURL}" alt="${name}" />
+      <img loading="lazy" class="category-image" src="${imgURL}" alt="${name}" width="290" height="242" />
     </a>
   </li>
 `;
