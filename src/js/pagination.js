@@ -104,7 +104,7 @@ async function goToPage(page, callback) {
 }
 
 export const paginationCallback = (page) => {
-  const url = updateParameter(SEARCH_PARAMS.PAGE, page);
+  const url = updateParameter(SEARCH_PARAMS.PAGE, page, true);
   pushState(url);
   handleLocation();
 };

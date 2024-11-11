@@ -37,11 +37,13 @@ export const FILTERS_MAPPER = {
   [FILTERS.EQUIPMENT]: 'equipment',
 };
 
-export const defaultParams = new URLSearchParams([
+export const defaultParamsArray = [
   [SEARCH_PARAMS.FILTER, FILTERS.MUSCLES],
   [SEARCH_PARAMS.PAGE, 1],
   [SEARCH_PARAMS.LIMIT, getCategoriesLimit()],
-]);
+];
+
+export const defaultParams = new URLSearchParams(defaultParamsArray);
 
 document.addEventListener('DOMContentLoaded', () => {
   setActiveLink(basePath);
@@ -117,12 +119,18 @@ export const addListener = (selector, callback) => {
   return elements;
 };
 
-export const updateParameter = (key, value) => {
+export const updateParameter = (key, value, isSetDefault = false) => {
   const { href, search } = window.location;
   const url = new URL(href);
+  if (isSetDefault && !search) {
+    defaultParamsArray.forEach(([key, value]) => {
+      url.searchParams.set(key, value);
+    });
+  }
   url.searchParams.set(key, value);
   return url;
 };
+
 burgerMenuHandler();
 updateQuote();
 handlePageReloader();
