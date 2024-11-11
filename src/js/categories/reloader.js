@@ -38,7 +38,7 @@ export function categoriesCardReload(cardCount) {
 }
 
 function exercisesCardReloader(cardCount) {
-  console.log('exercisesCardReloader', cardCount);
+  // console.log('exercisesCardReloader', cardCount);
   const limit = getFilterLimitOption();
   if (cardCount === limit) {
     return;
@@ -52,6 +52,7 @@ function exercisesCardReloader(cardCount) {
   updateLinkParams(getPageLimitOption());
   pushState('?' + urlParams);
 }
+
 export function handlePageReloader() {
   addEventListener('resize', (e) => {
     clearTimeout(resizeTimeout);
