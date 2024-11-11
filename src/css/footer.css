@@ -1,5 +1,5 @@
 .footer {
-  background-color: #1c1c1c;
+  background-color:var(--black);
   color: #fff;
   padding: 45px 0px 10px 0px;
 }
@@ -55,7 +55,7 @@
 }
 
 .social-links a:hover .social-item {
-  fill: rgba(36, 36, 36, 0.8);
+  fill: var(--inactive-socials-icons)
 }
 
 .footer-text {
@@ -344,7 +344,7 @@
   border-radius: 50%;
   height: 40px;
   width: 40px;
-  background-color: #242424;
+  background-color:var(--black);
   border: none;
   position: fixed;
   bottom: 20px;
