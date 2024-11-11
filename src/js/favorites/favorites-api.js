@@ -12,6 +12,14 @@ export const remove = async (event) => {
   handleRemoveFromFavorites(dataId);
   const arrEl = event.target.closest('.exercises-card');
   arrEl.remove();
+  const favoritesData = localStorage.getItem('favorites');
+  const objects = JSON.parse(favoritesData);
+
+  if (objects && !objects.length) {
+    favoritesHTML.innerHTML = `<p class="not-exist">It appears that you haven't added any exercises to your favorites yet.
+    To get started, you can add exercises that you like to your favorites for easier access in the future.
+    </p>`;
+  }
 };
 
 export const getFavorites = async (params) => {
