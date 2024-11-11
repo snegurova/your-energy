@@ -4,53 +4,57 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Your energy - Get Body in shape, Stay healthy">
     <title>Your Energy</title>
     <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
-
-
-      <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
-      <main>
-        <load src="./partials/hero.html" icon-path="img/sprite.svg#logo" />
+    <load src="./partials/header.html" icon-path="img/sprite.svg#logo" />
+    <main>
+      <load src="./partials/hero.html" icon-path="img/sprite.svg#logo" />
       <section class="home-container">
         <div class="container">
           <div class="main-exercises-nav">
             <h1 class="main-exercises-title">Exercises</h1>
-            <div class="main-filters-container">
-            <div class="main-exercises-links">
-              <a
-                class="active filter-link"
-                data-filter="Muscles"
-                data-page="1"
-                data-limit="12"
-                href="/"
-                >Muscles</a
-              >
-              <a
-                class="filter-link"
-                data-filter="Body parts"
-                data-page="1"
-                data-limit="12"
-                href="/"
-                >Body parts</a
-              >
-              <a
-                class="filter-link"
-                data-filter="Equipment"
-                data-page="1"
-                data-limit="12"
-                href="/"
-                >Equipment</a
-              >
+            <div class="main-filters-container"></div>
+              <div class="main-exercises-links">
+                <a
+                  class="active filter-link"
+                  data-filter="Muscles"
+                  data-page="1"
+                  data-limit="12"
+                  href="/"
+                  >Muscles</a
+                >
+                <a
+                  class="filter-link"
+                  data-filter="Body parts"
+                  data-page="1"
+                  data-limit="12"
+                  href="/"
+                  >Body parts</a
+                >
+                <a
+                  class="filter-link"
+                  data-filter="Equipment"
+                  data-page="1"
+                  data-limit="12"
+                  href="/"
+                  >Equipment</a
+                >
+              </div>
             </div>
-          </div>
-          <div class="quote-exercises-container">
-            <load src="./partials/categories.html" />
-            <load src="./partials/quote.html" img-name="img-1" page="q-home" />
-          </div>
+            <div class="quote-exercises-container">
+              <load src="./partials/categories.html" />
+              <load
+                src="./partials/quote.html"
+                img-name="img-1"
+                page="q-home"
+              />
+            </div>
 
-          <div class="content"><load src="./partials/pagination.html" /></div>
+            <div class="content"><load src="./partials/pagination.html" /></div>
+          </div>
         </div>
       </section>
       <div id="exercises-container" class="exercises-container"></div>
