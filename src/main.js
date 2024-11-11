@@ -3,7 +3,7 @@ import { getExercises } from './js/pages/exercises';
 import { getFavorites } from './js/favorites/favorites-api';
 import { updateQuote } from './js/quote/quote';
 import { getCategoriesLimit } from './js/services/limit';
-import { handlePageReloader } from './js/reloader/reloader';
+import { handlePageReloader, updateLinkParams } from './js/reloader/reloader';
 import { appendSearch, removeSearch } from './js/search/search';
 
 import './api-example';
@@ -47,6 +47,7 @@ export const defaultParams = new URLSearchParams(defaultParamsArray);
 
 document.addEventListener('DOMContentLoaded', () => {
   setActiveLink(basePath);
+  updateLinkParams();
   const { pathname, search } = window.location;
   if (pathname === `${basePath}/` && !search) {
     getFilters(defaultParams, true);
