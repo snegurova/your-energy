@@ -18,7 +18,9 @@ export const createExerciseCard = (
 ) => {
   return (
     `
-     <li class="exercises-card" data-id="${_id}">
+     <li class="exercises-card${
+       isFavourite ? ' is-favourite' : ''
+     }" data-id="${_id}">
       <div class="exercises-top">
         <div class="exercises-top-group">
             <span class="exercises-equipment">${equipment}</span>` +
