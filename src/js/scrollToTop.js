@@ -1,6 +1,9 @@
 const anchor = document.querySelector('.scroll-to-top');
 
 document.addEventListener('scroll', function () {
+  if (!anchor) {
+    return;
+  }
   if (window.scrollY === 0) {
     anchor.style.transform = 'rotate(135deg)';
   } else {
@@ -21,5 +24,6 @@ const handleScrollBtn = () => {
     });
   }
 };
-
-anchor.addEventListener('click', handleScrollBtn);
+if (anchor) {
+  anchor.addEventListener('click', handleScrollBtn);
+}
