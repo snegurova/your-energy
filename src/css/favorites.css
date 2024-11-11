@@ -13,7 +13,7 @@
 }
 
 @media screen and (min-width: 768px) {
-  .quote-exercises-container {
+  .fav .quote-exercises-container {
     flex-direction: column;
     align-items: center;
   }
@@ -36,9 +36,8 @@
     scrollbar-color: var(--black) var(--black);
   }
 
-  .quote-exercises-container {
-    flex-direction: row-reverse;
-    align-items: flex-start;
+  .fav .quote-exercises-container {
+    flex-direction: row;
   }
 
   .not-exist {
