@@ -6,7 +6,6 @@ export const refs = {
   modalEl: document.querySelector('.modal-container'),
   rateBtn: document.querySelector('.rate-btn'),
   // rate modal
-  startModal: document.querySelector('body'),
   rateBackdrop: document.querySelector('.rate-backdrop'),
   rateCloseModalBtn: document.querySelector('.rate-modal-close-btn'),
   rateModalEl: document.querySelector('.rate-modal-container'),
