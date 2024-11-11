@@ -8,7 +8,8 @@ import {
 } from '../../main';
 import { getFilters } from '../pages/home';
 
-function updateLinkParams(limit) {
+export function updateLinkParams() {
+  const limit = getCategoriesLimit();
   const filterLinks = document.querySelectorAll('.filter-link');
   if (filterLinks) {
     filterLinks.forEach((link) => {
@@ -18,25 +19,28 @@ function updateLinkParams(limit) {
 }
 
 const handleResize = () => {
-  const { search } = window.location;
+  const { search, pathname } = window.location;
+  if (pathname.includes('favorites')) {
+    return;
+  }
   if (!search) {
     const limit = getCategoriesLimit();
     defaultParams.set(SEARCH_PARAMS.LIMIT, limit);
-    updateLinkParams(limit);
+    updateLinkParams();
     getFilters(defaultParams, true);
     return;
   }
   if (search.includes(SEARCH_PARAMS.FILTER)) {
     const limit = getCategoriesLimit();
     const url = updateParameter(SEARCH_PARAMS.LIMIT, limit);
-    updateLinkParams(limit);
+    updateLinkParams();
     pushState(url, {
       isInitPagination: true,
     });
     return;
   }
   const limit = getExercisesLimit();
-  updateLinkParams(getCategoriesLimit());
+  updateLinkParams();
   const url = updateParameter(SEARCH_PARAMS.LIMIT, limit);
   pushState(url, {
     isInitPagination: true,
