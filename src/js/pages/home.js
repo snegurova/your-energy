@@ -2,7 +2,6 @@ import api from '../api';
 import { renderCards } from '../categories/categories-api';
 import { handleClick, SEARCH_PARAMS } from '../../main';
 import { renderPagination, paginationCallback } from '../pagination';
-import { getPageLimitOption } from '../services/limit';
 const cardsContainer = document.querySelector('.cards-container');
 const filterLinks = document.querySelectorAll('.filter-link');
 
@@ -20,7 +19,6 @@ const handleFilterClick = (event) => {
 
 filterLinks.forEach((link) => {
   link.addEventListener('click', handleFilterClick);
-  link.dataset.limit = getPageLimitOption();
 });
 
 export const getFilters = async (params, isInitPagination) => {

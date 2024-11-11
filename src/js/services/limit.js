@@ -1,18 +1,15 @@
 export const BREAKPOINTS = {
   tablet: 768,
-  desktop: 1440,
 };
 
-export function getFilterLimitOption() {
+export function getExercisesLimit() {
   if (screen.width < BREAKPOINTS.tablet) {
     return 8;
   }
-  if (screen.width < BREAKPOINTS.desktop) {
-    return 10;
-  }
-  return 12;
+  return 10;
 }
-export function getPageLimitOption() {
+
+export function getCategoriesLimit() {
   if (screen.width < BREAKPOINTS.tablet) {
     return 9;
   }

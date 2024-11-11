@@ -1,6 +1,6 @@
 import { FILTERS_MAPPER } from '../../main';
 
-import { getFilterLimitOption } from '../services/limit';
+import { getExercisesLimit } from '../services/limit';
 export const createCard = ({ filter, name, imgURL }) => {
   const dataFilter = `data-${FILTERS_MAPPER[filter]}="${name}"`;
   return `
@@ -8,7 +8,7 @@ export const createCard = ({ filter, name, imgURL }) => {
     <a href="/" class="router-link category-link"
       ${dataFilter}
       data-page="1"
-      data-limit="${getFilterLimitOption()}"
+      data-limit="${getExercisesLimit()}"
       data-name=${name}
     >
       <div class="category-card-description">
