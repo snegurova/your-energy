@@ -10,14 +10,14 @@ function handleOpenModal(event) {
   openModal(exerciseId);
 }
 
-export function openModal(exerciseId) {
-  refs.backdrop.classList.remove('is-hidden');
+export async function openModal(exerciseId) {
   refs.backdrop.addEventListener('click', handleBackdropClick);
   refs.closeModalBtn.addEventListener('click', handleCloseModal);
   window.addEventListener('keydown', handleEscKey);
 
   document.body.style.overflowY = 'hidden';
-  renderExerciseById(exerciseId);
+  await renderExerciseById(exerciseId);
+  refs.backdrop.classList.remove('is-hidden');
 }
 
 export function handleCloseModal() {
@@ -26,8 +26,10 @@ export function handleCloseModal() {
   refs.closeModalBtn.removeEventListener('click', handleCloseModal);
   window.removeEventListener('keydown', handleEscKey);
 
-  refs.modalEl.innerHTML = '';
-  document.body.style.overflowY = 'auto';
+  setTimeout(() => {
+    refs.modalEl.innerHTML = '';
+    document.body.style.overflowY = 'auto';
+  }, 250);
   const favorites = document.querySelector('.favorites');
   if (favorites) {
     getFavorites();
