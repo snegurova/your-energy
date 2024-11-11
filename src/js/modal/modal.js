@@ -1,6 +1,6 @@
 import { refs } from '../refs';
 import renderExerciseById from './renderExercise';
-
+import { getFavorites } from '../favorites/favorites-api';
 refs.startModal.addEventListener('click', handleOpenModal);
 
 function handleOpenModal(event) {
@@ -28,6 +28,10 @@ export function handleCloseModal() {
 
   refs.modalEl.innerHTML = '';
   document.body.style.overflow = 'auto';
+  const favorites = document.querySelector('.favorites');
+  if (favorites) {
+    getFavorites();
+  }
 }
 
 function handleBackdropClick(event) {

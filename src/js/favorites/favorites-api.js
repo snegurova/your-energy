@@ -1,8 +1,7 @@
 import axios from 'axios';
-import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js'
-import { createExerciseCard } from '../renderExercises.js'
+import { handleRemoveFromFavorites } from '../modal/exerciseHelpers.js';
+import { createExerciseCard } from '../renderExercises.js';
 
-const favoritesData = localStorage.getItem('favorites');
 const favoritesHTML = document.querySelector('.favorites');
 
 axios.defaults.baseURL = 'https://your-energy.b.goit.study/api';
@@ -19,11 +18,14 @@ const displayData = async (objects) => {
     axios.get(`/exercises/${item._id}`).then((response) => response.data)
   );
   const exercisesData = await Promise.all(requests);
-  const cards = exercisesData.map((card) => createExerciseCard(card, true)).join('');
+  const cards = exercisesData
+    .map((card) => createExerciseCard(card, true))
+    .join('');
   favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
 };
 
 export const getFavorites = async (params) => {
+  const favoritesData = localStorage.getItem('favorites');
   const page = 1;
   const elemPerPage = 6;
   const objects = JSON.parse(favoritesData);
@@ -44,14 +46,18 @@ export const getFavorites = async (params) => {
       }
     }
 
-    const requests = sorted.map(item => axios.get(`/exercises/${item['_id']}`).then(response => response.data));
-    const exercisesData = await Promise.all(requests)
-    const cards = exercisesData.map((card) => createExerciseCard(card, true)).join('');
+    const requests = sorted.map((item) =>
+      axios.get(`/exercises/${item['_id']}`).then((response) => response.data)
+    );
+    const exercisesData = await Promise.all(requests);
+    const cards = exercisesData
+      .map((card) => createExerciseCard(card, true))
+      .join('');
     favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
   } else {
     favoritesHTML.innerHTML = `<p class="not-exist">It appears that you haven't added any exercises to your favorites yet.
     To get started, you can add exercises that you like to your favorites for easier access in the future.
-    </p>`
+    </p>`;
   }
 
   const buttons = document.querySelectorAll('.exercises-delete-btn');
