@@ -17,15 +17,24 @@
       </p>
     </div>
     <div class="hero-hashtag">
-      <img
-        src="./images/young-women-doing-fitness-outdoors-together@1x.jpg"
-        srcset="
-          ./images/young-women-doing-fitness-outdoors-together@1x.jpg 1x,
-          ./images/young-women-doing-fitness-outdoors-together@2x.jpg 2x
-        "
-        alt="women legs"
-        class="hero-hashtag-img"
-      />
+      <picture>
+        <source
+          srcset="
+            ./images/young-women-doing-fitness-outdoors-together@1x.webp 1x,
+            ./images/young-women-doing-fitness-outdoors-together@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <img
+          src="./images/young-women-doing-fitness-outdoors-together@1x.jpg"
+          srcset="
+            ./images/young-women-doing-fitness-outdoors-together@1x.jpg 1x,
+            ./images/young-women-doing-fitness-outdoors-together@2x.jpg 2x
+          "
+          alt="women legs"
+          class="hero-hashtag-img"
+        />
+      </picture>
       <ul class="hero-hashtag-list">
         <li class="hero-hashtag-item">
           <div class="hero-hashtag-wrap">
@@ -75,9 +84,34 @@
         <source
           media="(min-width: 1440px)"
           srcset="
+            ./images/women-sportswear-working-out-outdoors-desk@1x.webp 1x,
+            ./images/women-sportswear-working-out-outdoors-desk@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="
+            ./images/women-sportswear-working-out-outdoors-tablet@1x.webp 1x,
+            ./images/women-sportswear-working-out-outdoors-tablet@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <source
+          media="(max-width: 767px)"
+          srcset="
+            ./images/women-sportswear-working-out-outdoors-mob@1x.webp 1x,
+            ./images/women-sportswear-working-out-outdoors-mob@2x.webp 2x
+          "
+          type="image/webp"
+        />
+        <source
+          media="(min-width: 1440px)"
+          srcset="
             ./images/women-sportswear-working-out-outdoors-desk@1x.jpg 1x,
             ./images/women-sportswear-working-out-outdoors-desk@2x.jpg 2x
           "
+          type="image/jpeg"
         />
         <source
           media="(min-width: 768px)"
@@ -85,6 +119,7 @@
             ./images/women-sportswear-working-out-outdoors-tablet@1x.jpg 1x,
             ./images/women-sportswear-working-out-outdoors-tablet@2x.jpg 2x
           "
+          type="image/jpeg"
         />
         <source
           media="(max-width: 767px)"
@@ -92,14 +127,15 @@
             ./images/women-sportswear-working-out-outdoors-mob@1x.jpg 1x,
             ./images/women-sportswear-working-out-outdoors-mob@2x.jpg 2x
           "
+          type="image/jpeg"
         />
-
         <img
           src="../images/women-sportswear-working-out-outdoors-mob@1x.jpg"
           srcset="
             ./images/women-sportswear-working-out-outdoors-mob@1x.jpg 1x,
             ./images/women-sportswear-working-out-outdoors-mob@2x.jpg 2x
           "
+          type="image/jpeg"
           alt="women stretch together"
           class="hero-main-img"
         />
