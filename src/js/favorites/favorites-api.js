@@ -14,17 +14,6 @@ export const remove = async (event) => {
   arrEl.remove();
 };
 
-const displayData = async (objects) => {
-  const requests = objects.map((item) =>
-    axios.get(`/exercises/${item._id}`).then((response) => response.data)
-  );
-  const exercisesData = await Promise.all(requests);
-  const cards = exercisesData
-    .map((card) => createExerciseCard(card, true))
-    .join('');
-  favoritesHTML.innerHTML = `<ul class="favorites-section card-set">${cards}</ul>`;
-};
-
 export const getFavorites = async (params) => {
   showLoader();
   const favoritesData = localStorage.getItem('favorites');
